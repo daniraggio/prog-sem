@@ -38,6 +38,15 @@ TECNOLOGIAS = {
 
 ALTO_VALLE_UNIDADES = ["AVALCC22", "AVALCC23", "AVALTG21", "AVALTG22", "AVALTG23"]
 
+# Unidades de medida de CONSUMO_COMB, según el dataset público oficial de CAMMESA
+# ("Consumo de combustibles por tipo de máquina y tipo de tecnología", datos.gob.ar):
+# Gas Natural [Dam3] - Fuel Oil [Ton] - Gas Oil [M3] - Carbón Mineral [Ton].
+# GasAcue/GasProp son las dos vías de gas natural (por gasoducto / propio-contratado).
+UNIDADES_COMBUSTIBLE = {
+    "Carbon": "Ton", "Dies_Oil": "m³", "Fuel_Oil": "Ton",
+    "GasAcue": "Dam³", "GasProp": "Dam³",
+}
+
 
 def pct_change(actual, anterior):
     if actual is None or anterior in (None, 0):
@@ -80,9 +89,11 @@ def centrales_dict(semana):
 
 
 def comparar_centrales(actual_sem, anterior_sem):
+    """Devuelve TODAS las centrales (con y sin cambio relevante) en una sola lista,
+    cada una marcada con cambio_relevante=True/False, más un resumen agregado."""
     actual = centrales_dict(actual_sem)
     anterior = centrales_dict(anterior_sem) if anterior_sem else {}
-    cambios = []
+    todas = []
     for key, c in actual.items():
         mwh_act = c["total"] or 0
         mwh_ant = (anterior.get(key) or {}).get("total", 0) or 0
@@ -92,14 +103,28 @@ def comparar_centrales(actual_sem, anterior_sem):
             evento = "ENTRA_EN_SERVICIO"
         elif mwh_ant > 0 and mwh_act == 0:
             evento = "SALE_DE_SERVICIO"
-        if evento or (var is not None and abs(var) >= UMBRAL_CENTRAL_PCT):
-            cambios.append({
-                "central": c["empresa"], "region": c["region"], "tecnologia": c["tecnologia"],
-                "mwh_actual": mwh_act, "mwh_anterior": mwh_ant, "variacion_pct": var, "evento": evento,
-                "mw_equiv": mw_equiv(mwh_act),
-            })
-    cambios.sort(key=lambda x: abs(x["variacion_pct"]) if x["variacion_pct"] is not None else 1e9, reverse=True)
-    return cambios
+        cambio_relevante = bool(evento) or (var is not None and abs(var) >= UMBRAL_CENTRAL_PCT)
+        todas.append({
+            "central": c["empresa"], "region": c["region"], "tecnologia": c["tecnologia"],
+            "mwh_actual": mwh_act, "mwh_anterior": mwh_ant, "variacion_pct": var, "evento": evento,
+            "mw_equiv": mw_equiv(mwh_act), "cambio_relevante": cambio_relevante,
+        })
+    todas.sort(key=lambda x: (not x["cambio_relevante"],
+                               -(abs(x["variacion_pct"]) if x["variacion_pct"] is not None else 1e9)))
+
+    con = [c for c in todas if c["cambio_relevante"]]
+    sin = [c for c in todas if not c["cambio_relevante"]]
+    resumen = {
+        "con_cambio": {
+            "cantidad": len(con), "mwh_total": round(sum(c["mwh_actual"] for c in con), 1),
+            "mw_equiv_total": round(sum(c["mwh_actual"] for c in con) / HORAS_SEMANA, 1),
+        },
+        "sin_cambio": {
+            "cantidad": len(sin), "mwh_total": round(sum(c["mwh_actual"] for c in sin), 1),
+            "mw_equiv_total": round(sum(c["mwh_actual"] for c in sin) / HORAS_SEMANA, 1),
+        },
+    }
+    return todas, resumen
 
 
 def comparar_combustibles(actual_sem, anterior_sem):
@@ -111,7 +136,8 @@ def comparar_combustibles(actual_sem, anterior_sem):
         val_ant = (anterior.get(comb) or {}).get("total")
         var = pct_change(val_act, val_ant)
         if var is not None and abs(var) >= UMBRAL_COMBUSTIBLE_PCT:
-            cambios.append({"combustible": comb, "actual": val_act, "anterior": val_ant, "variacion_pct": var})
+            cambios.append({"combustible": comb, "actual": val_act, "anterior": val_ant,
+                             "variacion_pct": var, "unidad": UNIDADES_COMBUSTIBLE.get(comb)})
     cambios.sort(key=lambda x: abs(x["variacion_pct"]), reverse=True)
     return cambios
 
@@ -206,11 +232,8 @@ def main():
             v_ant = dem_ant.get(k)
             demanda_cmp[k] = {"actual": v, "anterior": v_ant, "variacion_pct": pct_change(v, v_ant)}
 
-        cambios = comparar_centrales(sem, anterior)
+        todas_centrales, resumen_centrales = comparar_centrales(sem, anterior)
         unidades_off = unidades_sin_generacion(sem)
-
-        potencia_cambios_mw = round(sum(c["mwh_actual"] for c in cambios) / HORAS_SEMANA, 1)
-        potencia_cambios_delta_mw = round(sum(c["mwh_actual"] - c["mwh_anterior"] for c in cambios) / HORAS_SEMANA, 1)
 
         por_semana[str(sem["num_semana"])] = {
             "num_semana": sem["num_semana"],
@@ -220,9 +243,8 @@ def main():
                                    "anterior": anterior.get("temperatura_media") if anterior else None},
             "generacion_por_tecnologia": {"actual": gt, "anterior": gt_ant},
             "demanda": demanda_cmp,
-            "cambios_centrales": cambios,
-            "potencia_cambios_mw": potencia_cambios_mw,
-            "potencia_cambios_delta_mw": potencia_cambios_delta_mw,
+            "centrales": todas_centrales,
+            "resumen_centrales": resumen_centrales,
             "cambios_combustibles": comparar_combustibles(sem, anterior),
             "cambios_costo_marginal": comparar_precios(sem, anterior),
             "unidades_fuera_de_servicio": unidades_off,
@@ -247,6 +269,7 @@ def main():
     resultado = {
         "semanas_disponibles": nums,
         "ultima_semana": nums[-1] if nums else None,
+        "unidades_combustible": UNIDADES_COMBUSTIBLE,
         "por_semana": por_semana,
         "series": {
             "generacion_por_tecnologia": serie_gen,
