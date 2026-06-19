@@ -53,14 +53,32 @@ index.html                      ← el dashboard (fetch de processed/analisis.js
 
 ## Cómo navegar el dashboard
 
-- El selector de semana arriba a la derecha (y los botones ◀ ▶) permiten ver **cualquier semana
-  cargada**, no solo la última — cada una muestra su propia comparación contra la semana anterior
-  y contra el promedio de las 4 semanas previas.
-- La sección **★ Alto Valle** queda fija arriba de todo, con una tarjeta por máquina (estado activo/
-  apagada, MWh de la semana, variación vs. semana anterior, y mini-gráfico de tendencia) más un
-  gráfico de evolución histórica de las 5 unidades.
-- Las alertas automáticas (franja de chips debajo de los KPIs) incluyen tanto las del sistema
-  general como eventos de Alto Valle (entra/sale de servicio) marcados con un chip morado.
+- **Menú lateral izquierdo**: dos secciones — **Mercado (MEM)**, que es la que se abre por defecto
+  al entrar, y **★ Alto Valle**, con la info de tus máquinas.
+- El selector de semana (y los botones ◀ ▶), abajo en el menú lateral, aplica a ambas secciones —
+  permiten ver **cualquier semana cargada**, no solo la última, cada una comparada contra su propia
+  semana anterior y su propio promedio de 4 semanas.
+- **Centrales con variación relevante (>10%)**: tabla **ordenable por cualquier columna** (click en
+  el encabezado; un segundo click invierte el orden). Al lado del título se muestra la **potencia
+  media equivalente** agregada del grupo (MWh ÷ 168 horas — ver nota más abajo) y el delta neto de
+  potencia.
+- **Unidades sin generación**: listado real (sin inferir causa) de las unidades con 0 MWh
+  programados esta semana, también ordenable. El archivo de CAMMESA no trae una tabla de
+  mantenimientos ni el motivo de la indisponibilidad, así que el dashboard solo informa el dato que
+  efectivamente está en el archivo.
+- La sección **★ Alto Valle** tiene una tarjeta por máquina (AVALCC22/23, AVALTG21/22/23) con
+  estado activa/apagada, MWh y MW equivalente de la semana, variación vs. semana anterior,
+  mini-tendencia, más un gráfico de evolución histórica de las 5 unidades.
+
+### Nota importante sobre "potencia" (MW)
+
+El `.mdb` de programación semanal de CAMMESA **no incluye la potencia nominal instalada** de cada
+unidad — solo trae energía programada (MWh) por día/semana. Por eso todo lo que el dashboard
+muestra en MW es **potencia media equivalente** = MWh ÷ 168 horas (la potencia constante que,
+sostenida toda la semana, produciría esa energía). No es la placa/potencia instalada de la máquina,
+es un indicador derivado para poder comparar magnitudes en términos de potencia.
+
+
 
 ## Corriendo el pipeline en local (opcional, para probar antes de subir a GitHub)
 
