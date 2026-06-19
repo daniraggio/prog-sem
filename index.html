@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Despacho Semanal · CAMMESA Tracker</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root{
+    --bg:#0a0e0f; --bg-panel:#11171a; --line:#243036; --line-soft:#1a2227;
+    --amber:#ffb000; --amber-dim:#9a6c00; --cyan:#3fd0e0; --green:#5fd989; --red:#ff5d5d;
+    --text:#e8edee; --text-dim:#7e919a; --text-mid:#aebcc2;
+    --mono:'IBM Plex Mono', monospace; --sans:'IBM Plex Sans Condensed', sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--text); font-family:var(--sans);
+    background-image:linear-gradient(var(--line-soft) 1px, transparent 1px), linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+    background-size:32px 32px; background-attachment:fixed;
+  }
+  header{border-bottom:1px solid var(--line); padding:18px 28px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px; background:linear-gradient(180deg, rgba(255,176,0,0.04), transparent);}
+  .brand{display:flex; align-items:baseline; gap:14px;}
+  .brand .mark{font-family:var(--mono); color:var(--amber); font-size:13px; letter-spacing:2px; border:1px solid var(--amber-dim); padding:3px 8px; border-radius:2px;}
+  h1{font-size:22px; margin:0; font-weight:600;}
+  .subtitle{color:var(--text-dim); font-family:var(--mono); font-size:12.5px;}
+  .week-controls{display:flex; align-items:center; gap:10px; font-family:var(--mono); font-size:12px;}
+  select{background:var(--bg-panel); color:var(--cyan); border:1px solid #1d4a51; padding:7px 10px; border-radius:3px; font-family:var(--mono); font-size:12.5px;}
+  .nav-btn{background:var(--bg-panel); color:var(--text-mid); border:1px solid var(--line); padding:7px 10px; border-radius:3px; cursor:pointer; font-family:var(--mono);}
+  .nav-btn:hover{border-color:var(--amber-dim); color:var(--amber);}
+  .nav-btn:disabled{opacity:0.3; cursor:default;}
+
+  main{max-width:1320px; margin:0 auto; padding:24px 28px 80px;}
+  #loadingMsg, #errorMsg{font-family:var(--mono); color:var(--text-dim); padding:60px 0; text-align:center;}
+  #errorMsg{color:var(--red); display:none;}
+
+  .kpi-strip{display:grid; grid-template-columns:repeat(5,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-bottom:22px;}
+  .kpi{background:var(--bg-panel); padding:16px 18px;}
+  .kpi .label{font-size:11px; color:var(--text-dim); text-transform:uppercase; letter-spacing:1px; font-family:var(--mono);}
+  .kpi .value{font-family:var(--mono); font-size:24px; font-weight:600; margin-top:6px;}
+  .kpi .delta{font-family:var(--mono); font-size:12px; margin-top:4px;}
+  .delta.up{color:var(--green);} .delta.down{color:var(--red);} .delta.flat{color:var(--text-dim);}
+
+  .alert-bar{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:24px;}
+  .alert{font-family:var(--mono); font-size:12px; padding:8px 12px; border-radius:3px; border:1px solid; display:flex; align-items:center; gap:8px;}
+  .alert.warn{border-color:#5a4300; background:rgba(255,176,0,0.08); color:var(--amber);}
+  .alert.crit{border-color:#5a1a1a; background:rgba(255,93,93,0.08); color:var(--red);}
+  .alert.ok{border-color:#1d4a2e; background:rgba(95,217,137,0.08); color:var(--green);}
+  .alert.star{border-color:#3a2e6e; background:rgba(155,126,255,0.10); color:#b9a6ff;}
+  .dot{width:6px; height:6px; border-radius:50%; background:currentColor; flex:none;}
+
+  section{margin-bottom:34px;}
+  .section-head{display:flex; align-items:baseline; gap:10px; margin-bottom:14px; border-bottom:1px solid var(--line); padding-bottom:8px;}
+  .section-head .idx{font-family:var(--mono); color:var(--amber-dim); font-size:13px;}
+  .section-head.featured .idx{color:#b9a6ff;}
+  .section-head h2{font-size:15px; margin:0; text-transform:uppercase; letter-spacing:1.5px; font-weight:600; color:var(--text-mid);}
+  .section-head .tag-mine{font-family:var(--mono); font-size:10px; color:#b9a6ff; border:1px solid #3a2e6e; padding:2px 7px; border-radius:10px; margin-left:auto;}
+
+  .grid2{display:grid; grid-template-columns:1.3fr 1fr; gap:18px;}
+  .grid-av{display:grid; grid-template-columns:repeat(5,1fr); gap:14px;}
+  .panel{background:var(--bg-panel); border:1px solid var(--line); border-radius:3px; padding:18px;}
+  .panel.featured{border-color:#3a2e6e; background:linear-gradient(180deg, rgba(155,126,255,0.05), var(--bg-panel));}
+  .panel h3{margin:0 0 14px; font-size:12.5px; text-transform:uppercase; letter-spacing:1px; color:var(--text-dim); font-weight:500;}
+  canvas{max-height:280px;}
+
+  .av-card{background:var(--bg-panel); border:1px solid var(--line); border-radius:3px; padding:14px;}
+  .av-card.active{border-color:#1d4a2e;}
+  .av-card.off{border-color:#2a2a2a; opacity:0.65;}
+  .av-card .unit{font-family:var(--mono); font-size:13px; color:var(--text); font-weight:600;}
+  .av-card .type{font-family:var(--mono); font-size:10px; color:var(--text-dim);}
+  .av-card .mwh{font-family:var(--mono); font-size:22px; margin-top:10px; color:var(--cyan);}
+  .av-card .delta{font-family:var(--mono); font-size:11px; margin-top:4px;}
+  .av-card canvas{max-height:60px; margin-top:10px;}
+
+  table{width:100%; border-collapse:collapse; font-family:var(--mono); font-size:12px;}
+  th{text-align:left; color:var(--text-dim); font-weight:500; padding:7px 8px; border-bottom:1px solid var(--line); text-transform:uppercase; font-size:10.5px; letter-spacing:0.5px;}
+  td{padding:7px 8px; border-bottom:1px solid var(--line-soft); color:var(--text-mid);}
+  tr:hover td{background:rgba(255,255,255,0.02); color:var(--text);}
+  .pos{color:var(--green);} .neg{color:var(--red);}
+  .tag{font-size:10px; padding:2px 6px; border-radius:2px; font-family:var(--mono);}
+  .tag.in{background:rgba(95,217,137,0.12); color:var(--green); border:1px solid #1d4a2e;}
+  .tag.out{background:rgba(255,93,93,0.12); color:var(--red); border:1px solid #5a1a1a;}
+
+  .scroll-y{max-height:340px; overflow-y:auto;}
+  .scroll-y::-webkit-scrollbar{width:6px;} .scroll-y::-webkit-scrollbar-thumb{background:var(--line); border-radius:3px;}
+
+  footer{border-top:1px solid var(--line); padding:18px 28px; color:var(--text-dim); font-family:var(--mono); font-size:11px;}
+  .muted{color:var(--text-dim);}
+  .legend-row{display:flex; gap:16px; flex-wrap:wrap; margin-top:8px; font-family:var(--mono); font-size:11px; color:var(--text-dim);}
+  .legend-row span{display:inline-flex; align-items:center; gap:5px;}
+  .sw{width:9px; height:9px; border-radius:2px; display:inline-block;}
+  @media (max-width:900px){ .grid2,.grid-av{grid-template-columns:1fr;} .kpi-strip{grid-template-columns:repeat(2,1fr);} }
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <span class="mark">CAMMESA·TRK</span>
+    <div>
+      <h1>Seguimiento de Programación Semanal</h1>
+      <div class="subtitle">Mercado Eléctrico Mayorista Argentino</div>
+    </div>
+  </div>
+  <div class="week-controls">
+    <button class="nav-btn" id="btnPrev">◀ anterior</button>
+    <select id="weekSelect"></select>
+    <button class="nav-btn" id="btnNext">siguiente ▶</button>
+  </div>
+</header>
+
+<main>
+  <div id="loadingMsg">Cargando processed/analisis.json…</div>
+  <div id="errorMsg">No se pudo cargar processed/analisis.json. Verificá que el sitio esté sirviendo la carpeta /processed (ver README) y que el workflow de GitHub Actions haya corrido al menos una vez.</div>
+
+  <div id="content" style="display:none;">
+
+    <div class="kpi-strip" id="kpiStrip"></div>
+    <div class="alert-bar" id="alertBar"></div>
+
+    <section>
+      <div class="section-head featured">
+        <span class="idx">★</span><h2>Alto Valle — Máquinas Propias</h2>
+        <span class="tag-mine">AVALCC22 · AVALCC23 · AVALTG21 · AVALTG22 · AVALTG23</span>
+      </div>
+      <div class="grid-av" id="altoValleCards"></div>
+      <div class="panel featured" style="margin-top:14px;">
+        <h3>Evolución semanal por unidad (MWh)</h3>
+        <canvas id="chartAltoValle"></canvas>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head"><span class="idx">01</span><h2>Generación por Tecnología</h2></div>
+      <div class="grid2">
+        <div class="panel">
+          <h3>Evolución semanal — MWh programados</h3>
+          <canvas id="chartGenSerie"></canvas>
+        </div>
+        <div class="panel">
+          <h3>Mix semana seleccionada</h3>
+          <canvas id="chartGenMix"></canvas>
+          <div class="legend-row" id="mixLegend"></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head"><span class="idx">02</span><h2>Cambios por Central — Ranking de Variaciones</h2></div>
+      <div class="panel">
+        <div class="scroll-y">
+          <table>
+            <thead><tr><th>Central</th><th>Tecn.</th><th>Región</th><th>MWh act.</th><th>MWh ant.</th><th>Var.</th><th>Evento</th></tr></thead>
+            <tbody id="tablaCentrales"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head"><span class="idx">03</span><h2>Combustibles</h2></div>
+      <div class="grid2">
+        <div class="panel">
+          <h3>Consumo semanal por tipo</h3>
+          <canvas id="chartComb"></canvas>
+        </div>
+        <div class="panel">
+          <h3>Variaciones relevantes (&gt;15%) vs. semana anterior</h3>
+          <div id="combAlertList" class="scroll-y"></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head"><span class="idx">04</span><h2>Disponibilidad</h2></div>
+      <div class="grid2">
+        <div class="panel">
+          <h3>Unidades con generación = 0 MWh (semana seleccionada)</h3>
+          <div style="font-family:var(--mono); font-size:32px; color:var(--amber); margin-bottom:6px;" id="fsCount">—</div>
+          <div class="muted" style="font-size:12px;">de un total de unidades despachables del parque programado</div>
+        </div>
+        <div class="panel">
+          <h3>Detalle de unidades sin generación</h3>
+          <div class="scroll-y">
+            <table>
+              <thead><tr><th>Unidad</th><th>Región</th><th>Empresa</th><th>Tipo</th></tr></thead>
+              <tbody id="tablaFS"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head"><span class="idx">05</span><h2>Mercado — Demanda y Costo Marginal</h2></div>
+      <div class="grid2">
+        <div class="panel">
+          <h3>Demanda neta semanal (MWh)</h3>
+          <canvas id="chartDemanda"></canvas>
+        </div>
+        <div class="panel">
+          <h3>Costo marginal promedio por bloque ($/MWh)</h3>
+          <canvas id="chartCmg"></canvas>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  Datos generados automáticamente desde /data/*.mdb vía GitHub Actions (scripts/etl_to_json.py &rarr; scripts/analisis.py).
+  Para incorporar una semana nueva, subí el .mdb a /data — el workflow regenera processed/analisis.json solo.
+</footer>
+
+<script>
+const TEC_KEYS = ['Hidráulica','Térmica','Nuclear','Renovable','Importación'];
+const TEC_COLORS = ['#3fd0e0','#ffb000','#9b7eff','#5fd989','#ff8fae'];
+const AV_UNITS = ['AVALCC22','AVALCC23','AVALTG21','AVALTG22','AVALTG23'];
+const AV_COLORS = ['#3fd0e0','#ffb000','#5fd989','#ff8fae','#9b7eff'];
+
+Chart.defaults.font.family = "'IBM Plex Mono', monospace";
+Chart.defaults.font.size = 11;
+Chart.defaults.color = '#7e919a';
+Chart.defaults.borderColor = '#1a2227';
+
+function fmt(n, dec=0){
+  if(n===null || n===undefined) return 's/d';
+  return Number(n).toLocaleString('es-AR', {minimumFractionDigits:dec, maximumFractionDigits:dec});
+}
+function pctClass(p){ return p>0?'pos':(p<0?'neg':''); }
+function arrow(p){ return p>0?'▲':(p<0?'▼':'·'); }
+
+let ANALISIS = null;
+let charts = {};
+let currentWeek = null;
+
+function destroyCharts(){ Object.values(charts).forEach(c=>c && c.destroy()); charts = {}; }
+
+async function init(){
+  try{
+    const res = await fetch('processed/analisis.json', {cache:'no-store'});
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    ANALISIS = await res.json();
+  }catch(e){
+    document.getElementById('loadingMsg').style.display='none';
+    document.getElementById('errorMsg').style.display='block';
+    console.error(e);
+    return;
+  }
+  document.getElementById('loadingMsg').style.display='none';
+  document.getElementById('content').style.display='block';
+
+  const sel = document.getElementById('weekSelect');
+  sel.innerHTML = ANALISIS.semanas_disponibles.map(s=>`<option value="${s}">Semana ${s}</option>`).join('');
+  currentWeek = ANALISIS.ultima_semana;
+  sel.value = currentWeek;
+
+  sel.addEventListener('change', ()=>render(parseInt(sel.value)));
+  document.getElementById('btnPrev').addEventListener('click', ()=>step(-1));
+  document.getElementById('btnNext').addEventListener('click', ()=>step(1));
+
+  render(currentWeek);
+}
+
+function step(dir){
+  const semanas = ANALISIS.semanas_disponibles;
+  const idx = semanas.indexOf(currentWeek);
+  const next = idx + dir;
+  if(next>=0 && next<semanas.length){ currentWeek = semanas[next]; document.getElementById('weekSelect').value = currentWeek; render(currentWeek); }
+}
+
+function render(numSemana){
+  currentWeek = numSemana;
+  const semanas = ANALISIS.semanas_disponibles;
+  const idx = semanas.indexOf(numSemana);
+  document.getElementById('btnPrev').disabled = idx<=0;
+  document.getElementById('btnNext').disabled = idx>=semanas.length-1;
+
+  const D = ANALISIS.por_semana[String(numSemana)];
+  destroyCharts();
+
+  // ---- KPI strip ----
+  const dn = D.demanda.demanda_neta, imp = D.demanda.importacion;
+  const gt = D.generacion_por_tecnologia.actual;
+  const kpis = [
+    {label:'Demanda Neta (MWh)', value: fmt(dn.actual), delta: dn.variacion_pct},
+    {label:'Generación Térmica (MWh)', value: fmt(gt['Térmica']), delta: null},
+    {label:'Generación Renovable (%)', value: fmt(gt['Renovable_pct'],1)+'%', delta: null},
+    {label:'Importación (MWh)', value: fmt(imp.actual), delta: imp.variacion_pct},
+    {label:'Unidades s/Generación', value: D.unidades_fuera_de_servicio.length, delta: null},
+  ];
+  document.getElementById('kpiStrip').innerHTML = kpis.map(k=>`
+    <div class="kpi"><div class="label">${k.label}</div><div class="value">${k.value}</div>
+    <div class="delta ${k.delta>0?'up':k.delta<0?'down':'flat'}">${k.delta!==null&&k.delta!==undefined? arrow(k.delta)+' '+fmt(Math.abs(k.delta),1)+'% sem.':'&nbsp;'}</div></div>`).join('');
+
+  // ---- alert bar ----
+  let alerts = [];
+  if (dn.variacion_pct!==null && Math.abs(dn.variacion_pct)>=5){
+    alerts.push({type: Math.abs(dn.variacion_pct)>=10?'crit':'warn', text:`Demanda neta ${arrow(dn.variacion_pct)} ${fmt(Math.abs(dn.variacion_pct),1)}% vs semana anterior`});
+  }
+  D.cambios_combustibles.forEach(c=>alerts.push({type:'warn', text:`${c.combustible} ${arrow(c.variacion_pct)} ${fmt(Math.abs(c.variacion_pct),1)}%`}));
+  D.cambios_costo_marginal.forEach(c=>alerts.push({type:'warn', text:`CMg ${c.bloque} ${arrow(c.variacion_pct)} ${fmt(Math.abs(c.variacion_pct),1)}%`}));
+  const salientes = D.cambios_centrales.filter(c=>c.evento==='SALE_DE_SERVICIO');
+  const entrantes = D.cambios_centrales.filter(c=>c.evento==='ENTRA_EN_SERVICIO');
+  if (salientes.length) alerts.push({type:'crit', text:`${salientes.length} central(es) salen de servicio`});
+  if (entrantes.length) alerts.push({type:'ok', text:`${entrantes.length} central(es) entran en servicio`});
+  if (D.cotas_nuevas.length) alerts.push({type:'warn', text:`Nuevos embalses reportados: ${D.cotas_nuevas.join(', ')}`});
+  const avEventos = D.alto_valle.filter(u=>u.evento);
+  avEventos.forEach(u=>alerts.push({type:'star', text:`Alto Valle: ${u.unidad} ${u.evento==='ENTRA_EN_SERVICIO'?'entra en servicio':'sale de servicio'}`}));
+  if (!alerts.length) alerts.push({type:'ok', text:'Sin alertas relevantes esta semana'});
+  document.getElementById('alertBar').innerHTML = alerts.map(a=>`<div class="alert ${a.type}"><span class="dot"></span>${a.text}</div>`).join('');
+
+  renderAltoValle(D, numSemana);
+  renderGeneracion(D, numSemana);
+  renderCentrales(D);
+  renderCombustibles(D, numSemana);
+  renderDisponibilidad(D);
+  renderMercado(numSemana);
+}
+
+function renderAltoValle(D, numSemana){
+  const cards = D.alto_valle.map((u,i)=>{
+    const activo = u.total>0;
+    const cls = activo ? 'active' : 'off';
+    let deltaHtml = '<span class="muted">sin datos previos</span>';
+    if (u.evento==='ENTRA_EN_SERVICIO') deltaHtml = '<span class="pos">▲ entra en servicio</span>';
+    else if (u.evento==='SALE_DE_SERVICIO') deltaHtml = '<span class="neg">▼ sale de servicio</span>';
+    else if (u.variacion_pct!==null && u.variacion_pct!==undefined) deltaHtml = `<span class="${pctClass(u.variacion_pct)}">${arrow(u.variacion_pct)} ${fmt(Math.abs(u.variacion_pct),1)}% vs sem. ant.</span>`;
+    return `<div class="av-card ${cls}">
+      <div class="unit">${u.unidad}</div>
+      <div class="type">${u.tipo_maq} · ${u.region}</div>
+      <div class="mwh">${fmt(u.total)} <span style="font-size:11px; color:var(--text-dim);">MWh</span></div>
+      <div class="delta">${deltaHtml}</div>
+      <canvas id="avmini_${u.unidad}"></canvas>
+    </div>`;
+  }).join('');
+  document.getElementById('altoValleCards').innerHTML = cards;
+
+  // mini sparkline por unidad (histórico hasta semana actual)
+  const semanas = ANALISIS.semanas_disponibles.filter(s=>s<=numSemana);
+  const serieAV = ANALISIS.series.alto_valle;
+  AV_UNITS.forEach((u,i)=>{
+    const el = document.getElementById('avmini_'+u);
+    if(!el) return;
+    charts['av_'+u] = new Chart(el, {
+      type:'line',
+      data:{ labels: semanas.map(s=>'S'+s), datasets:[{data: semanas.map(s=>(serieAV[s]||{})[u]??0), borderColor: AV_COLORS[i], backgroundColor: AV_COLORS[i]+'22', fill:true, tension:0.3, pointRadius:0, borderWidth:2}]},
+      options:{plugins:{legend:{display:false}}, scales:{x:{display:false}, y:{display:false}}, elements:{point:{radius:0}}}
+    });
+  });
+
+  // gráfico principal Alto Valle
+  charts.altoValle = new Chart(document.getElementById('chartAltoValle'), {
+    type:'line',
+    data:{ labels: ANALISIS.semanas_disponibles.map(s=>'Sem '+s),
+      datasets: AV_UNITS.map((u,i)=>({label:u, data: ANALISIS.semanas_disponibles.map(s=>(serieAV[s]||{})[u]??null), borderColor: AV_COLORS[i], backgroundColor: AV_COLORS[i]+'22', tension:0.25, pointRadius:4})) },
+    options:{plugins:{legend:{labels:{boxWidth:10,color:'#aebcc2'}}}, scales:{y:{ticks:{callback:v=>fmt(v)}}, x:{grid:{display:false}}}}
+  });
+}
+
+function renderGeneracion(D, numSemana){
+  const gt = D.generacion_por_tecnologia.actual;
+  const semanas = ANALISIS.semanas_disponibles;
+  const serieGen = ANALISIS.series.generacion_por_tecnologia;
+  charts.genSerie = new Chart(document.getElementById('chartGenSerie'), {
+    type:'line',
+    data:{ labels: semanas.map(s=>'Sem '+s),
+      datasets: TEC_KEYS.map((k,i)=>({label:k, data: semanas.map(s=>(serieGen[s]||{})[k]??null), borderColor: TEC_COLORS[i], backgroundColor: TEC_COLORS[i]+'22', tension:0.25, fill:false, pointRadius: semanas.map(s=>s===numSemana?5:2)}))},
+    options:{plugins:{legend:{labels:{boxWidth:10,color:'#aebcc2'}}}, scales:{y:{ticks:{callback:v=>fmt(v)}}, x:{grid:{display:false}}}}
+  });
+  charts.genMix = new Chart(document.getElementById('chartGenMix'), {
+    type:'doughnut',
+    data:{ labels: TEC_KEYS, datasets:[{data: TEC_KEYS.map(k=>gt[k]||0), backgroundColor: TEC_COLORS, borderColor:'#0a0e0f', borderWidth:2}]},
+    options:{plugins:{legend:{display:false}}, cutout:'62%'}
+  });
+  document.getElementById('mixLegend').innerHTML = TEC_KEYS.map((k,i)=>`<span><span class="sw" style="background:${TEC_COLORS[i]}"></span>${k} ${fmt(gt[k+'_pct'],1)}%</span>`).join('');
+}
+
+function renderCentrales(D){
+  document.getElementById('tablaCentrales').innerHTML = D.cambios_centrales.slice(0,60).map(c=>`
+    <tr><td>${c.central}</td><td>${c.tecnologia}</td><td>${c.region}</td>
+    <td>${fmt(c.mwh_actual)}</td><td>${fmt(c.mwh_anterior)}</td>
+    <td class="${pctClass(c.variacion_pct)}">${c.variacion_pct!==null?arrow(c.variacion_pct)+' '+fmt(Math.abs(c.variacion_pct),1)+'%':'—'}</td>
+    <td>${c.evento==='ENTRA_EN_SERVICIO'?'<span class="tag in">ENTRA</span>':c.evento==='SALE_DE_SERVICIO'?'<span class="tag out">SALE</span>':''}</td></tr>`).join('')
+    || '<tr><td colspan="7" class="muted">Sin variaciones relevantes esta semana.</td></tr>';
+}
+
+function renderCombustibles(D, numSemana){
+  const semanas = ANALISIS.semanas_disponibles;
+  const serieComb = ANALISIS.series.consumo_combustibles;
+  const combList = Object.keys(serieComb[numSemana] || {});
+  const combColors = ['#ffb000','#3fd0e0','#5fd989','#9b7eff','#ff8fae','#ff5d5d'];
+  charts.comb = new Chart(document.getElementById('chartComb'), {
+    type:'bar',
+    data:{ labels: semanas.map(s=>'Sem '+s), datasets: combList.map((c,i)=>({label:c, data: semanas.map(s=>(serieComb[s]||{})[c]??0), backgroundColor: combColors[i%combColors.length]}))},
+    options:{plugins:{legend:{labels:{boxWidth:10,color:'#aebcc2'}}}, scales:{x:{stacked:true,grid:{display:false}}, y:{stacked:true}}}
+  });
+  document.getElementById('combAlertList').innerHTML = D.cambios_combustibles.length
+    ? D.cambios_combustibles.map(c=>`<div style="padding:8px 0;border-bottom:1px solid var(--line-soft);font-family:var(--mono);font-size:12px;"><b>${c.combustible}</b>: ${fmt(c.actual)} <span class="muted">(ant. ${fmt(c.anterior)})</span><span class="${pctClass(c.variacion_pct)}"> ${arrow(c.variacion_pct)} ${fmt(Math.abs(c.variacion_pct),1)}%</span></div>`).join('')
+    : '<div class="muted" style="font-family:var(--mono);font-size:12px;">Sin variaciones relevantes (&gt;15%).</div>';
+}
+
+function renderDisponibilidad(D){
+  document.getElementById('fsCount').textContent = D.unidades_fuera_de_servicio.length;
+  document.getElementById('tablaFS').innerHTML = D.unidades_fuera_de_servicio.slice(0,200).map(u=>`
+    <tr><td>${u.unidad}</td><td>${u.region}</td><td>${u.empresa||''}</td><td>${u.tipo_maq}</td></tr>`).join('');
+}
+
+function renderMercado(numSemana){
+  const semanas = ANALISIS.semanas_disponibles;
+  const serieDem = ANALISIS.series.demanda;
+  charts.demanda = new Chart(document.getElementById('chartDemanda'), {
+    type:'line',
+    data:{ labels: semanas.map(s=>'Sem '+s), datasets:[
+      {label:'Demanda neta', data: semanas.map(s=>(serieDem[s]||{}).demanda_neta), borderColor:'#ffb000', backgroundColor:'#ffb00022', fill:true, tension:0.25},
+      {label:'Importación', data: semanas.map(s=>(serieDem[s]||{}).importacion), borderColor:'#3fd0e0', backgroundColor:'transparent', borderDash:[4,3], tension:0.25}
+    ]},
+    options:{plugins:{legend:{labels:{boxWidth:10,color:'#aebcc2'}}}, scales:{y:{ticks:{callback:v=>fmt(v)}}, x:{grid:{display:false}}}}
+  });
+  const serieCmg = ANALISIS.series.costo_marginal;
+  const bloques = ['PICO','RESTO','VALLE'];
+  const bloqueColors = {PICO:'#ff5d5d', RESTO:'#ffb000', VALLE:'#5fd989'};
+  charts.cmg = new Chart(document.getElementById('chartCmg'), {
+    type:'line',
+    data:{ labels: semanas.map(s=>'Sem '+s), datasets: bloques.map(b=>({label:b, data: semanas.map(s=>(serieCmg[s]||{})[b]??null), borderColor: bloqueColors[b], tension:0.25, pointRadius:3}))},
+    options:{plugins:{legend:{labels:{boxWidth:10,color:'#aebcc2'}}}, scales:{y:{ticks:{callback:v=>fmt(v)}}, x:{grid:{display:false}}}}
+  });
+}
+
+init();
+</script>
+</body>
+</html>
