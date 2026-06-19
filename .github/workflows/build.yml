@@ -1,0 +1,43 @@
+name: Procesar Programación Semanal CAMMESA
+
+# Se dispara cada vez que se sube/modifica un .mdb en data/, o manualmente desde la pestaña Actions
+on:
+  push:
+    branches: [main]
+    paths:
+      - "data/**.mdb"
+      - "data/**.MDB"
+      - "scripts/**"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  procesar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Instalar mdbtools
+        run: sudo apt-get update && sudo apt-get install -y mdbtools
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: ETL -> historico.json
+        run: python3 scripts/etl_to_json.py
+
+      - name: Análisis comparativo -> analisis.json
+        run: python3 scripts/analisis.py
+
+      - name: Commit y push de los JSON generados
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add processed/historico.json processed/analisis.json
+          git diff --staged --quiet || git commit -m "Actualiza análisis semanal CAMMESA [auto]"
+          git push
