@@ -53,19 +53,28 @@ index.html                      ← el dashboard (fetch de processed/analisis.js
 
 ## Cómo navegar el dashboard
 
+- **Título común** "Programación Semanal CAMMESA" arriba de todo, visible en ambas secciones.
 - **Menú lateral izquierdo**: dos secciones — **Mercado (MEM)**, que es la que se abre por defecto
   al entrar, y **★ Alto Valle**, con la info de tus máquinas.
 - El selector de semana (y los botones ◀ ▶), abajo en el menú lateral, aplica a ambas secciones —
   permiten ver **cualquier semana cargada**, no solo la última, cada una comparada contra su propia
   semana anterior y su propio promedio de 4 semanas.
-- **Centrales con variación relevante (>10%)**: tabla **ordenable por cualquier columna** (click en
-  el encabezado; un segundo click invierte el orden). Al lado del título se muestra la **potencia
-  media equivalente** agregada del grupo (MWh ÷ 168 horas — ver nota más abajo) y el delta neto de
-  potencia.
+- **Centrales**: una sola tabla con **todas** las centrales del archivo, ordenable por cualquier
+  columna (click en el encabezado; un segundo click invierte el orden) y filtrable (Todas / Con
+  cambios / Sin cambios). Arriba de la tabla, un cuadro resumen muestra, para cada grupo (con y sin
+  variación relevante >10%): cantidad de centrales, energía total (MWh) y potencia media
+  equivalente (MW) — ver nota más abajo.
+- Los chips de alerta "entran/salen de servicio" muestran, al pasar el cursor, un globito con el
+  detalle de qué centrales son y su energía programada.
 - **Unidades sin generación**: listado real (sin inferir causa) de las unidades con 0 MWh
-  programados esta semana, también ordenable. El archivo de CAMMESA no trae una tabla de
-  mantenimientos ni el motivo de la indisponibilidad, así que el dashboard solo informa el dato que
-  efectivamente está en el archivo.
+  programados esta semana, ordenable. El archivo de CAMMESA no trae una tabla de mantenimientos ni
+  el motivo de la indisponibilidad, así que el dashboard solo informa el dato que efectivamente está
+  en el archivo.
+- **Combustibles**: el gráfico y la lista de variaciones muestran la unidad de cada combustible
+  (Gas Natural en Dam³, Gas Oil en m³, Fuel Oil y Carbón Mineral en toneladas), tomada del dataset
+  público oficial de CAMMESA (no inventada — ver fuente abajo). Como las unidades difieren entre
+  combustibles, el gráfico usa barras agrupadas (no apiladas), para no mezclar magnitudes distintas
+  en una misma barra.
 - La sección **★ Alto Valle** tiene una tarjeta por máquina (AVALCC22/23, AVALTG21/22/23) con
   estado activa/apagada, MWh y MW equivalente de la semana, variación vs. semana anterior,
   mini-tendencia, más un gráfico de evolución histórica de las 5 unidades.
@@ -77,6 +86,15 @@ unidad — solo trae energía programada (MWh) por día/semana. Por eso todo lo 
 muestra en MW es **potencia media equivalente** = MWh ÷ 168 horas (la potencia constante que,
 sostenida toda la semana, produciría esa energía). No es la placa/potencia instalada de la máquina,
 es un indicador derivado para poder comparar magnitudes en términos de potencia.
+
+### Fuente de las unidades de combustibles
+
+`CONSUMO_COMB` no trae un campo de unidad en el `.mdb`. Las unidades que se muestran (Gas Natural
+[Dam³], Gas Oil [m³], Fuel Oil [Ton], Carbón Mineral [Ton]) se tomaron del dataset público oficial
+de CAMMESA "Consumo de combustibles por tipo de máquina y tipo de tecnología"
+(`datos.gob.ar/dataset/energia-datos-compania-administradora-mercado-mayorista-electrico-sa-cammesa`),
+no son una suposición. `GasAcue` y `GasProp` son ambas vías de gas natural (por gasoducto / propio
+o contratado), por eso comparten unidad (Dam³).
 
 
 
