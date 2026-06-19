@@ -3,14 +3,16 @@
 Análisis comparativo - Programación Semanal CAMMESA
 ========================================================
 Lee processed/historico.json y genera processed/analisis.json con,
-para CADA semana disponible: KPIs propios + comparación vs. la semana
-inmediatamente anterior + comparación vs. el promedio de hasta las
-4 semanas previas. Así el dashboard puede navegar semana a semana,
-no solo ver la última.
+para CADA semana disponible: KPIs propios + comparación vs. semana
+anterior y vs. promedio de hasta 4 semanas previas, ranking de cambios
+por central, unidades sin generación (solo el dato real: lista y
+conteo, sin inferir causa ni potencia), y sección especial Alto Valle.
 
-También arma una sección especial con el detalle y la variación de
-las unidades de Alto Valle (AVALCC22, AVALCC23, AVALTG21, AVALTG22,
-AVALTG23).
+Nota sobre "potencia": el .mdb de programación NO trae potencia nominal
+(MW) instalada de cada unidad, solo energía programada (MWh/semana).
+Por eso reportamos "potencia media equivalente" = MWh / 168h, que es la
+potencia constante que, sostenida toda la semana, produciría esa energía.
+No es la potencia instalada de la máquina.
 
 USO:
     python3 scripts/analisis.py
@@ -27,17 +29,26 @@ UMBRAL_CENTRAL_PCT = 10.0
 UMBRAL_DEMANDA_PCT = 5.0
 UMBRAL_COMBUSTIBLE_PCT = 15.0
 UMBRAL_CMG_PCT = 10.0
+HORAS_SEMANA = 168.0
 
 TECNOLOGIAS = {
     "GEN_HID": "Hidráulica", "GEN_TER": "Térmica", "GEN_NUC": "Nuclear",
     "GEN_REN": "Renovable", "GEN_IMP": "Importación",
 }
 
+ALTO_VALLE_UNIDADES = ["AVALCC22", "AVALCC23", "AVALTG21", "AVALTG22", "AVALTG23"]
+
 
 def pct_change(actual, anterior):
     if actual is None or anterior in (None, 0):
         return None
     return round((actual - anterior) / abs(anterior) * 100, 1)
+
+
+def mw_equiv(mwh_total):
+    if mwh_total is None:
+        return None
+    return round(mwh_total / HORAS_SEMANA, 1)
 
 
 def gen_tecnologia_resumen(semana):
@@ -85,6 +96,7 @@ def comparar_centrales(actual_sem, anterior_sem):
             cambios.append({
                 "central": c["empresa"], "region": c["region"], "tecnologia": c["tecnologia"],
                 "mwh_actual": mwh_act, "mwh_anterior": mwh_ant, "variacion_pct": var, "evento": evento,
+                "mw_equiv": mw_equiv(mwh_act),
             })
     cambios.sort(key=lambda x: abs(x["variacion_pct"]) if x["variacion_pct"] is not None else 1e9, reverse=True)
     return cambios
@@ -123,27 +135,8 @@ def cotas_nuevas(actual_sem, anterior_sem):
     return sorted(actual - anterior)
 
 
-def alto_valle_resumen(actual_sem, anterior_sem):
-    anterior_idx = {u["unidad"]: u for u in (anterior_sem or {}).get("alto_valle", [])}
-    out = []
-    for u in actual_sem.get("alto_valle", []):
-        ant = anterior_idx.get(u["unidad"])
-        mwh_ant = ant["total"] if ant else 0
-        var = pct_change(u["total"], mwh_ant)
-        evento = None
-        if (mwh_ant or 0) == 0 and (u["total"] or 0) > 0:
-            evento = "ENTRA_EN_SERVICIO"
-        elif (mwh_ant or 0) > 0 and (u["total"] or 0) == 0:
-            evento = "SALE_DE_SERVICIO"
-        out.append({
-            **u, "mwh_anterior": mwh_ant, "variacion_pct": var, "evento": evento,
-        })
-    return out
-
-
-def promedio_n_semanas(historico_ordenado, idx, n=4):
-    """Promedio de demanda y generación por tecnología sobre hasta n semanas previas a idx."""
-    base = historico_ordenado[max(0, idx - n):idx]
+def promedio_n_semanas(semanas_ordenadas, idx, n=4):
+    base = semanas_ordenadas[max(0, idx - n):idx]
     if not base:
         return {"semanas_base": [], "demanda_neta_prom": None, "generacion_prom": {}}
     dem, gen = [], {t: [] for t in TECNOLOGIAS.values()}
@@ -160,6 +153,36 @@ def promedio_n_semanas(historico_ordenado, idx, n=4):
         "demanda_neta_prom": round(sum(dem) / len(dem)) if dem else None,
         "generacion_prom": {t: round(sum(v) / len(v)) for t, v in gen.items() if v},
     }
+
+
+def unidades_sin_generacion(semana):
+    """Solo el dato real: unidades con 0 MWh programados esta semana. Sin causa ni potencia inferida."""
+    off = [u for u in semana.get("generacion_unidades", []) if (u["total"] or 0) == 0]
+    out = [{"unidad": u["unidad"], "region": u["region"], "empresa": u["empresa"], "tipo_maq": u["tipo_maq"]}
+           for u in off]
+    out.sort(key=lambda x: (x["region"], x["empresa"], x["unidad"]))
+    return out
+
+
+def alto_valle_resumen(actual_sem, anterior_sem):
+    actual_units = {u["unidad"]: u for u in actual_sem.get("generacion_unidades", []) if u["unidad"] in ALTO_VALLE_UNIDADES}
+    anterior_units = {u["unidad"]: u for u in (anterior_sem or {}).get("generacion_unidades", []) if u["unidad"] in ALTO_VALLE_UNIDADES}
+    out = []
+    for code in ALTO_VALLE_UNIDADES:
+        u = actual_units.get(code)
+        if not u:
+            continue
+        ant = anterior_units.get(code)
+        mwh_ant = ant["total"] if ant else 0
+        var = pct_change(u["total"], mwh_ant)
+        evento = None
+        if (mwh_ant or 0) == 0 and (u["total"] or 0) > 0:
+            evento = "ENTRA_EN_SERVICIO"
+        elif (mwh_ant or 0) > 0 and (u["total"] or 0) == 0:
+            evento = "SALE_DE_SERVICIO"
+        out.append({**u, "mwh_anterior": mwh_ant, "variacion_pct": var, "evento": evento,
+                     "mw_equiv": mw_equiv(u["total"])})
+    return out
 
 
 def main():
@@ -183,7 +206,11 @@ def main():
             v_ant = dem_ant.get(k)
             demanda_cmp[k] = {"actual": v, "anterior": v_ant, "variacion_pct": pct_change(v, v_ant)}
 
-        gen_cmp = {"actual": gt, "anterior": gt_ant}
+        cambios = comparar_centrales(sem, anterior)
+        unidades_off = unidades_sin_generacion(sem)
+
+        potencia_cambios_mw = round(sum(c["mwh_actual"] for c in cambios) / HORAS_SEMANA, 1)
+        potencia_cambios_delta_mw = round(sum(c["mwh_actual"] - c["mwh_anterior"] for c in cambios) / HORAS_SEMANA, 1)
 
         por_semana[str(sem["num_semana"])] = {
             "num_semana": sem["num_semana"],
@@ -191,27 +218,31 @@ def main():
             "semana_anterior": anterior["num_semana"] if anterior else None,
             "temperatura_media": {"actual": sem.get("temperatura_media"),
                                    "anterior": anterior.get("temperatura_media") if anterior else None},
-            "generacion_por_tecnologia": gen_cmp,
+            "generacion_por_tecnologia": {"actual": gt, "anterior": gt_ant},
             "demanda": demanda_cmp,
-            "cambios_centrales": comparar_centrales(sem, anterior),
+            "cambios_centrales": cambios,
+            "potencia_cambios_mw": potencia_cambios_mw,
+            "potencia_cambios_delta_mw": potencia_cambios_delta_mw,
             "cambios_combustibles": comparar_combustibles(sem, anterior),
             "cambios_costo_marginal": comparar_precios(sem, anterior),
-            "unidades_fuera_de_servicio": sem.get("unidades_fuera_servicio", []),
+            "unidades_fuera_de_servicio": unidades_off,
             "cotas_nuevas": cotas_nuevas(sem, anterior),
             "valores_agua": sem.get("valores_agua", []),
             "promedio_4_semanas": promedio_n_semanas(semanas_ordenadas, i, 4),
             "alto_valle": alto_valle_resumen(sem, anterior),
         }
 
-    # series históricas completas (para gráficos de evolución)
     serie_gen = {str(s["num_semana"]): gen_tecnologia_resumen(s) for s in semanas_ordenadas}
     serie_dem = {str(s["num_semana"]): demanda_resumen(s) for s in semanas_ordenadas}
     serie_comb = {str(s["num_semana"]): {k: v["total"] for k, v in s.get("consumo_combustibles", {}).items()}
                   for s in semanas_ordenadas}
     serie_precios = {str(s["num_semana"]): {k: v["promedio"] for k, v in s.get("precios", {}).items()}
                       for s in semanas_ordenadas}
-    serie_alto_valle = {str(s["num_semana"]): {u["unidad"]: u["total"] for u in s.get("alto_valle", [])}
-                         for s in semanas_ordenadas}
+    serie_alto_valle = {
+        str(s["num_semana"]): {u["unidad"]: u["total"] for u in s.get("generacion_unidades", [])
+                                if u["unidad"] in ALTO_VALLE_UNIDADES}
+        for s in semanas_ordenadas
+    }
 
     resultado = {
         "semanas_disponibles": nums,
