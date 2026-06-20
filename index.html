@@ -52,7 +52,8 @@
   #errorMsg{color:var(--red); display:none;}
 
   .page-title{font-size:22px; font-weight:600; margin:0 0 4px;}
-  .page-subtitle{color:var(--text-dim); font-family:var(--mono); font-size:12.5px; margin-bottom:22px;}
+  .page-subtitle{color:var(--text-dim); font-family:var(--mono); font-size:12.5px; margin-bottom:4px;}
+  .page-subtitle:last-of-type{margin-bottom:22px;}
 
   .kpi-strip{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-bottom:22px;}
   .kpi{background:var(--bg-panel); padding:16px 18px;}
@@ -287,6 +288,7 @@
   <div class="page" id="page-mem">
     <div class="page-title">Mercado Eléctrico Mayorista</div>
     <div class="page-subtitle" id="memSubtitle">—</div>
+    <div class="page-subtitle" id="memFechas">—</div>
 
     <div class="kpi-strip" id="kpiStrip"></div>
     <div class="alert-bar" id="alertBar"></div>
@@ -390,6 +392,20 @@ Chart.defaults.borderColor = '#1a2227';
 function fmt(n, dec=0){ if(n===null||n===undefined) return 's/d'; return Number(n).toLocaleString('es-AR',{minimumFractionDigits:dec,maximumFractionDigits:dec}); }
 function pctClass(p){ return p>0?'pos':(p<0?'neg':''); }
 function arrow(p){ return p>0?'▲':(p<0?'▼':'·'); }
+
+function rangoFechas(finicioStr){
+  if (!finicioStr) return '';
+  // formato esperado: "MM/DD/YY HH:MM:SS"
+  const m = finicioStr.match(/^(\d{1,2})\/(\d{1,2})\/(\d{2,4})/);
+  if (!m) return '';
+  let [_, mm, dd, yy] = m;
+  yy = yy.length===2 ? '20'+yy : yy;
+  const inicio = new Date(parseInt(yy), parseInt(mm)-1, parseInt(dd));
+  const fin = new Date(inicio); fin.setDate(fin.getDate()+6);
+  const fmtFecha = d => d.toLocaleDateString('es-AR', {day:'2-digit', month:'2-digit', year:'numeric'});
+  const diasSemana = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+  return `${diasSemana[inicio.getDay()]} ${fmtFecha(inicio)} → ${diasSemana[fin.getDay()]} ${fmtFecha(fin)}`;
+}
 
 let ANALISIS = null, charts = {}, currentWeek = null, currentPage = 'mem';
 let INFORMES = null, currentInforme = null;
@@ -524,6 +540,7 @@ function render(numSemana){
 
   document.getElementById('memSubtitle').textContent =
     `Semana ${D.num_semana}` + (D.semana_anterior? ` · comparado vs. semana ${D.semana_anterior}` : ' · primera semana cargada, sin comparación previa');
+  document.getElementById('memFechas').textContent = rangoFechas(D.finicio);
   document.getElementById('avSubtitle').textContent =
     `AVALCC22 · AVALCC23 · AVALTG21 · AVALTG22 · AVALTG23 — Semana ${D.num_semana}`;
 
