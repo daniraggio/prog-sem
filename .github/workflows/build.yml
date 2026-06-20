@@ -29,7 +29,27 @@ jobs:
           python-version: "3.11"
 
       - name: ETL -> historico.json
+        id: etl
+        continue-on-error: true
         run: python3 scripts/etl_to_json.py
+
+      - name: Mostrar resumen de errores (si los hubo)
+        if: steps.etl.outcome == 'failure'
+        run: |
+          echo "## ⚠️ Algunos archivos .mdb no se pudieron procesar" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if [ -f processed/etl_errors.json ]; then
+            python3 -c "
+import json
+d = json.load(open('processed/etl_errors.json'))
+for e in d['archivos_con_error']:
+    print(f\"### {e['archivo']}\")
+    print('```')
+    print(e['traceback'])
+    print('```')
+" >> $GITHUB_STEP_SUMMARY
+          fi
+          echo "Las semanas que SÍ se procesaron bien igual se van a publicar. Revisá el detalle arriba (o processed/etl_errors.json en el repo) para los archivos que fallaron."
 
       - name: Análisis comparativo -> analisis.json
         run: python3 scripts/analisis.py
@@ -38,6 +58,10 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add processed/historico.json processed/analisis.json
+          git add -A processed/
           git diff --staged --quiet || git commit -m "Actualiza análisis semanal CAMMESA [auto]"
           git push
+
+      - name: Fallar el job si hubo errores (para que quede marcado en rojo)
+        if: steps.etl.outcome == 'failure'
+        run: exit 1
