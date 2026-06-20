@@ -199,8 +199,24 @@
     </section>
 
     <section>
+      <div class="section-head"><span class="idx">02</span><h2>Combustibles</h2></div>
+      <div class="grid2">
+        <div class="panel"><h3>Consumo semanal por tipo</h3><canvas id="chartComb"></canvas></div>
+        <div class="panel"><h3>Consumo de la semana, todos los combustibles</h3><div id="combAlertList" class="scroll-y"></div></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head"><span class="idx">03</span><h2>Mercado — Demanda y Costo Marginal</h2></div>
+      <div class="grid2">
+        <div class="panel"><h3>Demanda neta semanal (MWh)</h3><canvas id="chartDemanda"></canvas></div>
+        <div class="panel"><h3>Costo marginal promedio por bloque ($/MWh)</h3><canvas id="chartCmg"></canvas></div>
+      </div>
+    </section>
+
+    <section>
       <div class="section-head">
-        <span class="idx">02</span><h2>Centrales — Programación de la Semana</h2>
+        <span class="idx">04</span><h2>Centrales — Programación de la Semana</h2>
       </div>
       <div class="summary-box" id="resumenCentrales"></div>
       <div class="panel">
@@ -221,16 +237,8 @@
     </section>
 
     <section>
-      <div class="section-head"><span class="idx">03</span><h2>Combustibles</h2></div>
-      <div class="grid2">
-        <div class="panel"><h3>Consumo semanal por tipo</h3><canvas id="chartComb"></canvas></div>
-        <div class="panel"><h3>Consumo de la semana, todos los combustibles</h3><div id="combAlertList" class="scroll-y"></div></div>
-      </div>
-    </section>
-
-    <section>
       <div class="section-head">
-        <span class="idx">04</span><h2>Unidades Sin Generación</h2>
+        <span class="idx">05</span><h2>Unidades Sin Generación</h2>
         <span class="aggr" id="aggrOff"></span>
       </div>
       <div class="panel">
@@ -246,14 +254,6 @@
           </tr></thead>
           <tbody></tbody>
         </table></div>
-      </div>
-    </section>
-
-    <section>
-      <div class="section-head"><span class="idx">05</span><h2>Mercado — Demanda y Costo Marginal</h2></div>
-      <div class="grid2">
-        <div class="panel"><h3>Demanda neta semanal (MWh)</h3><canvas id="chartDemanda"></canvas></div>
-        <div class="panel"><h3>Costo marginal promedio por bloque ($/MWh)</h3><canvas id="chartCmg"></canvas></div>
       </div>
     </section>
   </div>
