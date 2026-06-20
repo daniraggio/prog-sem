@@ -5690,11 +5690,6 @@
           "comentario": "RESTRINGIDO OPERACIÓN MEDIANO PLAZO"
         }
       ],
-      "promedio_4_semanas": {
-        "semanas_base": [],
-        "demanda_neta_prom": null,
-        "generacion_prom": {}
-      },
       "alto_valle": [
         {
           "unidad": "AVALCC22",
@@ -11412,19 +11407,6 @@
           "comentario": "RESTRINGIDO OPERACIÓN MEDIANO PLAZO"
         }
       ],
-      "promedio_4_semanas": {
-        "semanas_base": [
-          19
-        ],
-        "demanda_neta_prom": 2704161,
-        "generacion_prom": {
-          "Hidráulica": 617872,
-          "Térmica": 1376823,
-          "Nuclear": 110880,
-          "Renovable": 493773,
-          "Importación": 152880
-        }
-      },
       "alto_valle": [
         {
           "unidad": "AVALCC22",
@@ -17083,20 +17065,6 @@
           "comentario": "RESTRINGIDO OPERACIÓN MEDIANO PLAZO"
         }
       ],
-      "promedio_4_semanas": {
-        "semanas_base": [
-          19,
-          20
-        ],
-        "demanda_neta_prom": 2843164,
-        "generacion_prom": {
-          "Hidráulica": 675306,
-          "Térmica": 1445416,
-          "Nuclear": 110880,
-          "Renovable": 493815,
-          "Importación": 166380
-        }
-      },
       "alto_valle": [
         {
           "unidad": "AVALCC22",
@@ -22846,21 +22814,6 @@
           "comentario": "RESTRINGIDO OPERACIÓN MEDIANO PLAZO"
         }
       ],
-      "promedio_4_semanas": {
-        "semanas_base": [
-          19,
-          20,
-          21
-        ],
-        "demanda_neta_prom": 2941833,
-        "generacion_prom": {
-          "Hidráulica": 689965,
-          "Térmica": 1497469,
-          "Nuclear": 151760,
-          "Renovable": 471094,
-          "Importación": 180080
-        }
-      },
       "alto_valle": [
         {
           "unidad": "AVALCC22",
@@ -28629,22 +28582,6 @@
           "comentario": "RESTRINGIDO OPERACIÓN MEDIANO PLAZO"
         }
       ],
-      "promedio_4_semanas": {
-        "semanas_base": [
-          19,
-          20,
-          21,
-          22
-        ],
-        "demanda_neta_prom": 2923355,
-        "generacion_prom": {
-          "Hidráulica": 677979,
-          "Térmica": 1468597,
-          "Nuclear": 172494,
-          "Renovable": 467647,
-          "Importación": 185880
-        }
-      },
       "alto_valle": [
         {
           "unidad": "AVALCC22",
@@ -34288,22 +34225,6 @@
           "comentario": "RESTRINGIDO OPERACIÓN MEDIANO PLAZO"
         }
       ],
-      "promedio_4_semanas": {
-        "semanas_base": [
-          20,
-          21,
-          22,
-          23
-        ],
-        "demanda_neta_prom": 2976542,
-        "generacion_prom": {
-          "Hidráulica": 657356,
-          "Térmica": 1531160,
-          "Nuclear": 203364,
-          "Renovable": 436874,
-          "Importación": 196576
-        }
-      },
       "alto_valle": [
         {
           "unidad": "AVALCC22",
@@ -39941,22 +39862,6 @@
           "comentario": "RESTRINGIDO OPERACIÓN MEDIANO PLAZO"
         }
       ],
-      "promedio_4_semanas": {
-        "semanas_base": [
-          21,
-          22,
-          23,
-          24
-        ],
-        "demanda_neta_prom": 2996731,
-        "generacion_prom": {
-          "Hidráulica": 597825,
-          "Térmica": 1581694,
-          "Nuclear": 234192,
-          "Renovable": 429350,
-          "Importación": 201035
-        }
-      },
       "alto_valle": [
         {
           "unidad": "AVALCC22",
@@ -45616,22 +45521,6 @@
           "comentario": "RESTRINGIDO OPERACIÓN MEDIANO PLAZO"
         }
       ],
-      "promedio_4_semanas": {
-        "semanas_base": [
-          22,
-          23,
-          24,
-          25
-        ],
-        "demanda_neta_prom": 2976170,
-        "generacion_prom": {
-          "Hidráulica": 548674,
-          "Térmica": 1597711,
-          "Nuclear": 234486,
-          "Renovable": 442774,
-          "Importación": 199379
-        }
-      },
       "alto_valle": [
         {
           "unidad": "AVALCC22",
