@@ -128,26 +128,19 @@ def procesar_mdb(mdb_path: Path) -> dict:
             })
     semana["generacion_centrales"] = gen_centrales
 
-    # Nivel 4: unidad (Generador cargado) -> usado para detectar indisponibilidad
-    unidades_fs = []
-    alto_valle = []
+    # Nivel 4: unidad (Generador cargado) -> guardamos TODAS para poder calcular
+    # heurísticas de disponibilidad histórica y potencia equivalente en el análisis
+    gen_unidades = []
     for r in gen_rows:
         if (r.get("Generador") or "") != "":
             total = to_float(r.get("Total")) or 0
             dias = [to_float(r.get(d)) for d in DIA_COLS]
-            if r["Generador"] in ALTO_VALLE_UNIDADES:
-                alto_valle.append({
-                    "unidad": r["Generador"], "tipo_maq": r["TipoMaq"],
-                    "empresa": r["Empresa"], "region": r["Region"],
-                    "total": total, "dias": dias,
-                })
-            if total == 0:
-                unidades_fs.append({
-                    "unidad": r["Generador"], "region": r["Region"],
-                    "empresa": r["Empresa"], "tipo_maq": r["TipoMaq"],
-                })
-    semana["unidades_fuera_servicio"] = unidades_fs
-    semana["alto_valle"] = alto_valle
+            gen_unidades.append({
+                "unidad": r["Generador"], "tipo_maq": r["TipoMaq"], "var": r["Var"],
+                "empresa": r["Empresa"], "region": r["Region"],
+                "total": total, "dias": dias,
+            })
+    semana["generacion_unidades"] = gen_unidades
 
     # ---- CONSUMO_COMB ----
     comb_rows = mdb_export(mdb_path, "CONSUMO_COMB")
@@ -158,17 +151,32 @@ def procesar_mdb(mdb_path: Path) -> dict:
     }
 
     # ---- PRECIOS ----
+    # La variable de costo marginal horario cambió de nombre entre archivos: la mayoría de las
+    # semanas usan "CMgh", pero en algunas CAMMESA la llama "CMO" (misma magnitud, ~mismo orden
+    # de valores). Hay además una variable "MER" (precio de referencia, escala totalmente distinta,
+    # ~10-20 mil vs. ~200-300 mil) que NO es costo marginal y no debe mezclarse.
+    # Elegimos explícitamente una sola variable por prioridad, nunca combinamos varias bajo el
+    # mismo Bloque (eso pisaba datos silenciosamente).
     precios_rows = mdb_export(mdb_path, "PRECIOS")
+    PRIORIDAD_VAR_CMG = ["CMgh", "CMO"]
+    vars_presentes = {r["Var"] for r in precios_rows}
+    var_elegida = next((v for v in PRIORIDAD_VAR_CMG if v in vars_presentes), None)
+
     precios = {}
     for r in precios_rows:
+        if var_elegida is not None and r["Var"] != var_elegida:
+            continue
         bloque = r["Bloque"]
         dias = [to_float(r.get(d)) for d in DIA_COLS]
         validos = [d for d in dias if d is not None]
         precios[bloque] = {
-            "region": r["Region"], "promedio": round(sum(validos) / len(validos), 2) if validos else None,
+            "region": r["Region"], "var_origen": r["Var"],
+            "promedio": round(sum(validos) / len(validos), 2) if validos else None,
             "dias": dias,
         }
     semana["precios"] = precios
+    semana["precios_var_origen"] = var_elegida
+    semana["precios_vars_disponibles"] = sorted(vars_presentes)
 
     # ---- COTAS (universo de embalses reportados, para detectar altas/bajas) ----
     cotas_rows = mdb_export(mdb_path, "COTAS")

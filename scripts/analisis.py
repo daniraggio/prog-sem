@@ -127,32 +127,55 @@ def comparar_centrales(actual_sem, anterior_sem):
     return todas, resumen
 
 
-def comparar_combustibles(actual_sem, anterior_sem):
+ORDEN_COMBUSTIBLES = ["GasAcue", "GasProp", "Fuel_Oil", "Dies_Oil", "Carbon"]
+ORDEN_BLOQUES_CMG = ["PICO", "RESTO", "VALLE"]
+
+
+def combustibles_todos(actual_sem, anterior_sem):
+    """TODOS los combustibles, en orden fijo, con su variación (no solo los que superan
+    el umbral) — para el cuadro lateral de la sección Combustibles."""
     actual = actual_sem.get("consumo_combustibles", {})
     anterior = (anterior_sem or {}).get("consumo_combustibles", {})
-    cambios = []
-    for comb, info in actual.items():
-        val_act = info["total"]
+    out = []
+    claves = ORDEN_COMBUSTIBLES + [c for c in actual if c not in ORDEN_COMBUSTIBLES]
+    for comb in claves:
+        if comb not in actual:
+            continue
+        val_act = actual[comb]["total"]
         val_ant = (anterior.get(comb) or {}).get("total")
         var = pct_change(val_act, val_ant)
-        if var is not None and abs(var) >= UMBRAL_COMBUSTIBLE_PCT:
-            cambios.append({"combustible": comb, "actual": val_act, "anterior": val_ant,
-                             "variacion_pct": var, "unidad": UNIDADES_COMBUSTIBLE.get(comb)})
-    cambios.sort(key=lambda x: abs(x["variacion_pct"]), reverse=True)
-    return cambios
+        out.append({
+            "combustible": comb, "actual": val_act, "anterior": val_ant, "variacion_pct": var,
+            "unidad": UNIDADES_COMBUSTIBLE.get(comb),
+            "relevante": var is not None and abs(var) >= UMBRAL_COMBUSTIBLE_PCT,
+        })
+    return out
+
+
+def comparar_combustibles(actual_sem, anterior_sem):
+    return [c for c in combustibles_todos(actual_sem, anterior_sem) if c["relevante"]]
+
+
+def costo_marginal_todos(actual_sem, anterior_sem):
+    """Los 3 bloques SIEMPRE, en orden fijo, con su variación (no solo los relevantes)."""
+    actual = actual_sem.get("precios", {})
+    anterior = (anterior_sem or {}).get("precios", {})
+    out = []
+    for bloque in ORDEN_BLOQUES_CMG:
+        if bloque not in actual:
+            continue
+        val_act = actual[bloque]["promedio"]
+        val_ant = (anterior.get(bloque) or {}).get("promedio")
+        var = pct_change(val_act, val_ant)
+        out.append({
+            "bloque": bloque, "actual": val_act, "anterior": val_ant, "variacion_pct": var,
+            "relevante": var is not None and abs(var) >= UMBRAL_CMG_PCT,
+        })
+    return out
 
 
 def comparar_precios(actual_sem, anterior_sem):
-    actual = actual_sem.get("precios", {})
-    anterior = (anterior_sem or {}).get("precios", {})
-    cambios = []
-    for bloque, info in actual.items():
-        val_act = info["promedio"]
-        val_ant = (anterior.get(bloque) or {}).get("promedio")
-        var = pct_change(val_act, val_ant)
-        if var is not None and abs(var) >= UMBRAL_CMG_PCT:
-            cambios.append({"bloque": bloque, "actual": val_act, "anterior": val_ant, "variacion_pct": var})
-    return cambios
+    return [c for c in costo_marginal_todos(actual_sem, anterior_sem) if c["relevante"]]
 
 
 def cotas_nuevas(actual_sem, anterior_sem):
@@ -191,12 +214,20 @@ def unidades_sin_generacion(semana):
 
 
 def alto_valle_resumen(actual_sem, anterior_sem):
+    """SIEMPRE devuelve las 5 unidades, en el mismo orden, aunque alguna no aparezca
+    en el archivo de esa semana (se marca sin_datos=True en vez de omitirla — evita
+    que la grilla de tarjetas se descuadre semana a semana)."""
     actual_units = {u["unidad"]: u for u in actual_sem.get("generacion_unidades", []) if u["unidad"] in ALTO_VALLE_UNIDADES}
     anterior_units = {u["unidad"]: u for u in (anterior_sem or {}).get("generacion_unidades", []) if u["unidad"] in ALTO_VALLE_UNIDADES}
     out = []
     for code in ALTO_VALLE_UNIDADES:
         u = actual_units.get(code)
         if not u:
+            out.append({
+                "unidad": code, "tipo_maq": None, "empresa": "ALTO VALLE", "region": "COM",
+                "total": None, "dias": None, "mwh_anterior": None, "variacion_pct": None,
+                "evento": None, "mw_equiv": None, "sin_datos": True,
+            })
             continue
         ant = anterior_units.get(code)
         mwh_ant = ant["total"] if ant else 0
@@ -207,7 +238,7 @@ def alto_valle_resumen(actual_sem, anterior_sem):
         elif (mwh_ant or 0) > 0 and (u["total"] or 0) == 0:
             evento = "SALE_DE_SERVICIO"
         out.append({**u, "mwh_anterior": mwh_ant, "variacion_pct": var, "evento": evento,
-                     "mw_equiv": mw_equiv(u["total"])})
+                     "mw_equiv": mw_equiv(u["total"]), "sin_datos": False})
     return out
 
 
@@ -245,7 +276,9 @@ def main():
             "demanda": demanda_cmp,
             "centrales": todas_centrales,
             "resumen_centrales": resumen_centrales,
+            "combustibles": combustibles_todos(sem, anterior),
             "cambios_combustibles": comparar_combustibles(sem, anterior),
+            "costo_marginal": costo_marginal_todos(sem, anterior),
             "cambios_costo_marginal": comparar_precios(sem, anterior),
             "unidades_fuera_de_servicio": unidades_off,
             "cotas_nuevas": cotas_nuevas(sem, anterior),
