@@ -309,6 +309,21 @@ async function init(){
   document.getElementById('loadingMsg').style.display='none';
   document.getElementById('page-mem').classList.add('visible');
 
+  // Si el último procesamiento dejó archivos .mdb sin cargar, avisar en el dashboard
+  // (no solo en el log de GitHub Actions).
+  try{
+    const resErr = await fetch('processed/etl_errors.json', {cache:'no-store'});
+    if (resErr.ok){
+      const errData = await resErr.json();
+      const archivos = (errData.archivos_con_error||[]).map(e=>e.archivo).join(', ');
+      const banner = document.createElement('div');
+      banner.className = 'alert crit';
+      banner.style.margin = '0 28px 16px';
+      banner.innerHTML = `<span class="dot"></span>⚠️ ${errData.archivos_con_error.length} archivo(s) .mdb no se pudieron procesar en la última corrida: <b>${archivos}</b>. Revisá processed/etl_errors.json en el repo o la pestaña Actions para el detalle.`;
+      document.querySelector('main').insertBefore(banner, document.querySelector('.topbar').nextSibling);
+    }
+  }catch(e){ /* si no existe el archivo, no hay error que mostrar */ }
+
   const sel = document.getElementById('weekSelect');
   sel.innerHTML = ANALISIS.semanas_disponibles.map(s=>`<option value="${s}">Semana ${s}</option>`).join('');
   currentWeek = ANALISIS.ultima_semana;
