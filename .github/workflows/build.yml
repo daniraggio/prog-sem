@@ -1,12 +1,15 @@
 name: Procesar Programación Semanal CAMMESA
 
-# Se dispara cada vez que se sube/modifica un .mdb en data/, o manualmente desde la pestaña Actions
+# Se dispara al subir/modificar un .mdb en data/, un .pdf en informes/, o cambios
+# en los scripts; también se puede correr a mano desde la pestaña Actions.
 on:
   push:
     branches: [main]
     paths:
       - "data/**.mdb"
       - "data/**.MDB"
+      - "informes/**.pdf"
+      - "informes/**.PDF"
       - "scripts/**"
   workflow_dispatch: {}
 
@@ -28,12 +31,15 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: ETL -> historico.json
+      - name: Instalar dependencias Python
+        run: pip install -r requirements.txt
+
+      - name: ETL .mdb -> historico.json
         id: etl
         continue-on-error: true
         run: python3 scripts/etl_to_json.py
 
-      - name: Mostrar resumen de errores (si los hubo)
+      - name: Mostrar resumen de errores de .mdb (si los hubo)
         if: steps.etl.outcome == 'failure'
         run: |
           echo "## ⚠️ Algunos archivos .mdb no se pudieron procesar" >> $GITHUB_STEP_SUMMARY
@@ -45,14 +51,26 @@ jobs:
       - name: Análisis comparativo -> analisis.json
         run: python3 scripts/analisis.py
 
+      - name: Parsear informes PDF -> informes.json
+        id: informes
+        continue-on-error: true
+        run: python3 scripts/parse_informes.py
+
+      - name: Mostrar resumen de errores de informes (si los hubo)
+        if: steps.informes.outcome == 'failure'
+        run: |
+          echo "## ⚠️ Algún informe PDF no se pudo procesar" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Revisá processed/informes_errors.json en el repo para el detalle (traceback completo)." >> $GITHUB_STEP_SUMMARY
+
       - name: Commit y push de los JSON generados
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A processed/
-          git diff --staged --quiet || git commit -m "Actualiza análisis semanal CAMMESA [auto]"
+          git diff --staged --quiet || git commit -m "Actualiza análisis semanal e informes CAMMESA [auto]"
           git push
 
       - name: Fallar el job si hubo errores (para que quede marcado en rojo)
-        if: steps.etl.outcome == 'failure'
+        if: steps.etl.outcome == 'failure' || steps.informes.outcome == 'failure'
         run: exit 1

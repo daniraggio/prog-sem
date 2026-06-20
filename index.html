@@ -165,6 +165,7 @@
     <span class="mark">CAMMESA·TRK</span>
     <div class="navsub" style="margin-top:8px;">Navegación</div>
   </div>
+  <div class="nav-item" data-page="informe" id="navInforme"><span class="ic">📄</span> Informe CAMMESA</div>
   <div class="nav-item active" data-page="mem" id="navMem"><span class="ic">▦</span> Mercado (MEM)</div>
   <div class="nav-item" data-page="altovalle" id="navAV"><span class="ic">★</span> Alto Valle</div>
   <div class="week-controls">
@@ -182,6 +183,117 @@
   <div style="padding:24px 28px 0;">
   <div id="loadingMsg">Cargando processed/analisis.json…</div>
   <div id="errorMsg">No se pudo cargar processed/analisis.json. Verificá que GitHub Pages esté sirviendo la raíz del repo y que el workflow haya corrido al menos una vez.</div>
+
+  <div class="page" id="page-informe">
+    <div class="page-title">Informe Previsión Despacho Energético</div>
+    <div class="page-subtitle" id="informeSubtitle">—</div>
+
+    <div id="informeVacio" class="panel" style="display:none;">
+      <p class="muted">Todavía no hay ningún informe PDF cargado en <code>informes/</code>. Subí uno y corré el
+      workflow — el primero que se procese va a aparecer acá.</p>
+    </div>
+
+    <div id="informeContent" style="display:none;">
+      <div class="week-row" style="margin-bottom:18px; gap:10px;">
+        <label class="muted" style="font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:1px;">Informe:</label>
+        <select id="informeSelect" style="min-width:260px;"></select>
+      </div>
+
+      <section>
+        <div class="section-head"><span class="idx">01</span><h2>Escenario Previsto</h2></div>
+        <div class="grid2" id="escenarioCards" style="grid-template-columns:1fr 1fr;"></div>
+      </section>
+
+      <section>
+        <div class="section-head"><span class="idx">02</span><h2>Balance Semanal — Comparación de las 2 Semanas del Informe</h2></div>
+        <div class="panel">
+          <div class="scroll-y"><table id="tablaBalanceInforme">
+            <thead><tr><th>Concepto</th><th>Semana A — GWh</th><th>Semana A — MW med</th><th>Semana B — GWh</th><th>Semana B — MW med</th></tr></thead>
+            <tbody></tbody>
+          </table></div>
+        </div>
+        <div class="grid2" style="margin-top:14px;">
+          <div class="panel">
+            <h3>Consumo de combustibles previsto</h3>
+            <div class="scroll-y"><table id="tablaCombInforme">
+              <thead><tr><th>Combustible</th><th>Unidad</th><th>Semana A</th><th>Semana B</th></tr></thead>
+              <tbody></tbody>
+            </table></div>
+          </div>
+          <div class="panel">
+            <h3>Despacho medio (MW) y niveles de embalses (msnm)</h3>
+            <div class="scroll-y"><table id="tablaDespachoInforme">
+              <thead><tr><th>Central</th><th>MW Sem. A</th><th>MW Sem. B</th><th>Cota hoy</th><th>Cota dom. A</th><th>Cota dom. B</th></tr></thead>
+              <tbody></tbody>
+            </table></div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <span class="idx">03</span><h2>Situación del Parque Generador</h2>
+          <span class="aggr" id="aggrParque"></span>
+        </div>
+        <div class="grid2">
+          <div class="panel">
+            <h3>Centrales térmicas</h3>
+            <div class="scroll-y"><table id="tablaTermicasInforme">
+              <thead><tr><th>Central</th><th>Máquina</th><th>Fecha</th><th>Motivo</th></tr></thead>
+              <tbody></tbody>
+            </table></div>
+          </div>
+          <div class="panel">
+            <h3>Centrales hidráulicas</h3>
+            <div class="scroll-y"><table id="tablaHidraulicasInforme">
+              <thead><tr><th>Central</th><th>Máquina</th><th>Fecha</th><th>Motivo</th></tr></thead>
+              <tbody></tbody>
+            </table></div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head"><span class="idx">04</span><h2>Transporte y Distribución</h2></div>
+        <div class="panel">
+          <h3>Condiciones previstas del STAT</h3>
+          <div id="statBullets"></div>
+        </div>
+        <div class="panel" style="margin-top:14px;">
+          <h3>Mantenimientos relevantes</h3>
+          <div class="scroll-y"><table id="tablaMantenimientos">
+            <thead><tr id="theadMantenimientos"></tr></thead>
+            <tbody></tbody>
+          </table></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head"><span class="idx">05</span><h2>Habilitaciones y Nuevo Equipamiento</h2></div>
+        <div class="grid2">
+          <div class="panel">
+            <h3>Nuevas habilitaciones de transporte</h3>
+            <div id="habilitacionesList"></div>
+          </div>
+          <div class="panel">
+            <h3>Nuevo equipamiento de generación</h3>
+            <div id="nuevoEquipoList"></div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head"><span class="idx">06</span><h2>Texto Completo del Informe (por página)</h2></div>
+        <div class="panel">
+          <div class="note" style="margin-bottom:10px;">
+            Todo lo de arriba se extrae automáticamente de este texto. Se deja también el texto crudo de cada
+            página acá abajo para verificar contra la fuente o leer algo que el parseo no haya estructurado.
+          </div>
+          <div id="paginasTexto"></div>
+        </div>
+      </section>
+    </div>
+  </div>
 
   <div class="page" id="page-mem">
     <div class="page-title">Mercado Eléctrico Mayorista</div>
@@ -291,6 +403,7 @@ function pctClass(p){ return p>0?'pos':(p<0?'neg':''); }
 function arrow(p){ return p>0?'▲':(p<0?'▼':'·'); }
 
 let ANALISIS = null, charts = {}, currentWeek = null, currentPage = 'mem';
+let INFORMES = null, currentInforme = null;
 let sortState = { tablaCambios:{key:'variacion_pct',dir:-1}, tablaOff:{key:'unidad',dir:1} };
 let filtroCentrales = 'todas';
 
@@ -324,6 +437,19 @@ async function init(){
     }
   }catch(e){ /* si no existe el archivo, no hay error que mostrar */ }
 
+  // Informe PDF quincenal (opcional: puede no existir todavía)
+  try{
+    const resInf = await fetch('processed/informes.json', {cache:'no-store'});
+    if (resInf.ok){
+      INFORMES = await resInf.json();
+      initInformes();
+    } else {
+      document.getElementById('informeVacio').style.display='block';
+    }
+  }catch(e){
+    document.getElementById('informeVacio').style.display='block';
+  }
+
   const sel = document.getElementById('weekSelect');
   sel.innerHTML = ANALISIS.semanas_disponibles.map(s=>`<option value="${s}">Semana ${s}</option>`).join('');
   currentWeek = ANALISIS.ultima_semana;
@@ -332,6 +458,7 @@ async function init(){
   sel.addEventListener('change', ()=>render(parseInt(sel.value)));
   document.getElementById('btnPrev').addEventListener('click', ()=>step(-1));
   document.getElementById('btnNext').addEventListener('click', ()=>step(1));
+  document.getElementById('navInforme').addEventListener('click', ()=>showPage('informe'));
   document.getElementById('navMem').addEventListener('click', ()=>showPage('mem'));
   document.getElementById('navAV').addEventListener('click', ()=>showPage('altovalle'));
 
@@ -359,8 +486,10 @@ async function init(){
 
 function showPage(page){
   currentPage = page;
+  document.getElementById('page-informe').classList.toggle('visible', page==='informe');
   document.getElementById('page-mem').classList.toggle('visible', page==='mem');
   document.getElementById('page-altovalle').classList.toggle('visible', page==='altovalle');
+  document.getElementById('navInforme').classList.toggle('active', page==='informe');
   document.getElementById('navMem').classList.toggle('active', page==='mem');
   document.getElementById('navAV').classList.toggle('active', page==='altovalle');
   document.getElementById('navAV').classList.toggle('featured-active', page==='altovalle');
@@ -627,6 +756,125 @@ function renderMercado(numSemana){
     data:{labels:semanas.map(s=>'Sem '+s), datasets:bloques.map(b=>({label:b, data:semanas.map(s=>(serieCmg[s]||{})[b]??null), borderColor:bloqueColors[b], tension:0.25, pointRadius:3}))},
     options:{plugins:{legend:{labels:{boxWidth:10,color:'#aebcc2'}}}, scales:{y:{ticks:{callback:v=>fmt(v)}}, x:{grid:{display:false}}}}
   });
+}
+
+// =================== PÁGINA INFORME PDF QUINCENAL ===================
+
+function initInformes(){
+  const claves = Object.keys(INFORMES);
+  if (!claves.length){
+    document.getElementById('informeVacio').style.display='block';
+    return;
+  }
+  document.getElementById('informeContent').style.display='block';
+  // ordenar por año y semana_b descendente (más reciente primero)
+  claves.sort((a,b)=>{
+    const ia = INFORMES[a], ib = INFORMES[b];
+    return (ib.anio||0)-(ia.anio||0) || (ib.semana_b||0)-(ia.semana_b||0);
+  });
+  const sel = document.getElementById('informeSelect');
+  sel.innerHTML = claves.map(k=>{
+    const inf = INFORMES[k];
+    const label = inf.semana_a && inf.semana_b ? `Semanas ${inf.semana_a}/${inf.semana_b} — ${inf.anio} (${inf.fecha_informe||'s/d'})` : k;
+    return `<option value="${k}">${label}</option>`;
+  }).join('');
+  currentInforme = claves[0];
+  sel.value = currentInforme;
+  sel.addEventListener('change', ()=>renderInforme(sel.value));
+  renderInforme(currentInforme);
+}
+
+function renderInforme(key){
+  currentInforme = key;
+  const inf = INFORMES[key];
+  if (!inf) return;
+
+  document.getElementById('informeSubtitle').textContent =
+    `Informe del ${inf.fecha_informe||'s/d'} — cubre semana ${inf.semana_a} y semana ${inf.semana_b} de ${inf.anio} · fuente: ${inf.archivo_origen}`;
+
+  // --- Escenario previsto ---
+  const esc = inf.escenario_previsto || [];
+  document.getElementById('escenarioCards').innerHTML = esc.map(b=>`
+    <div class="panel">
+      <h3>${b.titulo || '—'}</h3>
+      <div style="font-size:13px; color:var(--text-mid); line-height:1.5;">${b.texto}</div>
+    </div>`).join('') || '<div class="muted">Sin datos extraídos para esta sección.</div>';
+
+  // --- Balance semanal ---
+  const bal = inf.balance_semanal;
+  const tbody = document.querySelector('#tablaBalanceInforme tbody');
+  if (bal && bal.semana_a && bal.semana_b){
+    const labels = Object.keys(bal.semana_a.balance||{});
+    tbody.innerHTML = labels.map(l=>{
+      const a = bal.semana_a.balance[l]||{}, b = bal.semana_b.balance[l]||{};
+      return `<tr><td>${l}</td><td>${fmt(a.gwh)}</td><td>${fmt(a.mw_med)}</td><td>${fmt(b.gwh)}</td><td>${fmt(b.mw_med)}</td></tr>`;
+    }).join('');
+  } else {
+    tbody.innerHTML = '<tr><td colspan="5" class="muted">Sin datos extraídos para esta sección.</td></tr>';
+  }
+
+  const combBody = document.querySelector('#tablaCombInforme tbody');
+  if (bal && bal.semana_a && bal.semana_a.consumo_combustibles){
+    const ca = bal.semana_a.consumo_combustibles, cb = bal.semana_b.consumo_combustibles||[];
+    combBody.innerHTML = ca.map((c,i)=>`<tr><td>${c.combustible}</td><td>${c.unidad||''}</td><td>${fmt(c.valor)}</td><td>${fmt((cb[i]||{}).valor)}</td></tr>`).join('');
+  } else {
+    combBody.innerHTML = '<tr><td colspan="4" class="muted">Sin datos.</td></tr>';
+  }
+
+  const despBody = document.querySelector('#tablaDespachoInforme tbody');
+  if (bal && bal.despacho_centrales && bal.niveles_embalses){
+    const da = bal.despacho_centrales.semana_a, db = bal.despacho_centrales.semana_b;
+    const niv = {}; bal.niveles_embalses.forEach(n=>niv[n.central]=n);
+    despBody.innerHTML = da.map((d,i)=>{
+      const n = niv[d.central] || {};
+      return `<tr><td>${d.central}</td><td>${fmt(d.mw_med)}</td><td>${fmt((db[i]||{}).mw_med)}</td><td>${n.hoy!==undefined?fmt(n.hoy,2):'—'}</td><td>${n.domingo_fin_semana_a!==undefined?fmt(n.domingo_fin_semana_a,2):'—'}</td><td>${n.domingo_fin_semana_b!==undefined?fmt(n.domingo_fin_semana_b,2):'—'}</td></tr>`;
+    }).join('');
+  } else {
+    despBody.innerHTML = '<tr><td colspan="6" class="muted">Sin datos.</td></tr>';
+  }
+
+  // --- Parque generador ---
+  const pg = inf.parque_generador || {termicas:[], hidraulicas:[]};
+  document.getElementById('aggrParque').innerHTML =
+    `<span>Térmicas: <b class="red">${pg.termicas.length}</b></span><span>Hidráulicas: <b class="red">${pg.hidraulicas.length}</b></span>`;
+  const filaPG = r => `<tr><td>${r.central}</td><td>${r.maquina||''}</td><td>${r.fecha||'—'}</td><td>${r.motivo||'—'}</td></tr>`;
+  document.querySelector('#tablaTermicasInforme tbody').innerHTML = pg.termicas.map(filaPG).join('') || '<tr><td colspan="4" class="muted">Sin indisponibilidades reportadas.</td></tr>';
+  document.querySelector('#tablaHidraulicasInforme tbody').innerHTML = pg.hidraulicas.map(filaPG).join('') || '<tr><td colspan="4" class="muted">Sin indisponibilidades reportadas.</td></tr>';
+
+  // --- Transporte y distribución ---
+  const td = inf.transporte_distribucion || {};
+  document.getElementById('statBullets').innerHTML = (td.condiciones_stat||[]).map(b=>
+    `<div style="padding:7px 0; border-bottom:1px solid var(--line-soft); font-size:13px; color:var(--text-mid);">▪ ${b}</div>`
+  ).join('') || '<div class="muted">Sin datos extraídos.</div>';
+
+  const dias = td.dias_columnas || [];
+  document.getElementById('theadMantenimientos').innerHTML =
+    `<th>N°</th><th>Equipo</th><th>Propietario</th><th>Trabajo</th>` + dias.map(d=>`<th>${d}</th>`).join('');
+  document.querySelector('#tablaMantenimientos tbody').innerHTML = (td.mantenimientos_relevantes||[]).map(m=>`
+    <tr><td>${m.numero}</td><td>${m.equipo}</td><td>${m.propietario||''}</td><td>${m.trabajo}</td>
+    ${dias.map(d=>`<td>${m.dias && m.dias[d] ? '✕' : ''}</td>`).join('')}</tr>`).join('')
+    || `<tr><td colspan="${4+dias.length}" class="muted">Sin datos extraídos.</td></tr>`;
+
+  // --- Habilitaciones / nuevo equipamiento ---
+  const habs = inf.nuevas_habilitaciones_transporte || [];
+  document.getElementById('habilitacionesList').innerHTML = habs.map(h=>`
+    <div style="padding:8px 0; border-bottom:1px solid var(--line-soft); font-size:12.5px; color:var(--text-mid);">
+      <span class="muted" style="font-family:var(--mono);">${h.fecha||''}</span> — ${h.texto}
+    </div>`).join('') || '<div class="muted">Sin novedades reportadas.</div>';
+
+  const nuevoEq = inf.nuevo_equipamiento_generacion || [];
+  document.getElementById('nuevoEquipoList').innerHTML = nuevoEq.map(n=>`
+    <div style="padding:8px 0; border-bottom:1px solid var(--line-soft); font-size:12.5px; color:var(--text-mid);">
+      <b style="color:var(--text);">${n.nombre||'—'}</b> ${n.potencia_mw?`<span class="pos">+${fmt(n.potencia_mw,1)} MW</span>`:''} ${n.empresa?`· ${n.empresa}`:''} ${n.provincia?`· ${n.provincia}`:''}
+      <div class="muted" style="margin-top:3px;">${n.texto}</div>
+    </div>`).join('') || '<div class="muted">Sin novedades reportadas.</div>';
+
+  // --- Texto crudo por página (auditoría / fallback) ---
+  document.getElementById('paginasTexto').innerHTML = (inf.paginas_texto||[]).map((t,i)=>`
+    <details style="margin-bottom:6px;">
+      <summary style="cursor:pointer; font-family:var(--mono); font-size:12px; color:var(--text-dim); padding:6px 0;">Página ${i+1}</summary>
+      <pre style="white-space:pre-wrap; font-family:var(--mono); font-size:11.5px; color:var(--text-mid); background:var(--bg); padding:10px; border-radius:3px; border:1px solid var(--line-soft);">${(t||'').replace(/</g,'&lt;')}</pre>
+    </details>`).join('');
 }
 
 init();

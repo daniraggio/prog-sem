@@ -41,21 +41,58 @@ en GitHub Actions.
 
 ```
 data/                          ← subís acá cada .mdb semanal (psemXXYY.MDB)
+informes/                      ← subís acá cada informe PDF quincenal "Previsión Despacho Energético"
 scripts/
   etl_to_json.py                ← .mdb → processed/historico.json (acumulativo)
   analisis.py                   ← historico.json → processed/analisis.json (KPIs + comparaciones)
+  parse_informes.py             ← informes/*.pdf → processed/informes.json
+  print_etl_summary.py          ← auxiliar, imprime errores de carga para el resumen de CI
 processed/
   historico.json                ← datos crudos extraídos de cada semana (generado, no tocar a mano)
   analisis.json                 ← KPIs, variaciones semana a semana y serie histórica (lo que lee el dashboard)
-index.html                      ← el dashboard (fetch de processed/analisis.json)
-.github/workflows/build.yml     ← el Action que corre el pipeline al subir un .mdb
+  informes.json                 ← informes PDF parseados (lo que lee la sección "Informe CAMMESA")
+index.html                      ← el dashboard (fetch de processed/analisis.json y processed/informes.json)
+requirements.txt                ← dependencias Python (pdfplumber)
+.github/workflows/build.yml     ← el Action que corre el pipeline al subir un .mdb o un .pdf
 ```
+
+## Informe PDF quincenal "Previsión Despacho Energético"
+
+Además de la programación semanal (`.mdb`), el sistema procesa el informe PDF que CAMMESA publica
+cada dos semanas.
+
+**Dónde subirlo:** carpeta `informes/` (separada de `data/`, porque es otro tipo de archivo con otra
+cadencia). Subir el `.pdf` ahí dispara el mismo workflow automáticamente.
+
+**Qué extrae** (`scripts/parse_informes.py`, usando `pdfplumber`):
+- Escenario previsto (importación/exportación, gas, hidrología por cuenca — texto)
+- Situación del parque generador: tablas de centrales térmicas e hidráulicas indisponibles
+  (central, máquina, fecha, motivo)
+- Balance semanal de las 2 semanas que cubre el informe: demanda, generación por tecnología,
+  consumo de combustibles, despacho medio y niveles de embalses por central hidráulica
+- Transporte y distribución: condiciones del STAT y tabla de mantenimientos relevantes por día
+- Nuevas habilitaciones de transporte y nuevo equipamiento de generación (con fecha, potencia,
+  empresa y provincia cuando el texto lo permite extraer con confianza)
+
+**Cómo identifica cada sección:** por el TÍTULO de la slide (no por número de página fijo), así
+tolera que se agreguen o saquen páginas en futuros informes. Las tablas se extraen
+posicionalmente; si la estructura interna de alguna cambia de forma inesperada en un informe
+futuro, el campo estructurado correspondiente puede quedar vacío — por eso el dashboard **siempre**
+muestra también el texto crudo completo de cada página al final de la sección (colapsado, click
+para expandir), para que nunca se pierda información aunque el parseo estructurado falle.
+
+**Nada se inventa:** lo que el parser no puede extraer con confianza queda vacío/`null`, nunca se
+completa con un valor supuesto.
+
+**Identificador de cada informe:** `{año}_{semana_b}` (la segunda de las dos semanas que cubre,
+que suele ser la semana "actual"/próxima del informe). Si subís un informe corregido de la misma
+quincena, se reemplaza — no se duplica.
 
 ## Cómo navegar el dashboard
 
-- **Título común** "Programación Semanal CAMMESA" arriba de todo, visible en ambas secciones.
-- **Menú lateral izquierdo**: dos secciones — **Mercado (MEM)**, que es la que se abre por defecto
-  al entrar, y **★ Alto Valle**, con la info de tus máquinas.
+- **Título común** "Programación Semanal CAMMESA" arriba de todo, visible en las tres secciones.
+- **Menú lateral izquierdo**, en este orden: **📄 Informe CAMMESA** (el PDF quincenal), **▦ Mercado
+  (MEM)** (la que se abre por defecto al entrar), y **★ Alto Valle**.
 - El selector de semana (y los botones ◀ ▶), abajo en el menú lateral, aplica a ambas secciones —
   permiten ver **cualquier semana cargada**, no solo la última, cada una comparada contra su propia
   semana anterior y su propio promedio de 4 semanas.
@@ -112,8 +149,10 @@ Ahora `etl_to_json.py` elige explícitamente una sola variable por semana, con p
 
 ```bash
 sudo apt-get install mdbtools   # una sola vez
+pip install -r requirements.txt # una sola vez (pdfplumber, para los informes PDF)
 python3 scripts/etl_to_json.py
 python3 scripts/analisis.py
+python3 scripts/parse_informes.py
 python3 -m http.server 8000     # y abrir http://localhost:8000
 ```
 
