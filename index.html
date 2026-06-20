@@ -165,8 +165,8 @@
     <span class="mark">CAMMESA·TRK</span>
     <div class="navsub" style="margin-top:8px;">Navegación</div>
   </div>
-  <div class="nav-item" data-page="informe" id="navInforme"><span class="ic">📄</span> Informe CAMMESA</div>
   <div class="nav-item active" data-page="mem" id="navMem"><span class="ic">▦</span> Mercado (MEM)</div>
+  <div class="nav-item" data-page="informe" id="navInforme"><span class="ic">📄</span> Informe CAMMESA</div>
   <div class="nav-item" data-page="altovalle" id="navAV"><span class="ic">★</span> Alto Valle</div>
   <div class="week-controls">
     <label>Semana</label>
@@ -279,17 +279,6 @@
             <h3>Nuevo equipamiento de generación</h3>
             <div id="nuevoEquipoList"></div>
           </div>
-        </div>
-      </section>
-
-      <section>
-        <div class="section-head"><span class="idx">06</span><h2>Texto Completo del Informe (por página)</h2></div>
-        <div class="panel">
-          <div class="note" style="margin-bottom:10px;">
-            Todo lo de arriba se extrae automáticamente de este texto. Se deja también el texto crudo de cada
-            página acá abajo para verificar contra la fuente o leer algo que el parseo no haya estructurado.
-          </div>
-          <div id="paginasTexto"></div>
         </div>
       </section>
     </div>
@@ -868,13 +857,6 @@ function renderInforme(key){
       <b style="color:var(--text);">${n.nombre||'—'}</b> ${n.potencia_mw?`<span class="pos">+${fmt(n.potencia_mw,1)} MW</span>`:''} ${n.empresa?`· ${n.empresa}`:''} ${n.provincia?`· ${n.provincia}`:''}
       <div class="muted" style="margin-top:3px;">${n.texto}</div>
     </div>`).join('') || '<div class="muted">Sin novedades reportadas.</div>';
-
-  // --- Texto crudo por página (auditoría / fallback) ---
-  document.getElementById('paginasTexto').innerHTML = (inf.paginas_texto||[]).map((t,i)=>`
-    <details style="margin-bottom:6px;">
-      <summary style="cursor:pointer; font-family:var(--mono); font-size:12px; color:var(--text-dim); padding:6px 0;">Página ${i+1}</summary>
-      <pre style="white-space:pre-wrap; font-family:var(--mono); font-size:11.5px; color:var(--text-mid); background:var(--bg); padding:10px; border-radius:3px; border:1px solid var(--line-soft);">${(t||'').replace(/</g,'&lt;')}</pre>
-    </details>`).join('');
 }
 
 init();
