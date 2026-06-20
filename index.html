@@ -523,7 +523,7 @@ function render(numSemana){
   destroyCharts();
 
   document.getElementById('memSubtitle').textContent =
-    `Semana ${D.num_semana}` + (D.semana_anterior? ` · comparado vs. semana ${D.semana_anterior} y promedio de ${D.promedio_4_semanas.semanas_base.length} semanas previas` : ' · primera semana cargada, sin comparación previa');
+    `Semana ${D.num_semana}` + (D.semana_anterior? ` · comparado vs. semana ${D.semana_anterior}` : ' · primera semana cargada, sin comparación previa');
   document.getElementById('avSubtitle').textContent =
     `AVALCC22 · AVALCC23 · AVALTG21 · AVALTG22 · AVALTG23 — Semana ${D.num_semana}`;
 

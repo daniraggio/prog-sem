@@ -184,25 +184,6 @@ def cotas_nuevas(actual_sem, anterior_sem):
     return sorted(actual - anterior)
 
 
-def promedio_n_semanas(semanas_ordenadas, idx, n=4):
-    base = semanas_ordenadas[max(0, idx - n):idx]
-    if not base:
-        return {"semanas_base": [], "demanda_neta_prom": None, "generacion_prom": {}}
-    dem, gen = [], {t: [] for t in TECNOLOGIAS.values()}
-    for s in base:
-        d = demanda_resumen(s)
-        if d["demanda_neta"]:
-            dem.append(d["demanda_neta"])
-        gt = gen_tecnologia_resumen(s)
-        for t in gen:
-            if gt.get(t):
-                gen[t].append(gt[t])
-    return {
-        "semanas_base": [s["num_semana"] for s in base],
-        "demanda_neta_prom": round(sum(dem) / len(dem)) if dem else None,
-        "generacion_prom": {t: round(sum(v) / len(v)) for t, v in gen.items() if v},
-    }
-
 
 def unidades_sin_generacion(semana):
     """Solo el dato real: unidades con 0 MWh programados esta semana. Sin causa ni potencia inferida."""
@@ -283,7 +264,6 @@ def main():
             "unidades_fuera_de_servicio": unidades_off,
             "cotas_nuevas": cotas_nuevas(sem, anterior),
             "valores_agua": sem.get("valores_agua", []),
-            "promedio_4_semanas": promedio_n_semanas(semanas_ordenadas, i, 4),
             "alto_valle": alto_valle_resumen(sem, anterior),
         }
 
