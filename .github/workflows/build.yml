@@ -38,18 +38,9 @@ jobs:
         run: |
           echo "## ⚠️ Algunos archivos .mdb no se pudieron procesar" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          if [ -f processed/etl_errors.json ]; then
-            python3 -c "
-import json
-d = json.load(open('processed/etl_errors.json'))
-for e in d['archivos_con_error']:
-    print(f\"### {e['archivo']}\")
-    print('```')
-    print(e['traceback'])
-    print('```')
-" >> $GITHUB_STEP_SUMMARY
-          fi
-          echo "Las semanas que SÍ se procesaron bien igual se van a publicar. Revisá el detalle arriba (o processed/etl_errors.json en el repo) para los archivos que fallaron."
+          python3 scripts/print_etl_summary.py >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Las semanas que SÍ se procesaron bien igual se van a publicar. Revisá el detalle de arriba (o processed/etl_errors.json en el repo) para los archivos que fallaron." >> $GITHUB_STEP_SUMMARY
 
       - name: Análisis comparativo -> analisis.json
         run: python3 scripts/analisis.py
