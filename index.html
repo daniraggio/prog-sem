@@ -98,7 +98,8 @@
   .av-card canvas{max-height:60px; margin-top:10px;}
 
   table{width:100%; border-collapse:collapse; font-family:var(--mono); font-size:12px;}
-  th{text-align:left; color:var(--text-dim); font-weight:500; padding:7px 8px; border-bottom:1px solid var(--line); text-transform:uppercase; font-size:10.5px; letter-spacing:0.5px; cursor:pointer; user-select:none; white-space:nowrap;}
+  thead{position:sticky; top:0; z-index:3;}
+  th{text-align:left; color:var(--text-dim); font-weight:500; padding:7px 8px; border-bottom:1px solid var(--line); text-transform:uppercase; font-size:10.5px; letter-spacing:0.5px; cursor:pointer; user-select:none; white-space:nowrap; background:var(--bg-panel);}
   th:hover{color:var(--amber);}
   th .arrow{display:inline-block; width:10px; color:var(--amber);}
   td{padding:7px 8px; border-bottom:1px solid var(--line-soft); color:var(--text-mid);}
@@ -122,6 +123,7 @@
   .filter-btn{background:var(--bg-panel); color:var(--text-dim); border:1px solid var(--line); padding:5px 11px; border-radius:14px; cursor:pointer; text-transform:uppercase; letter-spacing:0.5px;}
   .filter-btn.active{color:var(--amber); border-color:var(--amber-dim); background:rgba(255,176,0,0.08);}
   @media (max-width:640px){ .summary-box{grid-template-columns:1fr;} }
+  .scroll-y{max-height:520px; overflow-y:auto;}
   .scroll-y::-webkit-scrollbar{width:6px;} .scroll-y::-webkit-scrollbar-thumb{background:var(--line); border-radius:3px;}
 
   .note{font-family:var(--mono); font-size:11px; color:var(--text-dim); margin-top:10px; line-height:1.6;}
@@ -222,7 +224,7 @@
       <div class="section-head"><span class="idx">03</span><h2>Combustibles</h2></div>
       <div class="grid2">
         <div class="panel"><h3>Consumo semanal por tipo</h3><canvas id="chartComb"></canvas></div>
-        <div class="panel"><h3>Variaciones relevantes (&gt;15%) vs. semana anterior</h3><div id="combAlertList" class="scroll-y"></div></div>
+        <div class="panel"><h3>Consumo de la semana, todos los combustibles</h3><div id="combAlertList" class="scroll-y"></div></div>
       </div>
     </section>
 
@@ -405,17 +407,51 @@ function render(numSemana){
     <div class="delta ${k.delta>0?'up':k.delta<0?'down':'flat'}">${k.delta!==null&&k.delta!==undefined? arrow(k.delta)+' '+fmt(Math.abs(k.delta),1)+'% sem.':'&nbsp;'}</div></div>`).join('');
 
   let alerts = [];
+
+  // 1) Demanda neta — slot fijo
   if (dn.variacion_pct!==null && Math.abs(dn.variacion_pct)>=5){
     alerts.push({type: Math.abs(dn.variacion_pct)>=10?'crit':'warn', text:`Demanda neta ${arrow(dn.variacion_pct)} ${fmt(Math.abs(dn.variacion_pct),1)}% vs semana anterior`});
+  } else {
+    alerts.push({type:'ok', text:'Demanda neta sin cambios relevantes'});
   }
-  D.cambios_combustibles.forEach(c=>alerts.push({type:'warn', text:`${c.combustible} ${arrow(c.variacion_pct)} ${fmt(Math.abs(c.variacion_pct),1)}%${c.unidad?' ('+c.unidad+')':''}`}));
-  D.cambios_costo_marginal.forEach(c=>alerts.push({type:'warn', text:`CMg ${c.bloque} ${arrow(c.variacion_pct)} ${fmt(Math.abs(c.variacion_pct),1)}%`}));
+
+  // 2) Combustibles — 5 slots fijos, mismo orden siempre
+  (D.combustibles||[]).forEach(c=>{
+    if (c.variacion_pct===null){
+      alerts.push({type:'ok', text:`${c.combustible} sin comparación previa`});
+    } else if (c.relevante){
+      alerts.push({type:'warn', text:`${c.combustible} ${arrow(c.variacion_pct)} ${fmt(Math.abs(c.variacion_pct),1)}%${c.unidad?' ('+c.unidad+')':''}`});
+    } else {
+      alerts.push({type:'ok', text:`${c.combustible} sin cambios`});
+    }
+  });
+
+  // 3) Costo marginal — 3 slots fijos (PICO/RESTO/VALLE)
+  (D.costo_marginal||[]).forEach(c=>{
+    if (c.variacion_pct===null){
+      alerts.push({type:'ok', text:`CMg ${c.bloque} sin comparación previa`});
+    } else if (c.relevante){
+      alerts.push({type:'warn', text:`CMg ${c.bloque} ${arrow(c.variacion_pct)} ${fmt(Math.abs(c.variacion_pct),1)}%`});
+    } else {
+      alerts.push({type:'ok', text:`CMg ${c.bloque} sin cambios`});
+    }
+  });
+
+  // 4) Centrales que salen / entran — 2 slots fijos
   const salientes = D.centrales.filter(c=>c.evento==='SALE_DE_SERVICIO');
   const entrantes = D.centrales.filter(c=>c.evento==='ENTRA_EN_SERVICIO');
-  if (salientes.length) alerts.push({type:'crit', text:`${salientes.length} central(es) salen de servicio`, list: salientes});
-  if (entrantes.length) alerts.push({type:'ok', text:`${entrantes.length} central(es) entran en servicio`, list: entrantes});
-  if (D.cotas_nuevas.length) alerts.push({type:'warn', text:`Nuevos embalses reportados: ${D.cotas_nuevas.join(', ')}`});
-  if (!alerts.length) alerts.push({type:'ok', text:'Sin alertas relevantes esta semana'});
+  alerts.push(salientes.length
+    ? {type:'crit', text:`${salientes.length} central(es) salen de servicio`, list: salientes}
+    : {type:'ok', text:'Sin centrales que salgan de servicio'});
+  alerts.push(entrantes.length
+    ? {type:'ok', text:`${entrantes.length} central(es) entran en servicio`, list: entrantes}
+    : {type:'ok', text:'Sin centrales que entren en servicio'});
+
+  // 5) Embalses nuevos — 1 slot fijo
+  alerts.push(D.cotas_nuevas.length
+    ? {type:'warn', text:`Nuevos embalses reportados: ${D.cotas_nuevas.join(', ')}`}
+    : {type:'ok', text:'Sin nuevos embalses reportados'});
+
   document.getElementById('alertBar').innerHTML = alerts.map(a=>{
     const chip = `<div class="alert ${a.type}"><span class="dot"></span>${a.text}</div>`;
     if (!a.list) return chip;
@@ -479,14 +515,22 @@ function renderTablas(D){
 
 function renderAltoValle(D, numSemana){
   const cards = D.alto_valle.map((u)=>{
+    if (u.sin_datos){
+      return `<div class="av-card off">
+        <div class="unit">${u.unidad}</div><div class="type">sin datos</div>
+        <div class="mwh"><span style="font-size:13px;color:var(--text-dim);">No reportada esta semana</span></div>
+        <div class="delta"><span class="muted">—</span></div>
+        <canvas id="avmini_${u.unidad}"></canvas></div>`;
+    }
     const activo = u.total>0;
     const cls = activo?'active':'off';
     let deltaHtml = '<span class="muted">sin datos previos</span>';
     if (u.evento==='ENTRA_EN_SERVICIO') deltaHtml = '<span class="pos">▲ entra en servicio</span>';
     else if (u.evento==='SALE_DE_SERVICIO') deltaHtml = '<span class="neg">▼ sale de servicio</span>';
     else if (u.variacion_pct!==null && u.variacion_pct!==undefined) deltaHtml = `<span class="${pctClass(u.variacion_pct)}">${arrow(u.variacion_pct)} ${fmt(Math.abs(u.variacion_pct),1)}% vs sem. ant.</span>`;
+    else deltaHtml = '<span class="muted">sin variación</span>';
     return `<div class="av-card ${cls}">
-      <div class="unit">${u.unidad}</div><div class="type">${u.tipo_maq} · ${u.region}</div>
+      <div class="unit">${u.unidad}</div><div class="type">${u.tipo_maq||''} · ${u.region||''}</div>
       <div class="mwh">${fmt(u.total)} <span style="font-size:11px;color:var(--text-dim);">MWh</span></div>
       <div class="mw">≈ ${fmt(u.mw_equiv,1)} MW equiv.</div>
       <div class="delta">${deltaHtml}</div>
@@ -500,14 +544,14 @@ function renderAltoValle(D, numSemana){
     const el = document.getElementById('avmini_'+u); if(!el) return;
     charts['av_'+u] = new Chart(el, {
       type:'line',
-      data:{labels:semanas.map(s=>'S'+s), datasets:[{data:semanas.map(s=>(serieAV[s]||{})[u]??0), borderColor:AV_COLORS[i], backgroundColor:AV_COLORS[i]+'22', fill:true, tension:0.3, pointRadius:0, borderWidth:2}]},
+      data:{labels:semanas.map(s=>'S'+s), datasets:[{data:semanas.map(s=>(serieAV[s]||{})[u]??null), borderColor:AV_COLORS[i], backgroundColor:AV_COLORS[i]+'22', fill:true, tension:0.3, pointRadius:0, borderWidth:2, spanGaps:true}]},
       options:{plugins:{legend:{display:false}}, scales:{x:{display:false}, y:{display:false}}, elements:{point:{radius:0}}}
     });
   });
 
   charts.altoValle = new Chart(document.getElementById('chartAltoValle'), {
     type:'line',
-    data:{labels:ANALISIS.semanas_disponibles.map(s=>'Sem '+s), datasets:AV_UNITS.map((u,i)=>({label:u, data:ANALISIS.semanas_disponibles.map(s=>(serieAV[s]||{})[u]??null), borderColor:AV_COLORS[i], backgroundColor:AV_COLORS[i]+'22', tension:0.25, pointRadius:4}))},
+    data:{labels:ANALISIS.semanas_disponibles.map(s=>'Sem '+s), datasets:AV_UNITS.map((u,i)=>({label:u, data:ANALISIS.semanas_disponibles.map(s=>(serieAV[s]||{})[u]??null), borderColor:AV_COLORS[i], backgroundColor:AV_COLORS[i]+'22', tension:0.25, pointRadius:4, spanGaps:true}))},
     options:{plugins:{legend:{labels:{boxWidth:10,color:'#aebcc2'}}}, scales:{y:{ticks:{callback:v=>fmt(v)}}, x:{grid:{display:false}}}}
   });
 }
@@ -540,9 +584,13 @@ function renderCombustibles(D, numSemana){
     data:{labels:semanas.map(s=>'Sem '+s), datasets:combList.map((c,i)=>({label:`${c}${unidades[c]?' ('+unidades[c]+')':''}`, data:semanas.map(s=>(serieComb[s]||{})[c]??0), backgroundColor:combColors[i%combColors.length]}))},
     options:{plugins:{legend:{labels:{boxWidth:10,color:'#aebcc2'}}}, scales:{x:{grid:{display:false}}, y:{}}}
   });
-  document.getElementById('combAlertList').innerHTML = D.cambios_combustibles.length
-    ? D.cambios_combustibles.map(c=>`<div style="padding:8px 0;border-bottom:1px solid var(--line-soft);font-family:var(--mono);font-size:12px;"><b>${c.combustible}</b>${c.unidad?' <span class="muted">['+c.unidad+']</span>':''}: ${fmt(c.actual)} <span class="muted">(ant. ${fmt(c.anterior)})</span><span class="${pctClass(c.variacion_pct)}"> ${arrow(c.variacion_pct)} ${fmt(Math.abs(c.variacion_pct),1)}%</span></div>`).join('')
-    : '<div class="muted" style="font-family:var(--mono);font-size:12px;">Sin variaciones relevantes (&gt;15%).</div>';
+  document.getElementById('combAlertList').innerHTML = (D.combustibles||[]).map(c=>`
+    <div style="padding:8px 0;border-bottom:1px solid var(--line-soft);font-family:var(--mono);font-size:12px;">
+      <b>${c.combustible}</b>${c.unidad?' <span class="muted">['+c.unidad+']</span>':''}: ${fmt(c.actual)}
+      <span class="muted">(ant. ${c.anterior!==null?fmt(c.anterior):'s/d'})</span>
+      ${c.variacion_pct!==null ? `<span class="${pctClass(c.variacion_pct)}"> ${arrow(c.variacion_pct)} ${fmt(Math.abs(c.variacion_pct),1)}%</span>` : '<span class="muted"> · sin comparación previa</span>'}
+      ${c.relevante?' <span class="tag conf-media">RELEVANTE</span>':''}
+    </div>`).join('') || '<div class="muted" style="font-family:var(--mono);font-size:12px;">Sin datos.</div>';
 }
 
 function renderMercado(numSemana){
