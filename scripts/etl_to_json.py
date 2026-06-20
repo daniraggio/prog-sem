@@ -205,6 +205,8 @@ def procesar_mdb(mdb_path: Path) -> dict:
 
 
 def main():
+    import traceback
+
     if not DATA_DIR.exists():
         print(f"No existe {DATA_DIR}", file=sys.stderr)
         sys.exit(1)
@@ -220,19 +222,48 @@ def main():
     if HISTORICO_PATH.exists():
         historico = json.loads(HISTORICO_PATH.read_text())
 
+    errores = []
+    procesadas_ok = []
     for mdb_path in mdb_files:
         print(f"Procesando {mdb_path.name} ...")
         try:
             semana = procesar_mdb(mdb_path)
         except Exception as e:
+            tb = traceback.format_exc()
             print(f"  ERROR procesando {mdb_path.name}: {e}", file=sys.stderr)
+            errores.append({
+                "archivo": mdb_path.name,
+                "error": str(e),
+                "traceback": tb,
+            })
             continue
         historico[str(semana["num_semana"])] = semana
+        procesadas_ok.append((mdb_path.name, semana["num_semana"]))
         print(f"  -> Semana {semana['num_semana']} ({semana['finicio']}) OK")
 
     HISTORICO_PATH.write_text(json.dumps(historico, indent=2, ensure_ascii=False))
+
+    errores_path = OUT_DIR / "etl_errors.json"
+    if errores:
+        errores_path.write_text(json.dumps({
+            "fecha_corrida": __import__("datetime").datetime.now().isoformat(timespec="seconds"),
+            "archivos_con_error": errores,
+        }, indent=2, ensure_ascii=False))
+    elif errores_path.exists():
+        # No hay errores en esta corrida: limpiar el reporte de errores previo.
+        errores_path.unlink()
+
     print(f"\nHistórico actualizado: {HISTORICO_PATH}")
     print(f"Semanas en la base: {sorted(int(k) for k in historico.keys())}")
+    if errores:
+        print(f"\n¡ATENCIÓN! {len(errores)} archivo(s) NO se pudieron procesar:")
+        for e in errores:
+            print(f"  - {e['archivo']}: {e['error']}")
+        print(f"Detalle completo (con traceback) en {errores_path}")
+        # No interrumpe el pipeline (las semanas que sí funcionaron deben quedar
+        # disponibles), pero deja constancia clara y falla el step de CI para
+        # que el problema no pase desapercibido.
+        sys.exit(2)
 
 
 if __name__ == "__main__":
