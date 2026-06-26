@@ -18,14 +18,36 @@ on:
       - "informes/**.pdf"
       - "informes/**.PDF"
       - "scripts/**"
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      diagnostico:
+        description: "Correr solo diagnóstico de la API (sin actualizar datos)"
+        required: false
+        default: "false"
+        type: choice
+        options: ["false", "true"]
 
 permissions:
   contents: write
 
 jobs:
+  # ── Job de diagnóstico (solo cuando se pide explícitamente) ──────────────────
+  diagnostico:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch' && github.event.inputs.diagnostico == 'true'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install requests
+      - name: Diagnóstico API CAMMESA
+        run: python3 scripts/diagnostico_api.py
+
+  # ── Job principal ─────────────────────────────────────────────────────────────
   actualizar:
     runs-on: ubuntu-latest
+    if: github.event_name != 'workflow_dispatch' || github.event.inputs.diagnostico != 'true'
 
     steps:
       - name: Checkout
