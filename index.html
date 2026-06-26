@@ -167,6 +167,7 @@
     <div class="navsub" style="margin-top:8px;">Navegación</div>
   </div>
   <div class="nav-item active" data-page="mem" id="navMem"><span class="ic">▦</span> Mercado (MEM)</div>
+  <div class="nav-item" data-page="redespacho" id="navRedesp"><span class="ic">⚡</span> Redespacho</div>
   <div class="nav-item" data-page="informe" id="navInforme"><span class="ic">📄</span> Informe CAMMESA</div>
   <div class="nav-item" data-page="altovalle" id="navAV"><span class="ic">★</span> Alto Valle</div>
   <div class="week-controls">
@@ -282,6 +283,76 @@
           </div>
         </div>
       </section>
+    </div>
+  </div>
+
+  <div class="page" id="page-redespacho">
+    <div class="page-title">Redespacho Semanal</div>
+    <div class="page-subtitle" id="redespSubtitle">—</div>
+
+    <div id="redespVacio" class="panel" style="display:none;">
+      <p class="muted">No hay ningún redespacho cargado para la semana seleccionada.
+      Subí el .xls a <code>redespaches/</code> y corré el workflow.</p>
+    </div>
+
+    <div id="redespContent" style="display:none;">
+
+      <div class="alert-bar" id="redespAlerts"></div>
+
+      <section>
+        <div class="section-head"><span class="idx">01</span><h2>Variación de Generación — Redespachado vs. Programado</h2></div>
+        <div class="panel">
+          <div class="note" style="margin-bottom:12px;">
+            El redespacho es un ajuste que CAMMESA emite <b>durante la semana</b> para corregir la programación original.
+            Los valores programados vienen del <code>.mdb</code> de esa semana; los redespachados, del archivo <code>.xls</code> de redespacho.
+          </div>
+          <table id="tablaBalanceRed">
+            <thead><tr><th>Tecnología</th><th>Programado (GWh)</th><th>Redespachado (GWh)</th><th>Variación (GWh)</th><th>Variación (%)</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head"><span class="idx">02</span><h2>Costo Marginal — Redespachado vs. Programado</h2></div>
+        <div class="panel">
+          <table id="tablaCmgRed">
+            <thead><tr><th>Bloque</th><th>Programado ($/MWh)</th><th>Redespachado ($/MWh)</th><th>Variación ($/MWh)</th><th>Variación (%)</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head"><span class="idx">03</span><h2>Combustibles — Redespachado vs. Programado</h2></div>
+        <div class="panel">
+          <table id="tablaCombRed">
+            <thead><tr><th>Combustible</th><th>Unidad</th><th>Programado</th><th>Redespachado</th><th>Variación</th><th>Variación (%)</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head"><span class="idx">04</span><h2>Despacho Hidráulico por Central (MWh/día)</h2></div>
+        <div class="panel">
+          <div class="scroll-y"><table id="tablaHidroRed">
+            <thead><tr><th>Central</th><th>Lun</th><th>Mar</th><th>Mié</th><th>Jue</th><th>Vie</th><th>Sáb</th><th>Dom</th><th>Total</th></tr></thead>
+            <tbody></tbody>
+          </table></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head"><span class="idx">05</span><h2>Cotas Previstas de Embalses al Fin de la Semana</h2></div>
+        <div class="panel">
+          <table id="tablaCotasRed">
+            <thead><tr><th>Central</th><th>Cota (msnm / Hm³)</th><th>Comentario</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
     </div>
   </div>
 
@@ -409,6 +480,7 @@ function rangoFechas(finicioStr){
 
 let ANALISIS = null, charts = {}, currentWeek = null, currentPage = 'mem';
 let INFORMES = null, currentInforme = null;
+let COMPARACION = null;
 let sortState = { tablaCambios:{key:'variacion_pct',dir:-1}, tablaOff:{key:'unidad',dir:1} };
 let filtroCentrales = 'todas';
 
@@ -416,7 +488,7 @@ function destroyCharts(){ Object.values(charts).forEach(c=>c&&c.destroy()); char
 
 async function init(){
   try{
-    const res = await fetch('processed/analisis.json', {cache:'no-store'});
+    const res = await fetch('https://daniraggio.github.io/prog-sem/processed/analisis.json', {cache:'no-store'});
     if(!res.ok) throw new Error('HTTP '+res.status);
     ANALISIS = await res.json();
   }catch(e){
@@ -430,7 +502,7 @@ async function init(){
   // Si el último procesamiento dejó archivos .mdb sin cargar, avisar en el dashboard
   // (no solo en el log de GitHub Actions).
   try{
-    const resErr = await fetch('processed/etl_errors.json', {cache:'no-store'});
+    const resErr = await fetch('https://daniraggio.github.io/prog-sem/processed/etl_errors.json', {cache:'no-store'});
     if (resErr.ok){
       const errData = await resErr.json();
       const archivos = (errData.archivos_con_error||[]).map(e=>e.archivo).join(', ');
@@ -442,9 +514,15 @@ async function init(){
     }
   }catch(e){ /* si no existe el archivo, no hay error que mostrar */ }
 
+  // Redespacho (opcional: puede no haber para todas las semanas)
+  try{
+    const resRd = await fetch('https://daniraggio.github.io/prog-sem/processed/comparacion_redespacho.json', {cache:'no-store'});
+    if (resRd.ok) COMPARACION = await resRd.json();
+  }catch(e){ /* sin redespacho disponible */ }
+
   // Informe PDF quincenal (opcional: puede no existir todavía)
   try{
-    const resInf = await fetch('processed/informes.json', {cache:'no-store'});
+    const resInf = await fetch('https://daniraggio.github.io/prog-sem/processed/informes.json', {cache:'no-store'});
     if (resInf.ok){
       INFORMES = await resInf.json();
       initInformes();
@@ -463,6 +541,7 @@ async function init(){
   sel.addEventListener('change', ()=>render(parseInt(sel.value)));
   document.getElementById('btnPrev').addEventListener('click', ()=>step(-1));
   document.getElementById('btnNext').addEventListener('click', ()=>step(1));
+  document.getElementById('navRedesp').addEventListener('click', ()=>showPage('redespacho'));
   document.getElementById('navInforme').addEventListener('click', ()=>showPage('informe'));
   document.getElementById('navMem').addEventListener('click', ()=>showPage('mem'));
   document.getElementById('navAV').addEventListener('click', ()=>showPage('altovalle'));
@@ -491,9 +570,11 @@ async function init(){
 
 function showPage(page){
   currentPage = page;
+  document.getElementById('page-redespacho').classList.toggle('visible', page==='redespacho');
   document.getElementById('page-informe').classList.toggle('visible', page==='informe');
   document.getElementById('page-mem').classList.toggle('visible', page==='mem');
   document.getElementById('page-altovalle').classList.toggle('visible', page==='altovalle');
+  document.getElementById('navRedesp').classList.toggle('active', page==='redespacho');
   document.getElementById('navInforme').classList.toggle('active', page==='informe');
   document.getElementById('navMem').classList.toggle('active', page==='mem');
   document.getElementById('navAV').classList.toggle('active', page==='altovalle');
@@ -619,6 +700,7 @@ function render(numSemana){
   renderGeneracion(D, numSemana);
   renderCombustibles(D, numSemana);
   renderMercado(numSemana);
+  renderRedespacho(numSemana);
 }
 
 function renderTablas(D){
@@ -765,6 +847,81 @@ function renderMercado(numSemana){
 }
 
 // =================== PÁGINA INFORME PDF QUINCENAL ===================
+
+// =================== PÁGINA REDESPACHO ===================
+
+function renderRedespacho(numSemana){
+  const key = String(numSemana);
+  const rd = COMPARACION && COMPARACION[key];
+  const vacio = document.getElementById('redespVacio');
+  const content = document.getElementById('redespContent');
+  if (!rd){
+    vacio.style.display='block'; content.style.display='none';
+    document.getElementById('redespSubtitle').textContent = `Semana ${numSemana} · sin redespacho cargado`;
+    return;
+  }
+  vacio.style.display='none'; content.style.display='block';
+
+  const emision = rd.fecha_emision ? new Date(rd.fecha_emision).toLocaleString('es-AR') : 's/d';
+  document.getElementById('redespSubtitle').textContent =
+    `Semana ${numSemana} · emitido el ${emision}`;
+
+  // Alertas de motivos
+  const motivos = rd.motivos || [];
+  document.getElementById('redespAlerts').innerHTML = motivos.length
+    ? motivos.map(m=>`<div class="alert warn"><span class="dot"></span>${m}</div>`).join('')
+    : '<div class="alert ok"><span class="dot"></span>Sin motivos de redespacho informados.</div>';
+
+  // Tabla de balance por tecnología
+  const labelsEs = {termico:'Térmico', hidraulico:'Hidráulico', nuclear:'Nuclear', renovable:'Renovable', importacion:'Importación'};
+  document.querySelector('#tablaBalanceRed tbody').innerHTML =
+    Object.entries(rd.balance||{}).map(([k,v])=>`
+      <tr>
+        <td>${labelsEs[k]||k}</td>
+        <td>${fmt(v.programado_gwh,2)}</td>
+        <td>${fmt(v.redespachado_gwh,2)}</td>
+        <td class="${pctClass(v.delta_gwh)}">${v.delta_gwh!==null?arrow(v.delta_gwh)+' '+fmt(Math.abs(v.delta_gwh),2):'—'}</td>
+        <td class="${pctClass(v.delta_pct)}">${v.delta_pct!==null?arrow(v.delta_pct)+' '+fmt(Math.abs(v.delta_pct),1)+'%':'—'}</td>
+      </tr>`).join('') || '<tr><td colspan="5" class="muted">Sin datos.</td></tr>';
+
+  // Tabla costo marginal
+  const bloqueOrd = ['PICO','RESTO','VALLE'];
+  document.querySelector('#tablaCmgRed tbody').innerHTML =
+    bloqueOrd.map(b=>{
+      const v = (rd.costo_marginal||{})[b]; if(!v) return '';
+      return `<tr>
+        <td>${b}</td>
+        <td>${fmt(v.programado)}</td>
+        <td>${fmt(v.redespachado)}</td>
+        <td class="${pctClass(v.delta)}">${v.delta!==null?arrow(v.delta)+' '+fmt(Math.abs(v.delta)):'—'}</td>
+        <td class="${pctClass(v.delta_pct)}">${v.delta_pct!==null?arrow(v.delta_pct)+' '+fmt(Math.abs(v.delta_pct),1)+'%':'—'}</td>
+      </tr>`;
+    }).join('') || '<tr><td colspan="5" class="muted">Sin datos.</td></tr>';
+
+  // Tabla combustibles
+  document.querySelector('#tablaCombRed tbody').innerHTML =
+    Object.entries(rd.combustibles||{}).map(([k,v])=>`
+      <tr>
+        <td>${k}</td><td>${v.unidad||'—'}</td>
+        <td>${v.programado!==null?fmt(v.programado):'s/d'}</td>
+        <td>${fmt(v.redespachado)}</td>
+        <td class="${pctClass(v.delta)}">${v.delta!==null?arrow(v.delta)+' '+fmt(Math.abs(v.delta)):'—'}</td>
+        <td class="${pctClass(v.delta_pct)}">${v.delta_pct!==null?arrow(v.delta_pct)+' '+fmt(Math.abs(v.delta_pct),1)+'%':'—'}</td>
+      </tr>`).join('') || '<tr><td colspan="6" class="muted">Sin datos.</td></tr>';
+
+  // Tabla hidráulico por central
+  document.querySelector('#tablaHidroRed tbody').innerHTML =
+    Object.entries(rd.hidro_centrales_mwh||{}).map(([central, dias])=>{
+      const total = dias.reduce((a,v)=>a+(v||0),0);
+      return `<tr><td>${central}</td>${dias.map(v=>`<td>${v!==null?fmt(v):'—'}</td>`).join('')}<td><b>${fmt(total)}</b></td></tr>`;
+    }).join('') || '<tr><td colspan="9" class="muted">Sin datos.</td></tr>';
+
+  // Tabla cotas
+  document.querySelector('#tablaCotasRed tbody').innerHTML =
+    Object.entries(rd.cotas_previstas||{}).map(([k,v])=>`
+      <tr><td>${k}</td><td>${v.cota!==null?fmt(v.cota,2):'—'}</td><td>${v.comentario||'—'}</td></tr>
+    `).join('') || '<tr><td colspan="3" class="muted">Sin datos.</td></tr>';
+}
 
 function initInformes(){
   const claves = Object.keys(INFORMES);

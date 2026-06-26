@@ -10,6 +10,9 @@ on:
       - "data/**.MDB"
       - "informes/**.pdf"
       - "informes/**.PDF"
+      - "redespaches/**.xls"
+      - "redespaches/**.XLS"
+      - "redespaches/**.xlsx"
       - "scripts/**"
   workflow_dispatch: {}
 
@@ -63,6 +66,18 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "Revisá processed/informes_errors.json en el repo para el detalle (traceback completo)." >> $GITHUB_STEP_SUMMARY
 
+      - name: Parsear redespacho XLS -> redespaches.json + comparacion_redespacho.json
+        id: redespacho
+        continue-on-error: true
+        run: python3 scripts/parse_redespacho.py
+
+      - name: Mostrar resumen de errores de redespacho (si los hubo)
+        if: steps.redespacho.outcome == 'failure'
+        run: |
+          echo "## ⚠️ Algún redespacho XLS no se pudo procesar" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Revisá processed/redespacho_errors.json en el repo para el detalle." >> $GITHUB_STEP_SUMMARY
+
       - name: Commit y push de los JSON generados
         run: |
           git config user.name "github-actions[bot]"
@@ -72,5 +87,5 @@ jobs:
           git push
 
       - name: Fallar el job si hubo errores (para que quede marcado en rojo)
-        if: steps.etl.outcome == 'failure' || steps.informes.outcome == 'failure'
+        if: steps.etl.outcome == 'failure' || steps.informes.outcome == 'failure' || steps.redespacho.outcome == 'failure'
         run: exit 1
