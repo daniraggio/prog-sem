@@ -3,6 +3,7 @@ name: Actualización automática CAMMESA
 # Cuándo corre:
 #   - Todos los días a las 08:00 UTC = 05:00 Argentina (UTC-3)
 #   - Al subir archivos manualmente a data/, redespaches/, informes/ o cambios en scripts/
+#   - Manualmente desde la pestaña Actions ("Run workflow")
 on:
   schedule:
     - cron: "0 8 * * *"
