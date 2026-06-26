@@ -81,7 +81,7 @@ def cargar_ids() -> dict:
 
     # Validar que los archivos sigan existiendo
     todos_los_archivos = set()
-    for d in set(DESTINO_POR_EXT.values()):
+    for d in [DIR_PROG, DIR_REDESP]:
         if d.exists():
             todos_los_archivos |= {f.name for f in d.iterdir()}
 
