@@ -852,7 +852,16 @@ function renderMercado(numSemana){
 
 function renderRedespacho(numSemana){
   const key = String(numSemana);
-  const rd = COMPARACION && COMPARACION[key];
+  let rd = COMPARACION && COMPARACION[key];
+  let esExacto = true;
+
+  // Si no hay redespacho exacto para esta semana, mostrar el más reciente disponible
+  if (!rd && COMPARACION && Object.keys(COMPARACION).length > 0){
+    const claves = Object.keys(COMPARACION).map(Number).sort((a,b)=>b-a);
+    const masReciente = claves[0];
+    if (masReciente) { rd = COMPARACION[String(masReciente)]; esExacto = false; }
+  }
+
   const vacio = document.getElementById('redespVacio');
   const content = document.getElementById('redespContent');
   if (!rd){
@@ -864,7 +873,9 @@ function renderRedespacho(numSemana){
 
   const emision = rd.fecha_emision ? new Date(rd.fecha_emision).toLocaleString('es-AR') : 's/d';
   document.getElementById('redespSubtitle').textContent =
-    `Semana ${numSemana} · emitido el ${emision}`;
+    esExacto
+      ? `Semana ${numSemana} · emitido el ${emision}`
+      : `No hay redespacho para semana ${numSemana} · mostrando semana ${rd.num_semana} (emitido el ${emision})`;
 
   // Alertas de motivos
   const motivos = rd.motivos || [];

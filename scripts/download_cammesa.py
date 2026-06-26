@@ -69,13 +69,29 @@ def download_bytes(path: str, params: dict) -> bytes | None:
         return None
 
 def cargar_ids() -> dict:
-    """Carga el registro de doc IDs ya procesados: {doc_id: nombre_guardado}"""
-    if DOWNLOADED_IDS.exists():
-        try:
-            return json.loads(DOWNLOADED_IDS.read_text())
-        except Exception:
-            pass
-    return {}
+    """Carga el registro de doc IDs ya procesados: {doc_id: nombre_guardado}.
+    Valida que cada archivo realmente exista — si no, lo elimina del registro
+    para que se vuelva a descargar."""
+    if not DOWNLOADED_IDS.exists():
+        return {}
+    try:
+        ids = json.loads(DOWNLOADED_IDS.read_text())
+    except Exception:
+        return {}
+
+    # Validar que los archivos sigan existiendo
+    todos_los_archivos = set()
+    for d in set(DESTINO_POR_EXT.values()):
+        if d.exists():
+            todos_los_archivos |= {f.name for f in d.iterdir()}
+
+    ids_validos = {}
+    for doc_id, nombre in ids.items():
+        if nombre in todos_los_archivos:
+            ids_validos[doc_id] = nombre
+        else:
+            print(f"  [IDs] '{nombre}' ya no existe en el repo — removiendo de downloaded_ids")
+    return ids_validos
 
 def guardar_ids(ids: dict):
     DOWNLOADED_IDS.parent.mkdir(parents=True, exist_ok=True)

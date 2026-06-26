@@ -380,8 +380,18 @@ def main():
             errores.append({"archivo": xls_path.name, "error": str(e), "traceback": traceback.format_exc()})
             continue
         key = f"{rd['num_semana']}"
-        redespaches[key] = rd
-        print(f"  -> Semana {rd['num_semana']} ({rd['fecha_emision']}) OK — motivos: {rd['motivos']}")
+        # Si ya existe un redespacho para esta semana, quedarse con el más reciente
+        if key in redespaches:
+            existente = redespaches[key].get("fecha_emision") or ""
+            nuevo     = rd.get("fecha_emision") or ""
+            if nuevo > existente:
+                redespaches[key] = rd
+                print(f"  -> Semana {rd['num_semana']} ({rd['fecha_emision']}) OK — reemplaza versión anterior")
+            else:
+                print(f"  -> Semana {rd['num_semana']} ({rd['fecha_emision']}) — ya tenemos uno más reciente, salteando")
+        else:
+            redespaches[key] = rd
+            print(f"  -> Semana {rd['num_semana']} ({rd['fecha_emision']}) OK — motivos: {rd['motivos']}")
 
     REDESPACHO_JSON.write_text(json.dumps(redespaches, indent=2, ensure_ascii=False, default=str))
     print(f"\nRedespaches guardados: {sorted(redespaches.keys())}")
