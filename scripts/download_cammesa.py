@@ -32,8 +32,10 @@ BASE_URL = "https://api.cammesa.com/pub-svc/public"
 TZ_ARG   = timezone(timedelta(hours=-3))
 TIMEOUT  = 60
 
-NEMO_PROG   = "PROGRAMACION_SEMANAL_UNIF"
-NEMO_REDESP = "PROGRAMACION_SEMANAL_REDESP"
+NEMO_QUERY  = "PROGRAMACION_SEMANAL_UNIF"   # se usa en los parámetros del GET
+# Los documentos en la respuesta usan estos valores en el campo "nemo":
+NEMO_PROG   = "PROGRAMACION_SEMANAL"          # programación semanal (.zip con .mdb adentro)
+NEMO_REDESP = "PROGRAMACION_SEMANAL_REDESP"   # redespacho semanal (.xls)
 
 ROOT            = Path(__file__).resolve().parent.parent
 DIR_PROG        = ROOT / "data"
@@ -146,7 +148,7 @@ def descargar_programacion(docs: list, ids_vistos: dict) -> list[str]:
 
         print(f"  [PROG] Descargando {zip_nombre} (doc {doc_id[:8]}…)")
         contenido = download_bytes("findAttachmentByNemoId", {
-            "nemo": NEMO_PROG,
+            "nemo": NEMO_QUERY,
             "docId": doc_id,
             "attachmentId": zip_adj["id"],
         })
@@ -215,7 +217,7 @@ def descargar_redespaches(docs: list, ids_vistos: dict) -> list[str]:
 
         print(f"  [REDESP] Descargando redespacho del {doc.get('fecha')} (doc {doc_id[:8]}…)")
         contenido = download_bytes("findAttachmentByNemoId", {
-            "nemo": NEMO_REDESP,
+            "nemo": NEMO_QUERY,
             "docId": doc_id,
             "attachmentId": xls_adj["id"],
         })
@@ -244,7 +246,7 @@ def main():
 
     # Un solo llamado devuelve AMBOS NEMOs mezclados (confirmado por diagnóstico)
     docs = get_json("findDocumentosByNemoRango", {
-        "nemo": NEMO_PROG,
+        "nemo": NEMO_QUERY,
         "fechadesde": fmt_api(desde),
         "fechahasta": fmt_api(hasta),
     })
