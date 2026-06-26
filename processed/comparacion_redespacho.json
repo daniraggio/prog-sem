@@ -340,21 +340,21 @@
     "costo_marginal": {
       "VALLE": {
         "programado": 323919.41,
-        "redespachado": NaN,
-        "delta": NaN,
-        "delta_pct": NaN
+        "redespachado": null,
+        "delta": null,
+        "delta_pct": null
       },
       "RESTO": {
         "programado": 328067.5,
-        "redespachado": NaN,
-        "delta": NaN,
-        "delta_pct": NaN
+        "redespachado": null,
+        "delta": null,
+        "delta_pct": null
       },
       "PICO": {
         "programado": 324919.73,
-        "redespachado": NaN,
-        "delta": NaN,
-        "delta_pct": NaN
+        "redespachado": null,
+        "delta": null,
+        "delta_pct": null
       }
     },
     "hidro_centrales_mwh": {
@@ -608,21 +608,21 @@
     "costo_marginal": {
       "VALLE": {
         "programado": 235904.44,
-        "redespachado": NaN,
-        "delta": NaN,
-        "delta_pct": NaN
+        "redespachado": null,
+        "delta": null,
+        "delta_pct": null
       },
       "RESTO": {
         "programado": 282167.92,
-        "redespachado": NaN,
-        "delta": NaN,
-        "delta_pct": NaN
+        "redespachado": null,
+        "delta": null,
+        "delta_pct": null
       },
       "PICO": {
         "programado": 314963.83,
-        "redespachado": NaN,
-        "delta": NaN,
-        "delta_pct": NaN
+        "redespachado": null,
+        "delta": null,
+        "delta_pct": null
       }
     },
     "hidro_centrales_mwh": {
@@ -876,21 +876,21 @@
     "costo_marginal": {
       "VALLE": {
         "programado": 269961.48,
-        "redespachado": NaN,
-        "delta": NaN,
-        "delta_pct": NaN
+        "redespachado": null,
+        "delta": null,
+        "delta_pct": null
       },
       "RESTO": {
         "programado": 294141.55,
-        "redespachado": NaN,
-        "delta": NaN,
-        "delta_pct": NaN
+        "redespachado": null,
+        "delta": null,
+        "delta_pct": null
       },
       "PICO": {
         "programado": 327861.2,
-        "redespachado": NaN,
-        "delta": NaN,
-        "delta_pct": NaN
+        "redespachado": null,
+        "delta": null,
+        "delta_pct": null
       }
     },
     "hidro_centrales_mwh": {
@@ -1145,21 +1145,21 @@
     "costo_marginal": {
       "VALLE": {
         "programado": 266472.34,
-        "redespachado": NaN,
-        "delta": NaN,
-        "delta_pct": NaN
+        "redespachado": null,
+        "delta": null,
+        "delta_pct": null
       },
       "RESTO": {
         "programado": 316914.57,
-        "redespachado": NaN,
-        "delta": NaN,
-        "delta_pct": NaN
+        "redespachado": null,
+        "delta": null,
+        "delta_pct": null
       },
       "PICO": {
         "programado": 319233.28,
-        "redespachado": NaN,
-        "delta": NaN,
-        "delta_pct": NaN
+        "redespachado": null,
+        "delta": null,
+        "delta_pct": null
       }
     },
     "hidro_centrales_mwh": {

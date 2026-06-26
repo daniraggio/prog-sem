@@ -662,39 +662,39 @@
     "costos_marginales": {
       "VALLE": {
         "dias": [
-          NaN,
-          NaN,
-          NaN,
-          NaN,
+          null,
+          null,
+          null,
+          null,
           182329.26,
           182329.26,
           182329.26
         ],
-        "promedio": NaN
+        "promedio": null
       },
       "RESTO": {
         "dias": [
-          NaN,
-          NaN,
-          NaN,
-          NaN,
+          null,
+          null,
+          null,
+          null,
           330447.42,
           330447.42,
           330447.42
         ],
-        "promedio": NaN
+        "promedio": null
       },
       "PICO": {
         "dias": [
-          NaN,
-          NaN,
-          NaN,
-          NaN,
+          null,
+          null,
+          null,
+          null,
           329583.15,
           329583.15,
           329583.15
         ],
-        "promedio": NaN
+        "promedio": null
       }
     },
     "balance_semanal_gwh": {
@@ -762,13 +762,13 @@
         49.58642
       ],
       "RENOVABLE": [
-        NaN,
-        NaN,
-        NaN,
-        NaN,
-        NaN,
-        NaN,
-        NaN
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
       ],
       "IMPORTACIÓN": [
         null,
@@ -1016,39 +1016,39 @@
     "costos_marginales": {
       "VALLE": {
         "dias": [
-          NaN,
-          NaN,
-          NaN,
-          NaN,
+          null,
+          null,
+          null,
+          null,
           293896.6,
           293896.6,
           293896.6
         ],
-        "promedio": NaN
+        "promedio": null
       },
       "RESTO": {
         "dias": [
-          NaN,
-          NaN,
-          NaN,
-          NaN,
+          null,
+          null,
+          null,
+          null,
           327139.27,
           327139.27,
           327139.27
         ],
-        "promedio": NaN
+        "promedio": null
       },
       "PICO": {
         "dias": [
-          NaN,
-          NaN,
-          NaN,
-          NaN,
+          null,
+          null,
+          null,
+          null,
           329564.05,
           329564.05,
           329564.05
         ],
-        "promedio": NaN
+        "promedio": null
       }
     },
     "balance_semanal_gwh": {
@@ -1370,39 +1370,39 @@
     "costos_marginales": {
       "VALLE": {
         "dias": [
-          NaN,
-          NaN,
-          NaN,
-          NaN,
+          null,
+          null,
+          null,
+          null,
           198746.65,
           198746.65,
           198746.65
         ],
-        "promedio": NaN
+        "promedio": null
       },
       "RESTO": {
         "dias": [
-          NaN,
-          NaN,
-          NaN,
-          NaN,
+          null,
+          null,
+          null,
+          null,
           294873.61,
           294873.61,
           294873.61
         ],
-        "promedio": NaN
+        "promedio": null
       },
       "PICO": {
         "dias": [
-          NaN,
-          NaN,
-          NaN,
-          NaN,
+          null,
+          null,
+          null,
+          null,
           335530.0,
           320059.06,
           320059.06
         ],
-        "promedio": NaN
+        "promedio": null
       }
     },
     "balance_semanal_gwh": {
@@ -1725,39 +1725,39 @@
     "costos_marginales": {
       "VALLE": {
         "dias": [
-          NaN,
-          NaN,
-          NaN,
-          NaN,
+          null,
+          null,
+          null,
+          null,
           209918.89,
           209918.89,
           209918.89
         ],
-        "promedio": NaN
+        "promedio": null
       },
       "RESTO": {
         "dias": [
-          NaN,
-          NaN,
-          NaN,
-          NaN,
+          null,
+          null,
+          null,
+          null,
           327680.33,
           327680.33,
           327680.33
         ],
-        "promedio": NaN
+        "promedio": null
       },
       "PICO": {
         "dias": [
-          NaN,
-          NaN,
-          NaN,
-          NaN,
+          null,
+          null,
+          null,
+          null,
           323252.35,
           323252.35,
           323252.35
         ],
-        "promedio": NaN
+        "promedio": null
       }
     },
     "balance_semanal_gwh": {
