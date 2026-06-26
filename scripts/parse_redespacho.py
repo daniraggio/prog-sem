@@ -356,8 +356,9 @@ def main():
         print(f"No existe {REDESPACHES_DIR}. Nada que hacer.")
         return
 
-    xls_files = sorted(REDESPACHES_DIR.glob("*.xls")) + sorted(REDESPACHES_DIR.glob("*.XLS"))
-    xls_files += sorted(REDESPACHES_DIR.glob("*.xlsx")) + sorted(REDESPACHES_DIR.glob("*.XLSX"))
+    xls_files = sorted(REDESPACHES_DIR.glob("redespacho*.xls"))
+    xls_files += sorted(REDESPACHES_DIR.glob("redespacho*.xlsx"))
+    xls_files += sorted(REDESPACHES_DIR.glob("redespacho*.XLS"))
     xls_files = sorted(set(xls_files))
     if not xls_files:
         print("No se encontraron archivos .xls/.xlsx en redespaches/. Nada que hacer.")

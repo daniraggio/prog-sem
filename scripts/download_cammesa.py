@@ -2,38 +2,23 @@
 """
 Descarga automática de documentos CAMMESA desde la API pública.
 ================================================================
-Corre diariamente desde GitHub Actions (5am Argentina / 8am UTC) y descarga
-los archivos nuevos que no estén ya en el repo:
-  - Programación semanal (.mdb) → data/
-  - Redespacho semanal (.xls)   → redespaches/    [requiere configurar NEMO_REDESPACHO]
+NEMOs confirmados por diagnóstico:
+  - PROGRAMACION_SEMANAL_UNIF  → adjunto es un .zip que contiene el .mdb
+  - PROGRAMACION_SEMANAL_REDESP → adjunto es redespacho.xls (mismo nombre siempre)
 
-API base: https://api.cammesa.com/pub-svc/public
-No requiere autenticación.
-
-Flujo por cada NEMO:
-  1. GET /obtieneFechaUltimoDocumento?nemo=...
-     → fecha del documento más reciente disponible
-  2. GET /findDocumentosByNemoRango?nemo=...&fechadesde=...&fechahasta=...
-     → lista de documentos con sus adjuntos (id, nombre)
-  3. GET /findAllAttachmentZipByNemoId?nemo=...&docId=...
-     → ZIP con todos los adjuntos del documento
-     (o individual: /findAttachmentByNemoId?nemo=...&docId=...&attachmentId=...)
-
-Salida (para el workflow de GitHub Actions):
-  - Escribe en $GITHUB_OUTPUT: downloaded=true/false
-  - Exit code 0 siempre (los errores se loguean pero no frenan el pipeline)
-  - Escribe processed/download_log.json con el registro de cada corrida
+Problemas resueltos vs. versión anterior:
+  1. Filtramos por .zip (no .mdb) y extraemos el .mdb del interior.
+  2. Los redespaches se renombran con la fecha del documento para no pisarse
+     (redespacho_20260526.xls, redespacho_20260529.xls, etc.).
+  3. El tracking de "ya descargado" usa el ID del documento, no el nombre del
+     archivo, guardado en processed/downloaded_ids.json.
+  4. El rango de búsqueda incluye hoy completo (hasta las 23:59).
 
 USO:
     python3 scripts/download_cammesa.py
-
-Para usar redespacho, setear la variable de entorno NEMO_REDESPACHO o
-editar NEMO_REDESPACHO directamente abajo:
-    NEMO_REDESPACHO=REDESPACHO_SEMANAL python3 scripts/download_cammesa.py
 """
 import io
 import json
-import os
 import sys
 import zipfile
 from datetime import datetime, timedelta, timezone
@@ -41,198 +26,70 @@ from pathlib import Path
 
 import requests
 
-# ── Configuración ──────────────────────────────────────────────────────────────
+# ── Configuración ────────────────────────────────────────────────────────────
 
 BASE_URL = "https://api.cammesa.com/pub-svc/public"
-TZ_ARG = timezone(timedelta(hours=-3))  # UTC-3 (Argentina, sin DST)
-TIMEOUT = 60  # segundos por request
+TZ_ARG   = timezone(timedelta(hours=-3))
+TIMEOUT  = 60
 
-# Único NEMO para programación semanal Y redespacho — la diferencia es la extensión
-NEMO = "PROGRAMACION_SEMANAL_UNIF"
+NEMO_PROG   = "PROGRAMACION_SEMANAL_UNIF"
+NEMO_REDESP = "PROGRAMACION_SEMANAL_REDESP"
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT            = Path(__file__).resolve().parent.parent
+DIR_PROG        = ROOT / "data"
+DIR_REDESP      = ROOT / "redespaches"
+DOWNLOADED_IDS  = ROOT / "processed" / "downloaded_ids.json"
+DOWNLOAD_LOG    = ROOT / "processed" / "download_log.json"
 
-# Destino por extensión dentro del mismo NEMO
-DESTINO_POR_EXT = {
-    ".mdb": ROOT / "data",
-    ".xls": ROOT / "redespaches",
-    ".xlsx": ROOT / "redespaches",
-}
+DIAS_BUSQUEDA = 30   # amplio para no perder nada
 
-DOWNLOAD_LOG = ROOT / "processed" / "download_log.json"
+# ── Helpers ──────────────────────────────────────────────────────────────────
 
-# Cuántos días hacia atrás buscar documentos
-DIAS_BUSQUEDA = 21
-
-
-# ── Helpers ────────────────────────────────────────────────────────────────────
-
-def fmt_fecha_api(dt: datetime) -> str:
-    """Formato ISO que acepta la API de CAMMESA: 2026-06-01T00:00:00.000-03:00"""
+def fmt_api(dt: datetime) -> str:
     return dt.strftime("%Y-%m-%dT%H:%M:%S.000-03:00")
 
-
-def get(path: str, params: dict | None = None) -> dict | list | None:
-    url = f"{BASE_URL}/{path.lstrip('/')}"
+def get_json(path: str, params: dict) -> dict | list | None:
+    url = f"{BASE_URL}/{path}"
     try:
         r = requests.get(url, params=params, timeout=TIMEOUT)
         r.raise_for_status()
         return r.json()
-    except requests.exceptions.RequestException as e:
+    except Exception as e:
         print(f"  ERROR GET {url}: {e}", file=sys.stderr)
         return None
 
-
 def download_bytes(path: str, params: dict) -> bytes | None:
-    url = f"{BASE_URL}/{path.lstrip('/')}"
+    url = f"{BASE_URL}/{path}"
     try:
-        r = requests.get(url, params=params, timeout=TIMEOUT * 2, stream=True)
+        r = requests.get(url, params=params, timeout=TIMEOUT * 2)
         r.raise_for_status()
         return r.content
-    except requests.exceptions.RequestException as e:
+    except Exception as e:
         print(f"  ERROR descarga {url}: {e}", file=sys.stderr)
         return None
 
+def cargar_ids() -> dict:
+    """Carga el registro de doc IDs ya procesados: {doc_id: nombre_guardado}"""
+    if DOWNLOADED_IDS.exists():
+        try:
+            return json.loads(DOWNLOADED_IDS.read_text())
+        except Exception:
+            pass
+    return {}
 
-# ── Lógica principal ────────────────────────────────────────────────────────────
+def guardar_ids(ids: dict):
+    DOWNLOADED_IDS.parent.mkdir(parents=True, exist_ok=True)
+    DOWNLOADED_IDS.write_text(json.dumps(ids, indent=2, ensure_ascii=False))
 
-def archivos_existentes_todos() -> set[str]:
-    """Nombres de todos los archivos ya presentes en data/ y redespaches/ (en minúsculas)."""
-    existentes = set()
-    for destino in set(DESTINO_POR_EXT.values()):
-        if destino.exists():
-            existentes |= {f.name.lower() for f in destino.iterdir()
-                           if f.suffix.lower() in DESTINO_POR_EXT}
-    return existentes
-
-
-def get(path: str, params: dict | None = None) -> dict | list | None:
-    url = f"{BASE_URL}/{path.lstrip('/')}"
+def fecha_doc_a_str(fecha_str: str) -> str:
+    """Convierte '26/05/2026' → '20260526' para usarlo en nombres de archivo."""
     try:
-        r = requests.get(url, params=params, timeout=TIMEOUT)
-        r.raise_for_status()
-        return r.json()
-    except requests.exceptions.RequestException as e:
-        print(f"  ERROR GET {url}: {e}", file=sys.stderr)
-        return None
-
-
-def download_bytes(path: str, params: dict) -> bytes | None:
-    url = f"{BASE_URL}/{path.lstrip('/')}"
-    try:
-        r = requests.get(url, params=params, timeout=TIMEOUT * 2, stream=True)
-        r.raise_for_status()
-        return r.content
-    except requests.exceptions.RequestException as e:
-        print(f"  ERROR descarga {url}: {e}", file=sys.stderr)
-        return None
-
-
-def guardar_archivo(nombre: str, contenido: bytes) -> bool:
-    """Guarda el archivo en el directorio correcto según su extensión."""
-    ext = Path(nombre).suffix.lower()
-    destino = DESTINO_POR_EXT.get(ext)
-    if not destino:
-        return False
-    destino.mkdir(parents=True, exist_ok=True)
-    (destino / nombre).write_bytes(contenido)
-    return True
-
-
-def procesar() -> list[str]:
-    """
-    Busca y descarga archivos nuevos del NEMO PROGRAMACION_SEMANAL_UNIF.
-    Devuelve lista de nombres de archivos descargados.
-    """
-    ya_tenemos = archivos_existentes_todos()
-    print(f"[{NEMO}] Archivos ya en repo: {len(ya_tenemos)}")
-
-    # 1. Fecha del último documento disponible
-    ultimo = get("obtieneFechaUltimoDocumento", {"nemo": NEMO})
-    if not ultimo:
-        print("  No se pudo obtener la fecha del último documento.")
-        return []
-    print(f"  Último documento disponible: {ultimo}")
-
-    # 2. Buscar documentos en los últimos DIAS_BUSQUEDA días
-    ahora = datetime.now(TZ_ARG)
-    desde = ahora - timedelta(days=DIAS_BUSQUEDA)
-    docs = get("findDocumentosByNemoRango", {
-        "nemo": NEMO,
-        "fechadesde": fmt_fecha_api(desde),
-        "fechahasta": fmt_fecha_api(ahora),
-    })
-    if not docs:
-        print(f"  No se encontraron documentos en los últimos {DIAS_BUSQUEDA} días.")
-        return []
-    print(f"  Documentos encontrados: {len(docs)}")
-
-    descargados = []
-
-    for doc in docs:
-        doc_id = doc.get("id")
-        adjuntos = doc.get("adjuntos") or []
-        fecha_doc = doc.get("fecha") or doc.get("fechaPublicacion") or "?"
-
-        # Solo los adjuntos con extensiones que nos interesan
-        adjuntos_relevantes = [
-            a for a in adjuntos
-            if Path(a.get("nombre", "")).suffix.lower() in DESTINO_POR_EXT
-        ]
-        if not adjuntos_relevantes:
-            continue
-
-        nuevos = [a for a in adjuntos_relevantes if a["nombre"].lower() not in ya_tenemos]
-        if not nuevos:
-            print(f"  Doc {doc_id} ({fecha_doc}): ya tenemos {[a['nombre'] for a in adjuntos_relevantes]}")
-            continue
-
-        print(f"  Doc {doc_id} ({fecha_doc}): {len(nuevos)} archivo(s) nuevo(s)")
-
-        # Intentar ZIP primero (más eficiente)
-        zip_bytes = download_bytes(
-            "findAllAttachmentZipByNemoId",
-            {"nemo": NEMO, "docId": doc_id},
-        )
-
-        if zip_bytes:
-            try:
-                with zipfile.ZipFile(io.BytesIO(zip_bytes)) as zf:
-                    for entry in zf.infolist():
-                        nombre = Path(entry.filename).name
-                        ext = Path(nombre).suffix.lower()
-                        if ext not in DESTINO_POR_EXT or nombre.lower() in ya_tenemos:
-                            continue
-                        contenido = zf.read(entry.filename)
-                        if guardar_archivo(nombre, contenido):
-                            destino = DESTINO_POR_EXT[ext]
-                            print(f"    ✓ {nombre} → {destino.name}/ ({entry.file_size:,} bytes)")
-                            descargados.append(nombre)
-                            ya_tenemos.add(nombre.lower())
-                continue
-            except zipfile.BadZipFile:
-                pass  # fallback a descarga individual abajo
-
-        # Fallback: descargar adjunto por adjunto
-        for adj in nuevos:
-            adj_id = adj.get("id")
-            nombre = adj["nombre"]
-            contenido = download_bytes(
-                "findAttachmentByNemoId",
-                {"nemo": NEMO, "docId": doc_id, "attachmentId": adj_id},
-            )
-            if contenido and guardar_archivo(nombre, contenido):
-                ext = Path(nombre).suffix.lower()
-                destino = DESTINO_POR_EXT[ext]
-                print(f"    ✓ {nombre} → {destino.name}/ ({len(contenido):,} bytes)")
-                descargados.append(nombre)
-                ya_tenemos.add(nombre.lower())
-
-    return descargados
-
+        return datetime.strptime(fecha_str, "%d/%m/%Y").strftime("%Y%m%d")
+    except Exception:
+        return fecha_str.replace("/", "")
 
 def set_github_output(key: str, value: str):
-    """Escribe una variable de output para GitHub Actions."""
+    import os
     gho = os.environ.get("GITHUB_OUTPUT")
     if gho:
         with open(gho, "a") as f:
@@ -240,48 +97,193 @@ def set_github_output(key: str, value: str):
     else:
         print(f"  [output] {key}={value}")
 
+# ── Descarga programación semanal ────────────────────────────────────────────
+
+def descargar_programacion(docs: list, ids_vistos: dict) -> list[str]:
+    """
+    Los adjuntos son .zip que contienen el .mdb.
+    Descargamos el ZIP y extraemos el .mdb a data/.
+    """
+    DIR_PROG.mkdir(parents=True, exist_ok=True)
+    mdb_existentes = {f.name.lower() for f in DIR_PROG.iterdir() if f.suffix.lower() == ".mdb"}
+    descargados = []
+
+    for doc in docs:
+        if doc.get("nemo") != NEMO_PROG:
+            continue
+        doc_id = doc["id"]
+        if doc_id in ids_vistos:
+            continue
+
+        adjuntos = doc.get("adjuntos") or []
+        zip_adj = next((a for a in adjuntos if a["nombre"].lower().endswith(".zip")), None)
+        if not zip_adj:
+            continue
+
+        zip_nombre = zip_adj["nombre"]           # ej. "psem2626.zip"
+        mdb_nombre = zip_nombre.replace(".zip", ".MDB")  # ej. "psem2626.MDB"
+
+        if mdb_nombre.lower() in mdb_existentes:
+            print(f"  [PROG] {mdb_nombre} ya existe, marcando ID como visto")
+            ids_vistos[doc_id] = mdb_nombre
+            continue
+
+        print(f"  [PROG] Descargando {zip_nombre} (doc {doc_id[:8]}…)")
+        contenido = download_bytes("findAttachmentByNemoId", {
+            "nemo": NEMO_PROG,
+            "docId": doc_id,
+            "attachmentId": zip_adj["id"],
+        })
+        if not contenido:
+            continue
+
+        # Extraer el .mdb del ZIP
+        try:
+            with zipfile.ZipFile(io.BytesIO(contenido)) as zf:
+                mdb_entry = next(
+                    (e for e in zf.infolist() if e.filename.upper().endswith(".MDB")),
+                    None
+                )
+                if not mdb_entry:
+                    print(f"    ⚠ No hay .mdb dentro de {zip_nombre}", file=sys.stderr)
+                    continue
+                data = zf.read(mdb_entry.filename)
+                dest = DIR_PROG / mdb_nombre
+                dest.write_bytes(data)
+                print(f"    ✓ Extraído: {mdb_nombre} ({len(data):,} bytes) → data/")
+                descargados.append(mdb_nombre)
+                ids_vistos[doc_id] = mdb_nombre
+                mdb_existentes.add(mdb_nombre.lower())
+        except zipfile.BadZipFile:
+            # Algunos adjuntos ya son el .mdb directamente aunque digan .zip
+            dest = DIR_PROG / mdb_nombre
+            dest.write_bytes(contenido)
+            print(f"    ✓ Guardado directo: {mdb_nombre} ({len(contenido):,} bytes) → data/")
+            descargados.append(mdb_nombre)
+            ids_vistos[doc_id] = mdb_nombre
+            mdb_existentes.add(mdb_nombre.lower())
+
+    return descargados
+
+# ── Descarga redespacho ──────────────────────────────────────────────────────
+
+def descargar_redespaches(docs: list, ids_vistos: dict) -> list[str]:
+    """
+    Los redespaches siempre se llaman 'redespacho.xls' en la API.
+    Los renombramos con la fecha del documento para no pisarlos:
+    redespacho_20260526.xls, redespacho_20260529.xls, etc.
+    """
+    DIR_REDESP.mkdir(parents=True, exist_ok=True)
+    descargados = []
+
+    for doc in docs:
+        if doc.get("nemo") != NEMO_REDESP:
+            continue
+        doc_id = doc["id"]
+        if doc_id in ids_vistos:
+            continue
+
+        adjuntos = doc.get("adjuntos") or []
+        xls_adj = next((a for a in adjuntos if a["nombre"].lower().endswith(".xls")), None)
+        if not xls_adj:
+            continue
+
+        fecha_str = fecha_doc_a_str(doc.get("fecha", ""))
+        nombre_destino = f"redespacho_{fecha_str}.xls"
+        dest = DIR_REDESP / nombre_destino
+
+        if dest.exists():
+            print(f"  [REDESP] {nombre_destino} ya existe, marcando ID como visto")
+            ids_vistos[doc_id] = nombre_destino
+            continue
+
+        print(f"  [REDESP] Descargando redespacho del {doc.get('fecha')} (doc {doc_id[:8]}…)")
+        contenido = download_bytes("findAttachmentByNemoId", {
+            "nemo": NEMO_REDESP,
+            "docId": doc_id,
+            "attachmentId": xls_adj["id"],
+        })
+        if not contenido:
+            continue
+
+        dest.write_bytes(contenido)
+        print(f"    ✓ Guardado: {nombre_destino} ({len(contenido):,} bytes) → redespaches/")
+        descargados.append(nombre_destino)
+        ids_vistos[doc_id] = nombre_destino
+
+    return descargados
+
+# ── Main ─────────────────────────────────────────────────────────────────────
 
 def main():
     print(f"=== Descarga CAMMESA — {datetime.now(TZ_ARG).isoformat()} ===")
 
-    total_descargados = []
+    ids_vistos = cargar_ids()
+    ahora = datetime.now(TZ_ARG)
+    desde = ahora - timedelta(days=DIAS_BUSQUEDA)
+    # El rango incluye hoy hasta las 23:59 para no perder publicaciones del día
+    hasta = ahora.replace(hour=23, minute=59, second=59)
+
+    print(f"Buscando documentos desde {fmt_api(desde)} hasta {fmt_api(hasta)}")
+
+    # Un solo llamado devuelve AMBOS NEMOs mezclados (confirmado por diagnóstico)
+    docs = get_json("findDocumentosByNemoRango", {
+        "nemo": NEMO_PROG,
+        "fechadesde": fmt_api(desde),
+        "fechahasta": fmt_api(hasta),
+    })
+    if not docs:
+        print("Sin respuesta de la API.")
+        set_github_output("downloaded", "false")
+        set_github_output("count", "0")
+        set_github_output("files", "")
+        return
+
+    print(f"Documentos encontrados: {len(docs)}"
+          f" (prog: {sum(1 for d in docs if d.get('nemo')==NEMO_PROG)},"
+          f" redesp: {sum(1 for d in docs if d.get('nemo')==NEMO_REDESP)})")
+
+    total = []
     errores = []
 
     try:
-        archivos = procesar()
-        total_descargados.extend(archivos)
+        total += descargar_programacion(docs, ids_vistos)
     except Exception as e:
         import traceback
-        msg = f"Error inesperado: {e}\n{traceback.format_exc()}"
-        print(msg, file=sys.stderr)
-        errores.append({"error": str(e), "traceback": traceback.format_exc()})
+        errores.append({"paso": "programacion", "error": str(e), "traceback": traceback.format_exc()})
+        print(f"  ERROR en programación: {e}", file=sys.stderr)
 
-    # Registrar en log
-    (ROOT / "processed").mkdir(parents=True, exist_ok=True)
+    try:
+        total += descargar_redespaches(docs, ids_vistos)
+    except Exception as e:
+        import traceback
+        errores.append({"paso": "redespacho", "error": str(e), "traceback": traceback.format_exc()})
+        print(f"  ERROR en redespacho: {e}", file=sys.stderr)
+
+    guardar_ids(ids_vistos)
+
+    # Log
     log = []
     if DOWNLOAD_LOG.exists():
         try:
             log = json.loads(DOWNLOAD_LOG.read_text())
         except Exception:
-            log = []
+            pass
     log.append({
-        "timestamp": datetime.now(TZ_ARG).isoformat(),
-        "descargados": total_descargados,
+        "timestamp": ahora.isoformat(),
+        "descargados": total,
         "errores": errores,
     })
     DOWNLOAD_LOG.write_text(json.dumps(log[-30:], indent=2, ensure_ascii=False))
 
-    # Comunicar al workflow
-    hay_nuevos = len(total_descargados) > 0
-    set_github_output("downloaded", "true" if hay_nuevos else "false")
-    set_github_output("count", str(len(total_descargados)))
-    set_github_output("files", ",".join(total_descargados))
+    set_github_output("downloaded", "true" if total else "false")
+    set_github_output("count", str(len(total)))
+    set_github_output("files", ",".join(total))
 
-    if hay_nuevos:
-        print(f"\n✓ {len(total_descargados)} archivo(s) nuevo(s): {total_descargados}")
+    if total:
+        print(f"\n✓ {len(total)} archivo(s) nuevo(s): {total}")
     else:
         print("\n— Sin archivos nuevos esta corrida.")
-
 
 if __name__ == "__main__":
     main()
