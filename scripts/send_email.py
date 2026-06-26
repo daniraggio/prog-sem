@@ -252,6 +252,84 @@ def seccion_redespacho(semana_num):
     """
 
 
+def seccion_combustibles(semana_num):
+    """Tabla de consumo de combustibles con barras de progreso visuales."""
+    analisis = cargar_json("analisis.json")
+    if not analisis:
+        return ""
+    D = analisis.get("por_semana", {}).get(str(semana_num))
+    if not D:
+        return ""
+
+    series = analisis.get("series", {}).get("consumo_combustibles", {})
+    semanas = sorted(analisis.get("semanas_disponibles", []))
+
+    # Datos actuales
+    comb_actual = series.get(str(semana_num), {})
+    if not comb_actual:
+        return ""
+
+    COLORES = {
+        "GasAcue": "#3498db", "GasProp": "#2980b9",
+        "Fuel_Oil": "#e74c3c", "Dies_Oil": "#e67e22", "Carbon": "#7f8c8d",
+    }
+    UNIDADES = {
+        "GasAcue": "Dam³", "GasProp": "Dam³",
+        "Fuel_Oil": "Ton", "Dies_Oil": "m³", "Carbon": "Ton",
+    }
+    NOMBRES = {
+        "GasAcue": "Gas Acuerdo", "GasProp": "Gas Propio",
+        "Fuel_Oil": "Fuel Oil", "Dies_Oil": "Gas Oil", "Carbon": "Carbón",
+    }
+
+    # Valor máximo para escalar las barras (máximo histórico de cada combustible)
+    maximos = {}
+    for s in semanas:
+        for k, v in series.get(str(s), {}).items():
+            if v and v > maximos.get(k, 0):
+                maximos[k] = v
+
+    filas = ""
+    for k, v in comb_actual.items():
+        if not v:
+            continue
+        nombre  = NOMBRES.get(k, k)
+        unidad  = UNIDADES.get(k, "")
+        color   = COLORES.get(k, "#95a5a6")
+        maximo  = maximos.get(k, v) or v
+        pct_bar = min(round(v / maximo * 100), 100)
+
+        # Variación vs semana anterior
+        sem_ant = semanas[-2] if len(semanas) >= 2 and semanas[-1] == semana_num else None
+        v_ant   = series.get(str(sem_ant), {}).get(k) if sem_ant else None
+        var_html = ""
+        if v_ant and v_ant > 0:
+            var = round((v - v_ant) / v_ant * 100, 1)
+            flecha = "▲" if var > 0 else "▼"
+            c_var = "#e74c3c" if var > 15 else "#27ae60" if var < -15 else "#7f8c8d"
+            var_html = f'<span style="color:{c_var};font-size:11px;margin-left:6px">{flecha} {abs(var):.1f}%</span>'
+
+        filas += f"""
+        <tr>
+          <td style="padding:8px 10px;width:110px;font-size:13px">{nombre}</td>
+          <td style="padding:8px 10px">
+            <div style="background:#f0f0f0;border-radius:3px;height:14px;overflow:hidden">
+              <div style="background:{color};width:{pct_bar}%;height:14px;border-radius:3px"></div>
+            </div>
+          </td>
+          <td style="padding:8px 10px;text-align:right;font-size:13px;white-space:nowrap">
+            {fmt(v)} {unidad}{var_html}
+          </td>
+        </tr>"""
+
+    return f"""
+    <h3 style="color:#2c3e50;margin-top:20px">Consumo de combustibles</h3>
+    <table style="width:100%;border-collapse:collapse">
+      <tbody>{filas}</tbody>
+    </table>
+    """
+
+
 def generar_html(nuevos):
     """Genera el cuerpo HTML del email."""
     ahora = datetime.now(TZ_ARG).strftime("%d/%m/%Y %H:%M")
@@ -263,28 +341,31 @@ def generar_html(nuevos):
     for f in nuevos:
         f_lower = f.lower()
         if f_lower.endswith(".mdb"):
-            # psem2726.MDB → semana 27
             import re
             m = re.search(r"psem(\d{2})\d{2}\.mdb", f_lower)
             if m:
                 semanas_prog.append(int(m.group(1)))
         elif "redespacho" in f_lower and f_lower.endswith(".xls"):
-            # redespacho_20260622.xls → buscar semana en el JSON
             comp = cargar_json("comparacion_redespacho.json")
             if comp:
                 semanas_redesp = list(comp.keys())
 
     for s in sorted(set(semanas_prog)):
         secciones += seccion_programacion(s)
+        secciones += seccion_combustibles(s)
 
     for s in sorted(set(semanas_redesp)):
-        if s not in [str(x) for x in semanas_prog]:  # evitar duplicar si ya se mostró
-            secciones += seccion_redespacho(int(s))
-        else:
-            secciones += seccion_redespacho(int(s))  # igual mostrar el redespacho
+        secciones += seccion_redespacho(int(s))
 
     if not secciones:
         secciones = "<p>No se pudieron extraer datos de los archivos nuevos.</p>"
+
+    # Título del header: usar la semana más relevante
+    semana_label = ""
+    if semanas_prog:
+        semana_label = f"Semana {sorted(semanas_prog)[-1]}"
+    elif semanas_redesp:
+        semana_label = f"Semana {sorted(semanas_redesp)[-1]}"
 
     return f"""
     <!DOCTYPE html>
@@ -293,15 +374,22 @@ def generar_html(nuevos):
     <body style="font-family:Arial,sans-serif;max-width:700px;margin:0 auto;color:#2c3e50">
       <div style="background:linear-gradient(135deg,#1a252f,#2c3e50);padding:24px;border-radius:8px 8px 0 0">
         <div style="color:#f39c12;font-size:11px;letter-spacing:2px;text-transform:uppercase">CAMMESA · Tracker</div>
-        <h1 style="color:#fff;margin:8px 0 4px;font-size:22px">Actualización de Programación Semanal</h1>
+        <h1 style="color:#fff;margin:8px 0 4px;font-size:22px">Actualización Programación Semanal CAMMESA{' — ' + semana_label if semana_label else ''}</h1>
         <div style="color:#95a5a6;font-size:13px">{ahora} · Archivos nuevos: {', '.join(nuevos)}</div>
       </div>
       <div style="padding:24px;background:#fff;border:1px solid #eee;border-top:none;border-radius:0 0 8px 8px">
         {secciones}
         <hr style="border:none;border-top:1px solid #eee;margin:24px 0">
-        <p style="font-size:11px;color:#95a5a6;text-align:center">
-          Generado automáticamente por CAMMESA Tracker ·
-          <a href="https://daniraggio.github.io/prog-sem" style="color:#3498db">Ver dashboard</a>
+        <div style="text-align:center;padding:16px;background:#f8f9fa;border-radius:6px">
+          <div style="font-size:13px;color:#7f8c8d;margin-bottom:10px">Ver tablero completo</div>
+          <a href="http://10.203.16.33/ctavav/index.html"
+             style="display:inline-block;background:#2c3e50;color:#fff;text-decoration:none;
+                    padding:10px 24px;border-radius:4px;font-size:14px;font-weight:600">
+            Abrir Dashboard →
+          </a>
+        </div>
+        <p style="font-size:11px;color:#bdc3c7;text-align:center;margin-top:16px">
+          Generado automáticamente por CAMMESA Tracker
         </p>
       </div>
     </body>
@@ -320,9 +408,16 @@ def main():
 
     print(f"Enviando reporte para: {ARCHIVOS}")
 
-    # Armar el asunto
-    nombres = ", ".join(ARCHIVOS)
-    asunto = f"CAMMESA Tracker — Actualización: {nombres}"
+    # Extraer número de semana para el asunto
+    import re
+    semana_asunto = ""
+    for f in ARCHIVOS:
+        m = re.search(r"psem(\d{2})\d{2}\.mdb", f.lower())
+        if m:
+            semana_asunto = m.group(1)
+            break
+    asunto = f"Actualización Programación Semanal CAMMESA: Semana {semana_asunto}" if semana_asunto \
+             else f"Actualización Programación Semanal CAMMESA: {', '.join(ARCHIVOS)}"
 
     html = generar_html(ARCHIVOS)
 
