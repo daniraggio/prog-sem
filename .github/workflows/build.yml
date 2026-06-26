@@ -127,6 +127,15 @@ jobs:
           git diff --staged --quiet || git commit -m "Auto: actualiza datos CAMMESA — ${{ steps.download.outputs.files || 'sin archivos nuevos' }} [$(date -u '+%Y-%m-%d %H:%M UTC')]"
           git push
 
+      - name: Enviar reporte por email
+        if: steps.download.outputs.downloaded == 'true'
+        env:
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          NUEVOS_ARCHIVOS: ${{ steps.download.outputs.files }}
+          EMAIL_FROM: jarvis.aconcagua@gmail.com
+          EMAIL_TO: ${{ secrets.EMAIL_TO || 'draggio@aconcaguaenergia.com' }}
+        run: python3 scripts/send_email.py
+
       - name: Fallar el job si hubo errores en el ETL
         if: steps.etl.outcome == 'failure'
         run: exit 1
