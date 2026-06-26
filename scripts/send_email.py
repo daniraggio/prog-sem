@@ -29,7 +29,7 @@ ROOT     = Path(__file__).resolve().parent.parent
 TZ_ARG   = timezone(timedelta(hours=-3))
 
 EMAIL_FROM = os.environ.get("EMAIL_FROM", "jarvis.aconcagua@gmail.com")
-EMAIL_TO   = os.environ.get("EMAIL_TO",   "draggio@aconcaguaenergia.com")
+EMAIL_TO   = os.environ.get("EMAIL_TO",   "draggio@aconcaguaenergia.com", "jspinoso@aconcaguaenergia.com")
 APP_PASS   = os.environ.get("GMAIL_APP_PASSWORD", "")
 ARCHIVOS   = [f.strip() for f in os.environ.get("NUEVOS_ARCHIVOS", "").split(",") if f.strip()]
 
