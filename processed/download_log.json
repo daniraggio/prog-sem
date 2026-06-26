@@ -48,5 +48,12 @@
     "timestamp": "2026-06-25T23:38:42.701704-03:00",
     "descargados": [],
     "errores": []
+  },
+  {
+    "timestamp": "2026-06-25T23:42:59.642721-03:00",
+    "docs_totales": 14,
+    "progs_encontradas": 5,
+    "redesps_encontrados": 9,
+    "descargados": []
   }
 ]
