@@ -74,7 +74,6 @@ jobs:
       # o cambios de scripts). En el cron diario, solo si downloaded=true.
       - name: ETL .mdb -> historico.json
         id: etl
-        if: steps.download.outputs.downloaded == 'true' || github.event_name == 'push' || github.event_name == 'workflow_dispatch'
         continue-on-error: true
         run: python3 scripts/etl_to_json.py
 
@@ -82,9 +81,7 @@ jobs:
         if: steps.etl.outcome == 'failure'
         run: |
           echo "## ⚠️ Algunos archivos .mdb no se pudieron procesar" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
           python3 scripts/print_etl_summary.py >> $GITHUB_STEP_SUMMARY
-          echo "Las semanas que SÍ se procesaron bien igual se van a publicar." >> $GITHUB_STEP_SUMMARY
 
       - name: Análisis comparativo -> analisis.json
         if: steps.etl.outcome == 'success'
@@ -92,9 +89,15 @@ jobs:
 
       - name: Parsear redespacho XLS -> redespaches.json + comparacion_redespacho.json
         id: redespacho
-        if: steps.download.outputs.downloaded == 'true' || github.event_name == 'push' || github.event_name == 'workflow_dispatch'
         continue-on-error: true
         run: python3 scripts/parse_redespacho.py
+
+      - name: Verificar comparacion_redespacho.json
+        if: always()
+        run: |
+          python3 scripts/check_redespacho.py
+          echo "--- redespaches/ ---"
+          ls redespaches/ 2>/dev/null || echo "(vacío)"
 
       - name: Parsear informes PDF -> informes.json
         id: informes
