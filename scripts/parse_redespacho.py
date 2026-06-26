@@ -351,6 +351,18 @@ def generar_comparacion(redespaches: dict, historico: dict) -> dict:
     return comparaciones
 
 
+def sanitize(obj):
+    """Reemplaza NaN e Inf por None antes de serializar a JSON (NaN no es JSON válido)."""
+    import math
+    if isinstance(obj, float):
+        return None if (math.isnan(obj) or math.isinf(obj)) else obj
+    if isinstance(obj, dict):
+        return {k: sanitize(v) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [sanitize(v) for v in obj]
+    return obj
+
+
 def main():
     if not REDESPACHES_DIR.exists():
         print(f"No existe {REDESPACHES_DIR}. Nada que hacer.")
@@ -393,14 +405,14 @@ def main():
             redespaches[key] = rd
             print(f"  -> Semana {rd['num_semana']} ({rd['fecha_emision']}) OK — motivos: {rd['motivos']}")
 
-    REDESPACHO_JSON.write_text(json.dumps(redespaches, indent=2, ensure_ascii=False, default=str))
+    REDESPACHO_JSON.write_text(json.dumps(sanitize(redespaches), indent=2, ensure_ascii=False))
     print(f"\nRedespaches guardados: {sorted(redespaches.keys())}")
 
     # Comparación contra programación original
     if HISTORICO_JSON.exists():
         historico = json.loads(HISTORICO_JSON.read_text())
         comparacion = generar_comparacion(redespaches, historico)
-        COMPARACION_JSON.write_text(json.dumps(comparacion, indent=2, ensure_ascii=False, default=str))
+        COMPARACION_JSON.write_text(json.dumps(sanitize(comparacion), indent=2, ensure_ascii=False))
         print(f"Comparación generada: {COMPARACION_JSON}")
     else:
         print("No existe historico.json — omitiendo comparación.", file=sys.stderr)
