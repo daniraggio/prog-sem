@@ -28,10 +28,12 @@ from pathlib import Path
 ROOT     = Path(__file__).resolve().parent.parent
 TZ_ARG   = timezone(timedelta(hours=-3))
 
-EMAIL_FROM = os.environ.get("EMAIL_FROM", "jarvis.aconcagua@gmail.com")
-EMAIL_TO   = os.environ.get("EMAIL_TO",   "draggio@aconcaguaenergia.com", "jspinoso@aconcaguaenergia.com")
-APP_PASS   = os.environ.get("GMAIL_APP_PASSWORD", "")
-ARCHIVOS   = [f.strip() for f in os.environ.get("NUEVOS_ARCHIVOS", "").split(",") if f.strip()]
+EMAIL_FROM    = os.environ.get("EMAIL_FROM", "jarvis.aconcagua@gmail.com")
+EMAIL_TO_RAW  = os.environ.get("EMAIL_TO", "draggio@aconcaguaenergia.com,jspinoso@aconcaguaenergia.com")
+EMAIL_TO_LIST = [e.strip() for e in EMAIL_TO_RAW.split(",") if e.strip()]
+EMAIL_TO      = ", ".join(EMAIL_TO_LIST)   # para el header To:
+APP_PASS      = os.environ.get("GMAIL_APP_PASSWORD", "")
+ARCHIVOS      = [f.strip() for f in os.environ.get("NUEVOS_ARCHIVOS", "").split(",") if f.strip()]
 
 
 def fmt(n, dec=0):
@@ -430,7 +432,7 @@ def main():
     try:
         with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
             server.login(EMAIL_FROM, APP_PASS)
-            server.sendmail(EMAIL_FROM, EMAIL_TO, msg.as_string())
+            server.sendmail(EMAIL_FROM, EMAIL_TO_LIST, msg.as_string())
         print(f"✓ Email enviado a {EMAIL_TO}")
     except Exception as e:
         print(f"ERROR al enviar email: {e}", file=sys.stderr)
