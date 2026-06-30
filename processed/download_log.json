@@ -196,5 +196,14 @@
     "progs_encontradas": 6,
     "redesps_encontrados": 10,
     "descargados": []
+  },
+  {
+    "timestamp": "2026-06-30T08:14:02.658635-03:00",
+    "docs_totales": 17,
+    "progs_encontradas": 6,
+    "redesps_encontrados": 11,
+    "descargados": [
+      "redespacho_20260629.xls"
+    ]
   }
 ]
