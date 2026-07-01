@@ -356,8 +356,11 @@ def generar_html(nuevos):
         secciones += seccion_programacion(s)
         secciones += seccion_combustibles(s)
 
-    for s in sorted(set(semanas_redesp)):
-        secciones += seccion_redespacho(int(s))
+    if semanas_redesp:
+        # Solo las últimas 2 semanas, de más nueva a más vieja
+        ultimas_dos = sorted(set(int(s) for s in semanas_redesp), reverse=True)[:2]
+        for s in ultimas_dos:
+            secciones += seccion_redespacho(s)
 
     if not secciones:
         secciones = "<p>No se pudieron extraer datos de los archivos nuevos.</p>"
