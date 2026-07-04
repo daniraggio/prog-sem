@@ -1,20 +1,5 @@
 [
   {
-    "timestamp": "2026-06-25T23:02:37.379895-03:00",
-    "descargados": [
-      "redespacho_20260526.xls",
-      "redespacho_20260529.xls",
-      "redespacho_20260601.xls",
-      "redespacho_20260605.xls",
-      "redespacho_20260608.xls",
-      "redespacho_20260612.xls",
-      "redespacho_20260616.xls",
-      "redespacho_20260619.xls",
-      "redespacho_20260622.xls"
-    ],
-    "errores": []
-  },
-  {
     "timestamp": "2026-06-25T23:05:23.137233-03:00",
     "descargados": [],
     "errores": []
@@ -218,5 +203,14 @@
     "progs_encontradas": 5,
     "redesps_encontrados": 9,
     "descargados": []
+  },
+  {
+    "timestamp": "2026-07-04T07:15:15.112343-03:00",
+    "docs_totales": 15,
+    "progs_encontradas": 5,
+    "redesps_encontrados": 10,
+    "descargados": [
+      "redespacho_20260703.xls"
+    ]
   }
 ]

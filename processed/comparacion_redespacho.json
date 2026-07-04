@@ -1343,217 +1343,215 @@
   },
   "27": {
     "num_semana": 27,
-    "fecha_emision": "2026-06-29T21:34:10",
+    "fecha_emision": "2026-07-03T18:17:41",
     "motivos": [
-      "MENOR DEMANDA",
-      "MAYOR DISPONIBILIDAD DE SALTO GRANDE POR MAYORES APORTES",
-      "MAYOR DISPONIBILIDAD DE YACYRETA POR MAYORES APORTES"
+      "MAYOR DEMANDA"
     ],
     "balance": {
       "termico": {
         "programado_gwh": 1872.53,
-        "redespachado_gwh": 1680.26297,
-        "delta_gwh": -192.27,
-        "delta_pct": -10.3
+        "redespachado_gwh": 1819.6797258201884,
+        "delta_gwh": -52.85,
+        "delta_pct": -2.8
       },
       "hidraulico": {
         "programado_gwh": 689.5,
-        "redespachado_gwh": 865.8210399999999,
-        "delta_gwh": 176.32,
-        "delta_pct": 25.6
+        "redespachado_gwh": 896.5092003065384,
+        "delta_gwh": 207.01,
+        "delta_pct": 30.0
       },
       "nuclear": {
         "programado_gwh": 236.54,
-        "redespachado_gwh": 235.872,
-        "delta_gwh": -0.67,
-        "delta_pct": -0.3
+        "redespachado_gwh": 236.34905947875976,
+        "delta_gwh": -0.19,
+        "delta_pct": -0.1
       },
       "renovable": {
         "programado_gwh": 423.96,
-        "redespachado_gwh": 414.234,
-        "delta_gwh": -9.73,
-        "delta_pct": -2.3
+        "redespachado_gwh": 359.59177864660694,
+        "delta_gwh": -64.37,
+        "delta_pct": -15.2
       },
       "importacion": {
         "programado_gwh": 286.39,
-        "redespachado_gwh": 278.3592,
-        "delta_gwh": -8.03,
-        "delta_pct": -2.8
+        "redespachado_gwh": 261.03469068391246,
+        "delta_gwh": -25.36,
+        "delta_pct": -8.9
       }
     },
     "combustibles": {
       "Gas (Dam3)": {
         "programado": 247006.0,
-        "redespachado": 244410.6,
-        "delta": -2595.44,
-        "delta_pct": -1.1,
+        "redespachado": 104277.3,
+        "delta": -142728.68,
+        "delta_pct": -57.8,
         "unidad": "Dam³"
       },
       "GO": {
         "programado": 97711.0,
-        "redespachado": 69424.7,
-        "delta": -28286.3,
-        "delta_pct": -28.9,
+        "redespachado": 38814.9,
+        "delta": -58896.06,
+        "delta_pct": -60.3,
         "unidad": "m³"
       },
       "FO": {
         "programado": 13333.0,
-        "redespachado": 13442.8,
-        "delta": 109.76,
-        "delta_pct": 0.8,
+        "redespachado": 4859.2,
+        "delta": -8473.8,
+        "delta_pct": -63.6,
         "unidad": "Ton"
       },
       "CM": {
         "programado": 24143.0,
-        "redespachado": 23475.9,
-        "delta": -667.1,
-        "delta_pct": -2.8,
+        "redespachado": 10337.0,
+        "delta": -13805.96,
+        "delta_pct": -57.2,
         "unidad": "Ton"
       }
     },
     "costo_marginal": {
       "VALLE": {
         "programado": 273285.57,
-        "redespachado": 204207.68,
-        "delta": -69078.0,
-        "delta_pct": -25.3
+        "redespachado": null,
+        "delta": null,
+        "delta_pct": null
       },
       "RESTO": {
         "programado": 292794.78,
-        "redespachado": 314849.15,
-        "delta": 22054.0,
-        "delta_pct": 7.5
+        "redespachado": null,
+        "delta": null,
+        "delta_pct": null
       },
       "PICO": {
         "programado": 327408.21,
-        "redespachado": 353278.05,
-        "delta": 25870.0,
-        "delta_pct": 7.9
+        "redespachado": null,
+        "delta": null,
+        "delta_pct": null
       }
     },
     "hidro_centrales_mwh": {
       "ALICURÁ": [
-        1000.0,
-        1000.0,
-        2092.5,
-        16042.5,
-        2092.5,
-        2889.28,
-        2092.5
+        null,
+        null,
+        null,
+        null,
+        10500.0,
+        2000.0,
+        2000.0
       ],
       "PIEDRA": [
-        5000.0,
-        5000.0,
-        14816.93,
-        25940.37,
-        10413.63,
-        11551.26,
-        16591.04
+        null,
+        null,
+        null,
+        null,
+        20000.0,
+        25000.0,
+        22000.0
       ],
       "PICHI LEUFU": [
-        960.0,
-        960.0,
-        2022.5,
-        5031.21,
-        2864.94,
-        1593.3,
-        3010.8
+        null,
+        null,
+        null,
+        null,
+        3921.568627450981,
+        4901.9607843137255,
+        4313.725490196079
       ],
       "CHOCÓN": [
-        4239.22,
-        2000.0,
-        8991.55,
-        3338.5,
-        17151.82,
-        8426.26,
-        2343.6
+        null,
+        null,
+        null,
+        null,
+        10000.0,
+        2800.0,
+        2800.0
       ],
       "P.BAND.": [
+        null,
+        null,
+        null,
+        null,
         448.42,
-        448.42,
-        627.6,
-        448.42,
-        448.42,
-        567.86,
+        908.03,
         448.42
       ],
       "NIHUILES": [
-        225.0,
-        675.0,
-        675.0,
-        675.0,
-        675.0,
-        675.0,
-        609.41
+        null,
+        null,
+        null,
+        null,
+        1200.0,
+        500.0,
+        500.0
       ],
       "AGUA DE TORO": [
-        450.0,
-        450.0,
-        450.0,
-        450.0,
-        450.0,
-        435.28,
-        450.0
+        null,
+        null,
+        null,
+        null,
+        1200.0,
+        400.0,
+        400.0
       ],
       "REYUNOS": [
-        340.0,
-        340.0,
-        340.0,
-        340.0,
-        340.0,
+        null,
+        null,
+        null,
+        null,
+        660.0,
         340.0,
         340.0
       ],
       "CABRA CORRAL": [
-        900.0,
-        900.0,
-        900.0,
-        900.0,
+        null,
+        null,
+        null,
+        null,
         900.0,
         720.0,
         720.0
       ],
       "RIO GRANDE": [
+        null,
+        null,
+        null,
+        null,
         648.0,
-        648.0,
-        648.0,
-        648.0,
-        648.0,
-        666.0,
-        630.0
+        500.0,
+        500.0
       ],
       "SALTO GRANDE": [
-        19200.0,
-        19200.0,
-        19200.0,
-        19200.0,
+        null,
+        null,
+        null,
+        null,
         19200.0,
         19200.0,
         19200.0
       ],
       "YACYRETÁ": [
-        60000.0,
-        60000.0,
-        60000.0,
-        60000.0,
+        null,
+        null,
+        null,
+        null,
         60000.0,
         60000.0,
         60000.0
       ],
       "FUTALEUFÚ": [
-        10860.0,
-        4976.96,
-        9953.93,
+        null,
+        null,
+        null,
+        null,
         12960.0,
-        11815.82,
-        11356.77,
+        5718.1,
         10860.0
       ],
       "AMEGHINO": [
-        0.0,
-        0.0,
-        0.0,
-        0.0,
+        null,
+        null,
+        null,
+        null,
         0.0,
         0.0,
         0.0
@@ -1561,31 +1559,31 @@
     },
     "cotas_previstas": {
       "ALICURÁ": {
-        "cota": 697.7304812065745,
+        "cota": 697.3789165952974,
         "comentario": "0.00 RESTRINGIDO POR OPERACIÓN DE MEDIANO PLAZO."
       },
       "PIEDRA": {
-        "cota": 575.1797980779837,
+        "cota": 574.8148899844508,
         "comentario": "60.00 CONDICIONADO  POR OPERACIÓN DE MEDIANO PLAZO."
       },
       "CHOCÓN": {
-        "cota": 373.26910572218816,
+        "cota": 373.4543974794984,
         "comentario": "60.00 CONDICIONADO POR OPERACIÓN DE MEDIANO PLAZO."
       },
       "P.BAND.": {
-        "cota": 411.74103399974825,
+        "cota": 411.7373722139671,
         "comentario": "60.00 CONDICIONADO POR OPERACIÓN DE MEDIANO PLAZO."
       },
       "NIHUIL (Hm3)": {
-        "cota": 1252.0609977011493,
+        "cota": 1250.234531034483,
         "comentario": "60.00 RESTRINGIDO POR OPERACIÓN DE MEDIANO PLAZO."
       },
       "TORO (Hm3)": {
-        "cota": 1333.4222111111112,
+        "cota": 1331.851322222222,
         "comentario": "60.00 RESTRINGIDO POR OPERACIÓN DE MEDIANO PLAZO."
       },
       "R.GRANDE": {
-        "cota": 874.4542354596622,
+        "cota": 874.236028142589,
         "comentario": "60.00 RESTRINGIDO POR OPERACIÓN DE MEDIANO PLAZO."
       },
       "C.CORRAL": {
@@ -1593,11 +1591,11 @@
         "comentario": null
       },
       "FUTALEUFÚ": {
-        "cota": 473.3623606561478,
+        "cota": 474.136127417313,
         "comentario": "60.00 CONDICIONADO POR OPERACIÓN DE MEDIANO PLAZO."
       },
       "AMEGUINO": {
-        "cota": 132.1146943456987,
+        "cota": 132.05367972043044,
         "comentario": "0.00 RESTRINGIDO, PRÓXIMO VALOR SUP A UNIDADES CON COMB LÍQ DESPACHADAS."
       }
     },
