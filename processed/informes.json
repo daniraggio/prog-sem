@@ -629,5 +629,534 @@
       "Sistema de Transporte, Distribución y Control\nNuevas habilitaciones de Transporte por Distribución Troncal :\nEl 02/06/2026 se habilitó comercialmente el nuevo Transformador N°3 (220 /33 kV – 125 MVA) de ET El\nQuemado, operado por DISTROCUYO en la provincia de Mendoza.\nEl 26/05/2026 se habilitó comercialmente el nuevo Transformador N°1 (132/33/13.2 kV – 40 MVA) de ET\nSan Nicolás Norte, operado por TRANSBA en la provincia de Buenos Aires.",
       "Nuevo Equipamiento de Generación\nEl 06/06/2026 se habilitó la operación comercial en el MEM del Parque Solar Fotovoltaico\n“San Juan Sur” (GENNEIA S.A.) por un incremento de potencia de 69.2 MW, totalizando\n129.2 MW. Se conecta en el nivel de 33 kV la ET San Juan Sur, jurisdicción de\nNaturgy/Energía San Juan, en la provincia de San Juan .\nEl 06/06/2026 se habilitó la operación comercial en el MEM del Parque Solar Fotovoltaico\n“El Quemado” (LUZ DE CAMPO S.A.) por un incremento de potencia de 105 MW,\ntotalizando 305 MW. Se conecta en el nivel de 33 kV la ET El Quemado, jurisdicción de\nDISTROCUYO, en la provincia de San Juan .\nEl 13/06/2026 se habilitó comercialmente en el MEM del Parque Solar Fotovoltaico “SAN\nLUIS OESTE” (TECSOL S.A.) por una potencia de 8.87 MW. Se conecta en el nivel de 33\nkV la ET CT 23, jurisdicción de EDESAL, en la provincia de San Luis."
     ]
+  },
+  "2026_28": {
+    "archivo_origen": "PrevisionDespachoEnergetico_27_y_28.pdf.pdf",
+    "titulo_raw": "Previsión Semanas 27/26 y 28/26\nDespacho Energético\nGerencia de Coordinación Operativa, 03/07/26",
+    "semana_a": 27,
+    "semana_b": 28,
+    "anio": 2026,
+    "fecha_informe": "03/07/26",
+    "escenario_previsto": [
+      {
+        "titulo": "Importación",
+        "texto": "Chile, Bolivia, Uruguay y Brasil: Con oferta comercial ."
+      },
+      {
+        "titulo": "Exportación",
+        "texto": "Uruguay y Brasil: No se realiza oferta de exportación comercial ."
+      },
+      {
+        "titulo": "Gas y Combustible alternativo",
+        "texto": "El gas promedio de esta semana cierra en 36.5 Mm3, previendo disponibilidad de 38.5 Mm3 para la semana próxima que no serán suficientes para cubrir el requerimiento de la demanda por lo que se recurrirá a 23.000 tn de carbón, 7.000 tn de FO y 27.000 m3 de GO."
+      },
+      {
+        "titulo": "Salto Grande",
+        "texto": "14 unidades disponibles . Opera con riego de vertimiento, con posible vertimiento durante la semana próxima, con promedio semanal de aportes 10.500 m3/s."
+      },
+      {
+        "titulo": "Yacyretá",
+        "texto": "Opera con máxima generación y vertimiento comienzo de la semana proxima, luego despacho máximo con riesgo de vertimiento, con entrante promedio en el orden de 13.400 m3/s. ANDE prevé tomar 800 MW en horario de pico."
+      },
+      {
+        "titulo": "Comahue",
+        "texto": "Caudales entrantes actuales de 94 m3/s en el Limay, 123 m3/s en el Collón Curá y 69 m3/s en el Neuquén ."
+      },
+      {
+        "titulo": "Chañar",
+        "texto": "Erogado 46 m3/sdefinido por AIC."
+      },
+      {
+        "titulo": "Arroyito",
+        "texto": "Erogado bajando al mínimo de 250 m3/sdefinido por AIC."
+      }
+    ],
+    "parque_generador": {
+      "termicas": [
+        {
+          "central": "ATUCHA I",
+          "maquina": "",
+          "estado": "Indisponible",
+          "fecha": "31-mar-27",
+          "motivo": "Extension de vida útil"
+        },
+        {
+          "central": "ROJO",
+          "maquina": "TG02",
+          "estado": "Indisponible",
+          "fecha": null,
+          "motivo": null
+        },
+        {
+          "central": "P. NUEVO",
+          "maquina": "TV09",
+          "estado": "Indisponible",
+          "fecha": "Fines de julio",
+          "motivo": "Mantenimiento Estacional"
+        },
+        {
+          "central": "LUJAN DE CUYO",
+          "maquina": "TG26",
+          "estado": "Indisponible",
+          "fecha": "Sin previsión",
+          "motivo": "Falla en generador"
+        },
+        {
+          "central": "S. FRANCISCO",
+          "maquina": "TG01",
+          "estado": "Indisponible",
+          "fecha": null,
+          "motivo": "Retraso en Mantenimiento Estacional"
+        },
+        {
+          "central": "S. OESTE",
+          "maquina": "TG01 y TG04",
+          "estado": "Indisponible",
+          "fecha": null,
+          "motivo": "Rotura de rotor de turbina"
+        },
+        {
+          "central": "V. MARÍA",
+          "maquina": "TG02 y TG03",
+          "estado": "Indisponible",
+          "fecha": null,
+          "motivo": "Altas vibraciones"
+        },
+        {
+          "central": "INDEPENDENCIA",
+          "maquina": "TG01",
+          "estado": "Indisponible",
+          "fecha": "6-jul al 10-jul",
+          "motivo": "Mantenimiento Estacional"
+        }
+      ],
+      "hidraulicas": [
+        {
+          "central": "YACYRETÁ",
+          "maquina": "U01",
+          "estado": "Indisponible",
+          "fecha": "27-nov",
+          "motivo": "Mantenimiento Estacional"
+        },
+        {
+          "central": "YACYRETÁ",
+          "maquina": "U04",
+          "estado": "Indisponible",
+          "fecha": "22-jun al 14-jul",
+          "motivo": "Mantenimiento Estacional"
+        },
+        {
+          "central": "YACYRETÁ",
+          "maquina": "U10",
+          "estado": "Indisponible",
+          "fecha": "26-feb-27",
+          "motivo": "Mantenimiento Estacional"
+        },
+        {
+          "central": "RÍO GRANDE",
+          "maquina": "U01 y 04",
+          "estado": "Indisponible",
+          "fecha": "Sin previsión",
+          "motivo": "Por falla estatórica"
+        },
+        {
+          "central": "RÍO GRANDE",
+          "maquina": "U03",
+          "estado": "Indisponible",
+          "fecha": "Sin previsión",
+          "motivo": null
+        },
+        {
+          "central": "L. VIÑAS",
+          "maquina": "U01 y U02",
+          "estado": "Indisponible",
+          "fecha": null,
+          "motivo": "Pérdida de agua en cañería principal"
+        },
+        {
+          "central": "NIHUILES",
+          "maquina": "NIH2 y NIH3",
+          "estado": "Indisponible",
+          "fecha": "Sin previsión",
+          "motivo": "Temporal 11-01"
+        },
+        {
+          "central": "LOS REYUNOS",
+          "maquina": "U01",
+          "estado": "Indisponible",
+          "fecha": "8-jul",
+          "motivo": "Mantenimiento Estacional hasta el 19 -jun"
+        },
+        {
+          "central": "EL TIGRE",
+          "maquina": "U01 y U02",
+          "estado": "Indisponible",
+          "fecha": "3-ago",
+          "motivo": "Mantenimiento Estacional"
+        }
+      ]
+    },
+    "balance_semanal": {
+      "semana_a": {
+        "balance": {
+          "Demanda": {
+            "gwh": 3571.0,
+            "mw_med": 21255.0
+          },
+          "Exportación": {
+            "gwh": 0.0,
+            "mw_med": 0.0
+          },
+          "Térmico": {
+            "gwh": 1820.0,
+            "mw_med": 10831.0
+          },
+          "Hidráulico": {
+            "gwh": 897.0,
+            "mw_med": 5336.0
+          },
+          "Nuclear": {
+            "gwh": 236.0,
+            "mw_med": 1407.0
+          },
+          "Renovable": {
+            "gwh": 360.0,
+            "mw_med": 2140.0
+          },
+          "Importación": {
+            "gwh": 261.0,
+            "mw_med": 1554.0
+          }
+        },
+        "consumo_combustibles": [
+          {
+            "combustible": "Gas",
+            "unidad": "Mm3/día",
+            "valor": 36.5
+          },
+          {
+            "combustible": "FO",
+            "unidad": "Miles de Ton",
+            "valor": 13.0
+          },
+          {
+            "combustible": "GO",
+            "unidad": "Miles de m3",
+            "valor": 83.0
+          },
+          {
+            "combustible": "Carbón",
+            "unidad": "Miles de Ton",
+            "valor": 22.0
+          }
+        ]
+      },
+      "semana_b": {
+        "balance": {
+          "Demanda": {
+            "gwh": 3223.0,
+            "mw_med": 19187.0
+          },
+          "Exportación": {
+            "gwh": 0.0,
+            "mw_med": 0.0
+          },
+          "Térmico": {
+            "gwh": 1569.0,
+            "mw_med": 9338.0
+          },
+          "Hidráulico": {
+            "gwh": 754.0,
+            "mw_med": 4486.0
+          },
+          "Nuclear": {
+            "gwh": 236.0,
+            "mw_med": 1404.0
+          },
+          "Renovable": {
+            "gwh": 435.0,
+            "mw_med": 2589.0
+          },
+          "Importación": {
+            "gwh": 230.0,
+            "mw_med": 1370.0
+          }
+        },
+        "consumo_combustibles": [
+          {
+            "combustible": "Gas",
+            "unidad": "Mm3/día",
+            "valor": 38.5
+          },
+          {
+            "combustible": "FO",
+            "unidad": "Miles de Ton",
+            "valor": 7.0
+          },
+          {
+            "combustible": "GO",
+            "unidad": "Miles de m3",
+            "valor": 27.0
+          },
+          {
+            "combustible": "Carbón",
+            "unidad": "Miles de Ton",
+            "valor": 23.0
+          }
+        ]
+      },
+      "despacho_centrales": {
+        "semana_a": [
+          {
+            "central": "ALICURA",
+            "mw_med": 179.0
+          },
+          {
+            "central": "PIEDRA",
+            "mw_med": 668.0
+          },
+          {
+            "central": "CHOCON",
+            "mw_med": 224.0
+          },
+          {
+            "central": "P.BANDERITA",
+            "mw_med": 22.0
+          },
+          {
+            "central": "FUTALEUFÚ",
+            "mw_med": 311.0
+          },
+          {
+            "central": "SALTO",
+            "mw_med": 716.0
+          },
+          {
+            "central": "YACYRETA",
+            "mw_med": 2431.0
+          }
+        ],
+        "semana_b": [
+          {
+            "central": "ALICURA",
+            "mw_med": 87.0
+          },
+          {
+            "central": "PIEDRA",
+            "mw_med": 534.0
+          },
+          {
+            "central": "CHOCON",
+            "mw_med": 129.0
+          },
+          {
+            "central": "P.BANDERITA",
+            "mw_med": 19.0
+          },
+          {
+            "central": "FUTALEUFÚ",
+            "mw_med": 219.0
+          },
+          {
+            "central": "SALTO",
+            "mw_med": 796.0
+          },
+          {
+            "central": "YACYRETA",
+            "mw_med": 2268.0
+          }
+        ]
+      },
+      "niveles_embalses": [
+        {
+          "central": "ALICURA",
+          "hoy": 698.34,
+          "domingo_fin_semana_a": 697.37,
+          "domingo_fin_semana_b": 697.5
+        },
+        {
+          "central": "PIEDRA",
+          "hoy": 575.72,
+          "domingo_fin_semana_a": 574.81,
+          "domingo_fin_semana_b": 573.81
+        },
+        {
+          "central": "CHOCON",
+          "hoy": 373.28,
+          "domingo_fin_semana_a": 373.47,
+          "domingo_fin_semana_b": 373.71
+        },
+        {
+          "central": "P.BANDERITA",
+          "hoy": 411.73,
+          "domingo_fin_semana_a": 411.74,
+          "domingo_fin_semana_b": 411.76
+        },
+        {
+          "central": "FUTALEUFÚ",
+          "hoy": 475.25,
+          "domingo_fin_semana_a": 474.14,
+          "domingo_fin_semana_b": 473.56
+        },
+        {
+          "central": "SALTO",
+          "hoy": 32.12,
+          "domingo_fin_semana_a": 33.02,
+          "domingo_fin_semana_b": 35.28
+        }
+      ]
+    },
+    "transporte_distribucion": {
+      "condiciones_stat": [
+        "F/S indisponible la Interconexión de 220 kV Clorinda (ARG) – Guarambaré (PAR), por torre caída, sin previsión de disponibilidad.",
+        "Continúan F/S desde 16/04 la Línea de 500 kV Garabí - Rincón (YACYLEC) y la Conversora Garabí II (ONS), para trabajos tareas de mantenimiento quedando indisponible la Conversora hasta el 03/08. Limitando la capacidad de intercambio con",
+        "Continúa F/S el Compensador Sincrónico N°4 de ET Ezeiza (TRANSENER) para mantenimiento de CAR . Se prevé disponible el 08/07."
+      ],
+      "mantenimientos_relevantes": [
+        {
+          "numero": "1",
+          "equipo": "Transformador N°2 (500/16 kV – 440 MVA) de ET Río Grande",
+          "propietario": "TRANSENER",
+          "trabajo": "Desconexión del transformador principal",
+          "dias": {
+            "S 04": true,
+            "D 05": true,
+            "L 06": true,
+            "M 07": true,
+            "M 08": true,
+            "J 09": true,
+            "V 10": true
+          }
+        },
+        {
+          "numero": "2",
+          "equipo": "Transformador N°2 (500/132 kV – 300 MVA) de ET Salto Grande",
+          "propietario": "TRANSENER",
+          "trabajo": "Mantenimiento estacional de protecciones S1 -S2",
+          "dias": {
+            "S 04": true,
+            "D 05": true,
+            "L 06": false,
+            "M 07": false,
+            "M 08": false,
+            "J 09": false,
+            "V 10": false
+          }
+        },
+        {
+          "numero": "3",
+          "equipo": "Transformador N°2 (500/132 kV – 300 MVA) de ET Malvina",
+          "propietario": "TRANSENER",
+          "trabajo": "Ensayos de disparos por cambio de interruptor",
+          "dias": {
+            "S 04": true,
+            "D 05": false,
+            "L 06": false,
+            "M 07": false,
+            "M 08": false,
+            "J 09": false,
+            "V 10": false
+          }
+        },
+        {
+          "numero": "4",
+          "equipo": "Transformador N° 1 (500/132 kV – 300 MVA) de ET Villa Lía",
+          "propietario": "TRANSBA",
+          "trabajo": "Ensayo de TG delta en bushing de 220 kv ensayo de TG delta en bushing de 132 kv",
+          "dias": {
+            "S 04": false,
+            "D 05": false,
+            "L 06": true,
+            "M 07": false,
+            "M 08": false,
+            "J 09": false,
+            "V 10": false
+          }
+        },
+        {
+          "numero": "5",
+          "equipo": "Barra B de 500 KV de ET Gran Mendoza",
+          "propietario": "TRANSENER",
+          "trabajo": "Reemplazo del TV",
+          "dias": {
+            "S 04": false,
+            "D 05": false,
+            "L 06": false,
+            "M 07": false,
+            "M 08": false,
+            "J 09": false,
+            "V 10": true
+          }
+        }
+      ],
+      "dias_columnas": [
+        "S 04",
+        "D 05",
+        "L 06",
+        "M 07",
+        "M 08",
+        "J 09",
+        "V 10"
+      ]
+    },
+    "nuevas_habilitaciones_transporte": [
+      {
+        "texto": "El 15/06/2026 quedó E/S por primera vez la Línea de 132 kV Tablada – Oeste Nueva y deja de estar operativa la Línea de 132 kV Tablada – Oeste. Esto asociado a la ET Oeste Nueva (GIS), jurisdicción de EPEC en la provincia de Córdoba .",
+        "fecha": "15/06/2026",
+        "provincia": "Córdoba"
+      },
+      {
+        "texto": "El 16/06/2026 quedaron E/S por primera vez las Líneas de 132 kV San Martín – Mendoza y Mendoza – Rosario Centro asociadas a la nueva ET Mendoza, jurisdicción de EPESF, seccionando la Línea de 132 kV San Martin – Rosario Centro en la provincia de Santa Fe.",
+        "fecha": "16/06/2026",
+        "provincia": "Santa Fe"
+      },
+      {
+        "texto": "El 17/06/2026 tomó carga por primera vez la Línea de 500 kV Salto Grande Uruguay – Chamberlain , jurisdicción de UTE.",
+        "fecha": "17/06/2026"
+      }
+    ],
+    "nuevo_equipamiento_generacion": [
+      {
+        "texto": "El 13/06/2026 se habilitó comercialmente en el MEM del Parque Solar Fotovoltaico “SAN LUIS OESTE” (TECSOL S.A.) por una potencia de 8.87 MW. Se conecta en el nivel de 33 kV la ET CT 23, jurisdicción de EDESAL, en la provincia de San Luis.",
+        "fecha": "13/06/2026",
+        "potencia_mw": 8.87,
+        "nombre": "SAN LUIS OESTE",
+        "empresa": "TECSOL S.A.",
+        "provincia": "San Luis"
+      },
+      {
+        "texto": "El 01/07/2026 se habilitó la operación comercial en el MEM del Parque Solar “Bella Vista Secco” (INDUSTRIAS JUAN F. SECCO S.A.) por una potencia de 7 MW. Se conecta en el nivel de 33 kV la ET Bella Vista, jurisdicción de DPEC, en la provincia de Corrientes.",
+        "fecha": "01/07/2026",
+        "potencia_mw": 7.0,
+        "nombre": "Bella Vista Secco",
+        "empresa": "INDUSTRIAS JUAN F. SECCO S.A.",
+        "provincia": "Corrientes"
+      },
+      {
+        "texto": "El 03/07/2026 se habilitó la operación comercial en el MEM del Parque Solar Fotovoltaico “360 E Palomar” (PEUGEOT CITROËN ARGENTINA S.A.) por un incremento de potencia de 5 MW, totalizando 11 MW. Se conecta en el nivel de 33 kV la ET Sevel jurisdicción de EDENOR, en Gran Buenos Aires.",
+        "fecha": "03/07/2026",
+        "potencia_mw": 5.0,
+        "nombre": "360 E Palomar",
+        "empresa": "PEUGEOT CITROËN ARGENTINA S.A."
+      }
+    ],
+    "paginas_texto": [
+      "Previsión Semanas 27/26 y 28/26\nDespacho Energético\nGerencia de Coordinación Operativa, 03/07/26",
+      "Pronóstico de temperaturas en Buenos Aires\n(fuente SMN)",
+      "Pronóstico de temperaturas en Buenos Aires\n(fuente Weather Channel )",
+      "Escenario previsto\nImportación :\nChile, Bolivia, Uruguay y Brasil: Con oferta comercial .\nExportación :\nUruguay y Brasil: No se realiza oferta de exportación comercial .\nGas y Combustible alternativo: El gas promedio de esta semana cierra en 36.5 Mm3, previendo disponibilidad de 38.5 Mm3 para la\nsemana próxima que no serán suficientes para cubrir el requerimiento de la demanda por lo que se recurrirá a 23.000 tn de carbón, 7.000\ntn de FO y 27.000 m3 de GO.\nSalto Grande : 14 unidades disponibles . Opera con riego de vertimiento, con posible vertimiento durante la semana próxima, con\npromedio semanal de aportes 10.500 m3/s.\nYacyretá : Opera con máxima generación y vertimiento comienzo de la semana proxima, luego despacho máximo con riesgo de\nvertimiento, con entrante promedio en el orden de 13.400 m3/s. ANDE prevé tomar 800 MW en horario de pico.\nComahue : Caudales entrantes actuales de 94 m3/s en el Limay, 123 m3/s en el Collón Curá y 69 m3/s en el Neuquén .\nChañar :Erogado 46 m3/sdefinido por AIC.\nArroyito: Erogado bajando al mínimo de 250 m3/sdefinido por AIC.",
+      "Situación parque generador\nCENTRALES TÉRMICAS\nCENTRAL MAQUINA ESTADO FECHA MOTIVO\nATUCHA I Indisponible 31-mar-27 Extension de vida útil\nROJO TG02 Indisponible\nP. NUEVO TV09 Indisponible Fines de julio Mantenimiento Estacional\nLUJAN DE CUYO TG26 Indisponible Sin previsión Falla en generador\nS. FRANCISCO TG01 Indisponible Retraso en Mantenimiento Estacional\nS. OESTE TG01 y TG04 Indisponible Rotura de rotor de turbina\nV. MARÍA TG02 y TG03 Indisponible Altas vibraciones\nINDEPENDENCIA TG01 Indisponible 6-jul al 10-jul Mantenimiento Estacional\nCENTRALES HIDRÁULICAS\nCENTRAL MAQUINA ESTADO FECHA MOTIVO\nU01 Indisponible 27-nov Mantenimiento Estacional\nYACYRETÁ U04 Indisponible 22-jun al 14-jul Mantenimiento Estacional\nU10 Indisponible 26-feb-27 Mantenimiento Estacional\nU01 y 04 Indisponible Sin previsión Por falla estatórica\nRÍO GRANDE\nU03 Indisponible Sin previsión\nL. VIÑAS U01 y U02 Indisponible Pérdida de agua en cañería principal\nNIHUILES NIH2 y NIH3 Indisponible Sin previsión Temporal 11-01\nLOS REYUNOS U01 Indisponible 8-jul Mantenimiento Estacional hasta el 19 -jun\nEL TIGRE U01 y U02 Indisponible 3-ago Mantenimiento Estacional",
+      "Perspectivas para la próxima semana\nSemana 27 Semana 28\n29/6/2026 - 5/7/2026 6/7/2026 - 12/7/2026\nl Gwh MWmed Gwh MWmed\na\nn\na Demanda 3571 21255 3223 19187\nm\ne Exportación 0 0 0 0\nS\ne Térmico 1820 10831 1569 9338\nc\nn\na Hidráulico 897 5336 754 4486\nl\na\nB Nuclear 236 1407 236 1404\nRenovable 360 2140 435 2589\nImportación 261 1554 230 1370\nGas Mm3/día 36.5 38.5\no.\nt\nm u s u FO Miles de Ton 13 7\nsb\nnm GO Miles de m3 83 27\noo\nCC Carbón Miles de Ton 22 23\nALICURA 179 87\nW\nM PIEDRA 668 534\nod\nCHOCON 224 129\nhe\ncm P.BANDERITA 22 19\na\np\ns FUTALEUFÚ 311 219\ne\nD SALTO 716 796\nYACYRETA 2431 2268\nHoy Domingo Domingo\n)\nm\nALICURA 698.34 697.37 697.50\nn\ns\nm PIEDRA 575.72 574.81 573.81\n(\ns CHOCON 373.28 373.47 373.71\ne\nl\ne P.BANDERITA 411.73 411.74 411.76\nv\ni\nN FUTALEUFÚ 475.25 474.14 473.56\nSALTO 32.12 33.02 35.28",
+      "Evolución Cota Alicura\n706\n704\n702\n700\n698\n696\n694\n692\n690\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53\nSemanas\nReal 22 Real 23 Real 24 Real 25 Real 2026 Previsión",
+      "Evolución Cota Piedra del Águila\n592\n590\n588\n586\n584\n582\n580\n578\n576\n574\n572\n570\n568\n566\n564\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53\nSemanas\nReal 22 Real 23 Real 24 Real 25 Real 2026 Previsión",
+      "Evolución Cota Chocón\n381\n379\n377\n375\n373\n371\n369\n367\n365\n363\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53\nSemanas\nReal 22 Real 23 Real 24 Real 25 Real 2026 Previsión",
+      "Evolución Cota Planicie Banderita\n422.5\n421.5\n420.5\n419.5\n418.5\n417.5\n416.5\n415.5\n414.5\n413.5\n412.5\n411.5\n410.5\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53\nSemanas\nReal 22 Real 23 Real 24 Real 25 Real 2026 Previsión",
+      "Evolución Cota Futaleufú\n496\n494\n492\n490\n488\n486\n484\n482\n480\n478\n476\n474\n472\n470\n468\n466\n464\n462\n460\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53\nSemanas\nReal 22 Real 23 Real 24 Real 25 Real 2026 Previsión",
+      "Sistema de Transporte y Distribución – Semana 27\nCondiciones previstas de Operación en el STAT (Sistema de Transporte en Alta Tensión) :\nParticulares\nNormales Anormales De Emergencia\nProgramadas\nEquipos del STAT indisponibles :\n▪ F/S indisponible la Interconexión de 220 kV Clorinda (ARG) – Guarambaré (PAR), por torre caída, sin previsión de\ndisponibilidad.\n▪ Continúan F/S desde 16/04 la Línea de 500 kV Garabí - Rincón (YACYLEC) y la Conversora Garabí II (ONS), para trabajos\ntareas de mantenimiento quedando indisponible la Conversora hasta el 03/08. Limitando la capacidad de intercambio con\nBrasil a 1100 MW.\n▪ Continúa F/S el Compensador Sincrónico N°4 de ET Ezeiza (TRANSENER) para mantenimiento de CAR . Se prevé disponible\nel 08/07.",
+      "Sistema de Transporte y Distribución – Semana 27\nTRABAJOS DE MANTENIMIENTOS RELEVANTES\nN° EQUIPO PROPIETARIO TRABAJO S 04 D 05 L 06 M 07 M 08 J 09 V 10\nTransformador N°2 (500/16 kV – 440\n1 TRANSENER Desconexión del transformador principal X X X X X X X\nMVA) de ET Río Grande\nTransformador N°2 (500/132 kV – Mantenimiento estacional de\n2 TRANSENER X X\n300 MVA) de ET Salto Grande protecciones S1 -S2\nTransformador N°2 (500/132 kV – Ensayos de disparos por cambio de\n3 3 300 MVA) de ET Malvina TRANSENER interruptor X\n2\n1 Ensayo de TG delta en bushing de 220\nTransformador N° 1 (500/132 kV –\n4 TRANSBA kv ensayo de TG delta en bushing de X\n300 MVA) de ET Villa Lía\n5 132 kv\n4\nBarra B de 500 KV de ET Gran\n5 TRANSENER Reemplazo del TV X\nMendoza\nGran Buenos Aires\nRD\nEZ\nAB",
+      "Sistema de Transporte, Distribución y Control\nNuevas habilitaciones de Transporte por Distribución Troncal :\nEl 15/06/2026 quedó E/S por primera vez la Línea de 132 kV Tablada – Oeste Nueva y deja de estar\noperativa la Línea de 132 kV Tablada – Oeste. Esto asociado a la ET Oeste Nueva (GIS), jurisdicción de\nEPEC en la provincia de Córdoba .\nEl 16/06/2026 quedaron E/S por primera vez las Líneas de 132 kV San Martín – Mendoza y Mendoza –\nRosario Centro asociadas a la nueva ET Mendoza, jurisdicción de EPESF, seccionando la Línea de 132 kV\nSan Martin – Rosario Centro en la provincia de Santa Fe.\nEl 17/06/2026 tomó carga por primera vez la Línea de 500 kV Salto Grande Uruguay – Chamberlain ,\njurisdicción de UTE.",
+      "Nuevo Equipamiento de Generación\nEl 13/06/2026 se habilitó comercialmente en el MEM del Parque Solar Fotovoltaico “SAN\nLUIS OESTE” (TECSOL S.A.) por una potencia de 8.87 MW. Se conecta en el nivel de 33\nkV la ET CT 23, jurisdicción de EDESAL, en la provincia de San Luis.\nEl 01/07/2026 se habilitó la operación comercial en el MEM del Parque Solar “Bella Vista\nSecco” (INDUSTRIAS JUAN F. SECCO S.A.) por una potencia de 7 MW. Se conecta en el\nnivel de 33 kV la ET Bella Vista, jurisdicción de DPEC, en la provincia de Corrientes.\nEl 03/07/2026 se habilitó la operación comercial en el MEM del Parque Solar Fotovoltaico\n“360 E Palomar” (PEUGEOT CITROËN ARGENTINA S.A.) por un incremento de potencia de\n5 MW, totalizando 11 MW. Se conecta en el nivel de 33 kV la ET Sevel jurisdicción de\nEDENOR, en Gran Buenos Aires.",
+      "Nuevo Equipamiento de Generación\nEl 03/07/2026 se habilitó una nueva Unidad de mediciones Fasoriales PMU “San Luis\nOeste” ubicado en el FV homónimo. Se vincula a la ET San Luis Centro en el nivel de 33\nkV, jurisdicción de EDESAL , en la provincia de San Luis."
+    ]
   }
 }
