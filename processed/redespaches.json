@@ -2479,5 +2479,362 @@
       "importacion": 221.59156012905478,
       "bombeo": 6.5421
     }
+  },
+  "29": {
+    "archivo_origen": "redespacho_20260714.xls",
+    "num_semana": 29,
+    "fecha_emision": "2026-07-14T18:45:15",
+    "motivos": [
+      "MENOR DEMANDA",
+      "MAYOR DISPONIBILIDAD DE YACYRETÁ POR MAYORES APORTES",
+      "MAYOR DISPONIBILIDAD DE GAS PARA USINAS",
+      "CEPUCC11 INDISPONIBLE DESDE EL JUEVES HASTA EL DOMINGO POR MS",
+      "TER6CC INDISPONIBLE DESDE EL JUEVES HASTA EL DOMINGO POR MS"
+    ],
+    "fechas_dias": [
+      "2026-07-13",
+      "2026-07-14",
+      "2026-07-15",
+      "2026-07-16",
+      "2026-07-17",
+      "2026-07-18",
+      "2026-07-19"
+    ],
+    "balance_diario_gwh": {
+      "DEMANDA+BOMBEO": [
+        null,
+        474.84761,
+        458.18323,
+        443.04062,
+        435.08047999999997,
+        404.87170000000003,
+        411.40717
+      ],
+      "TÉRMICO": [
+        null,
+        227.15032,
+        219.14377,
+        215.39855,
+        214.81385,
+        210.62944,
+        206.36775
+      ],
+      "NUCLEAR": [
+        null,
+        33.816,
+        33.816,
+        33.816,
+        33.816,
+        33.816,
+        33.816
+      ],
+      "HIDRÁULICO": [
+        null,
+        119.86729,
+        113.70247,
+        114.39933,
+        108.27664,
+        88.49526,
+        99.17841
+      ],
+      "RENOVABLE": [
+        null,
+        64.974,
+        62.481,
+        50.583,
+        49.134,
+        42.891,
+        43.005
+      ],
+      "IMPORTACIÓN": [
+        null,
+        29.04,
+        29.04,
+        28.84374,
+        29.04,
+        29.04,
+        29.04
+      ],
+      "EXPORTACIÓN TOTAL": [
+        null,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "hidro_centrales_mwh": {
+      "ALICURÁ": [
+        null,
+        2000.0,
+        3000.0,
+        2092.5,
+        2092.5,
+        683.89,
+        2092.5
+      ],
+      "PIEDRA": [
+        null,
+        15000.0,
+        18000.0,
+        16740.0,
+        15960.14,
+        2790.0,
+        12606.66
+      ],
+      "PICHI LEUFU": [
+        null,
+        2941.1764705882356,
+        3529.4117647058824,
+        3324.34,
+        2244.48,
+        1384.56,
+        1593.3
+      ],
+      "CHOCÓN": [
+        null,
+        3000.0,
+        2000.0,
+        2343.6,
+        2343.6,
+        1097.0,
+        578.45
+      ],
+      "P.BAND.": [
+        null,
+        448.42,
+        448.42,
+        448.42,
+        448.42,
+        448.42,
+        448.42
+      ],
+      "NIHUILES": [
+        null,
+        225.0,
+        675.0,
+        225.0,
+        675.0,
+        675.0,
+        606.89
+      ],
+      "AGUA DE TORO": [
+        null,
+        450.0,
+        0.0,
+        450.0,
+        462.27,
+        450.0,
+        450.0
+      ],
+      "REYUNOS": [
+        null,
+        340.0,
+        340.0,
+        340.0,
+        340.0,
+        340.0,
+        340.0
+      ],
+      "CABRA CORRAL": [
+        null,
+        900.0,
+        900.0,
+        900.0,
+        900.0,
+        720.0,
+        720.0
+      ],
+      "RIO GRANDE": [
+        null,
+        974.2,
+        648.0,
+        648.0,
+        648.0,
+        502.2,
+        338.0
+      ],
+      "SALTO GRANDE": [
+        null,
+        19200.0,
+        19200.0,
+        19200.0,
+        19200.0,
+        19200.0,
+        19200.0
+      ],
+      "YACYRETÁ": [
+        null,
+        56000.0,
+        57000.0,
+        57000.0,
+        53000.0,
+        51000.0,
+        51000.0
+      ],
+      "FUTALEUFÚ": [
+        null,
+        5610.0,
+        4562.18,
+        5610.0,
+        5084.76,
+        4562.18,
+        4562.18
+      ],
+      "AMEGHINO": [
+        null,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "combustibles": {
+      "Gas (Dam3)": {
+        "dias": [
+          null,
+          41000.0,
+          41000.0,
+          40999.99,
+          40758.79,
+          40433.18,
+          39383.95
+        ],
+        "total": 243575.90999999997,
+        "unidad": "Dam³"
+      },
+      "GO": {
+        "dias": [
+          null,
+          2223.29,
+          744.49,
+          303.31,
+          425.79,
+          250.24,
+          199.13
+        ],
+        "total": 4146.25,
+        "unidad": "m³"
+      },
+      "FO": {
+        "dias": [
+          null,
+          705.77,
+          631.49,
+          614.17,
+          480.19,
+          141.2,
+          428.82
+        ],
+        "total": 3001.64,
+        "unidad": "Ton"
+      },
+      "CM": {
+        "dias": [
+          null,
+          3563.28,
+          3563.28,
+          3319.26,
+          3563.28,
+          3563.28,
+          3563.28
+        ],
+        "total": 21135.66,
+        "unidad": "Ton"
+      }
+    },
+    "cotas_previstas": {
+      "ALICURÁ": {
+        "cota": 698.4514704269606,
+        "comentario": "0.00 RESTRINGIDO POR OPERACIÓN DE MEDIANO PLAZO."
+      },
+      "PIEDRA": {
+        "cota": 574.8082560852507,
+        "comentario": "60.00 CONDICIONADO  POR OPERACIÓN DE MEDIANO PLAZO."
+      },
+      "CHOCÓN": {
+        "cota": 374.07832441911773,
+        "comentario": "60.00 CONDICIONADO POR OPERACIÓN DE MEDIANO PLAZO."
+      },
+      "P.BAND.": {
+        "cota": 411.99475149261343,
+        "comentario": "60.00 CONDICIONADO POR OPERACIÓN DE MEDIANO PLAZO."
+      },
+      "NIHUIL (Hm3)": {
+        "cota": null,
+        "comentario": null
+      },
+      "TORO (Hm3)": {
+        "cota": null,
+        "comentario": null
+      },
+      "R.GRANDE": {
+        "cota": 873.9569143021472,
+        "comentario": "60.00 RESTRINGIDO POR OPERACIÓN DE MEDIANO PLAZO."
+      },
+      "C.CORRAL": {
+        "cota": null,
+        "comentario": null
+      },
+      "FUTALEUFÚ": {
+        "cota": 473.25128949847027,
+        "comentario": "60.00 CONDICIONADO POR OPERACIÓN DE MEDIANO PLAZO."
+      },
+      "AMEGUINO": {
+        "cota": 132.02062897731622,
+        "comentario": "0.00 RESTRINGIDO, PRÓXIMO VALOR SUP A UNIDADES CON COMB LÍQ DESPACHADAS."
+      }
+    },
+    "costos_marginales": {
+      "VALLE": {
+        "dias": [
+          null,
+          201469.76,
+          201469.76,
+          201469.76,
+          201469.76,
+          201469.76,
+          201469.76
+        ],
+        "promedio": null
+      },
+      "RESTO": {
+        "dias": [
+          null,
+          263250.66,
+          263250.66,
+          263250.66,
+          263250.66,
+          263250.66,
+          263250.66
+        ],
+        "promedio": null
+      },
+      "PICO": {
+        "dias": [
+          null,
+          262762.07,
+          262762.07,
+          262762.07,
+          262762.07,
+          262762.07,
+          262762.07
+        ],
+        "promedio": null
+      }
+    },
+    "balance_semanal_gwh": {
+      "demanda_bruta": 3150.2319188685788,
+      "termico": 1577.9635296503345,
+      "hidraulico": 770.9479492139906,
+      "nuclear": 236.788380859375,
+      "renovable": 363.1827935930025,
+      "importacion": 202.0942601290548,
+      "bombeo": 4.96395
+    }
   }
 }
