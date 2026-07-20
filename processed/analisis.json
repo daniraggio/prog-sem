@@ -10,9 +10,10 @@
     26,
     27,
     28,
-    29
+    29,
+    30
   ],
-  "ultima_semana": 29,
+  "ultima_semana": 30,
   "unidades_combustible": {
     "Carbon": "Ton",
     "Dies_Oil": "m³",
@@ -62322,6 +62323,5593 @@
           "sin_datos": false
         }
       ]
+    },
+    "30": {
+      "num_semana": 30,
+      "finicio": "07/20/26 00:00:00",
+      "semana_anterior": 29,
+      "temperatura_media": {
+        "actual": 11.4,
+        "anterior": 12.5
+      },
+      "generacion_por_tecnologia": {
+        "actual": {
+          "Hidráulica": 746008.0,
+          "Importación": 203280.0,
+          "Nuclear": 236712.0,
+          "Renovable": 414060.0,
+          "Térmica": 1460990.0,
+          "__total__": 3061050.0,
+          "Hidráulica_pct": 24.4,
+          "Importación_pct": 6.6,
+          "Nuclear_pct": 7.7,
+          "Renovable_pct": 13.5,
+          "Térmica_pct": 47.7
+        },
+        "anterior": {
+          "Hidráulica": 755013.0,
+          "Importación": 198144.0,
+          "Nuclear": 236376.0,
+          "Renovable": 458799.0,
+          "Térmica": 1631347.0,
+          "__total__": 3279679.0,
+          "Hidráulica_pct": 23.0,
+          "Importación_pct": 6.0,
+          "Nuclear_pct": 7.2,
+          "Renovable_pct": 14.0,
+          "Térmica_pct": 49.7
+        }
+      },
+      "demanda": {
+        "demanda_neta": {
+          "actual": 3007066.0,
+          "anterior": 3223074.0,
+          "variacion_pct": -6.7
+        },
+        "demanda_bruta": {
+          "actual": 3049994.0,
+          "anterior": 3268495.0,
+          "variacion_pct": -6.7
+        },
+        "importacion": {
+          "actual": 203280.0,
+          "anterior": 198144.0,
+          "variacion_pct": 2.6
+        },
+        "exportacion": {
+          "actual": 0.0,
+          "anterior": 0.0,
+          "variacion_pct": null
+        }
+      },
+      "centrales": [
+        {
+          "central": "LA PLATA COG",
+          "region": "ABA",
+          "tecnologia": "Térmica",
+          "mwh_actual": 13524.0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": "ENTRA_EN_SERVICIO",
+          "mw_equiv": 80.5,
+          "cambio_relevante": true
+        },
+        {
+          "central": "COG A SECO",
+          "region": "LIT",
+          "tecnologia": "Térmica",
+          "mwh_actual": 16864.0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": "ENTRA_EN_SERVICIO",
+          "mw_equiv": 100.4,
+          "cambio_relevante": true
+        },
+        {
+          "central": "C DE LA COSTA",
+          "region": "ESE",
+          "tecnologia": "Térmica",
+          "mwh_actual": 4922.0,
+          "mwh_anterior": 438.0,
+          "variacion_pct": 1023.7,
+          "evento": null,
+          "mw_equiv": 29.3,
+          "cambio_relevante": true
+        },
+        {
+          "central": "ALICURA",
+          "region": "CHO",
+          "tecnologia": "Hidráulica",
+          "mwh_actual": 36687.0,
+          "mwh_anterior": 16995.0,
+          "variacion_pct": 115.9,
+          "evento": null,
+          "mw_equiv": 218.4,
+          "cambio_relevante": true
+        },
+        {
+          "central": "AES ULLUM",
+          "region": "CUY",
+          "tecnologia": "Hidráulica",
+          "mwh_actual": 0,
+          "mwh_anterior": 2222.0,
+          "variacion_pct": -100.0,
+          "evento": "SALE_DE_SERVICIO",
+          "mw_equiv": 0.0,
+          "cambio_relevante": true
+        },
+        {
+          "central": "PUNTA NEGRA",
+          "region": "CUY",
+          "tecnologia": "Hidráulica",
+          "mwh_actual": 0,
+          "mwh_anterior": 2716.0,
+          "variacion_pct": -100.0,
+          "evento": "SALE_DE_SERVICIO",
+          "mw_equiv": 0.0,
+          "cambio_relevante": true
+        },
+        {
+          "central": "TamberÃ­as",
+          "region": "CUY",
+          "tecnologia": "Renovable",
+          "mwh_actual": 0,
+          "mwh_anterior": 105.0,
+          "variacion_pct": -100.0,
+          "evento": "SALE_DE_SERVICIO",
+          "mw_equiv": 0.0,
+          "cambio_relevante": true
+        },
+        {
+          "central": "CT NOA",
+          "region": "NOA",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 699.0,
+          "variacion_pct": -100.0,
+          "evento": "SALE_DE_SERVICIO",
+          "mw_equiv": 0.0,
+          "cambio_relevante": true
+        },
+        {
+          "central": "G SAN MARTIN",
+          "region": "LIT",
+          "tecnologia": "Térmica",
+          "mwh_actual": 2098.0,
+          "mwh_anterior": 61678.0,
+          "variacion_pct": -96.6,
+          "evento": null,
+          "mw_equiv": 12.5,
+          "cambio_relevante": true
+        },
+        {
+          "central": "MEDITERRANEA",
+          "region": "EPE",
+          "tecnologia": "Térmica",
+          "mwh_actual": 472.0,
+          "mwh_anterior": 8776.0,
+          "variacion_pct": -94.6,
+          "evento": null,
+          "mw_equiv": 2.8,
+          "cambio_relevante": true
+        },
+        {
+          "central": "ROJO RIO ENERGY",
+          "region": "LIT",
+          "tecnologia": "Térmica",
+          "mwh_actual": 1950.0,
+          "mwh_anterior": 18384.0,
+          "variacion_pct": -89.4,
+          "evento": null,
+          "mw_equiv": 11.6,
+          "cambio_relevante": true
+        },
+        {
+          "central": "VILLA MARIA UENSA",
+          "region": "EPE",
+          "tecnologia": "Térmica",
+          "mwh_actual": 2334.0,
+          "mwh_anterior": 1287.0,
+          "variacion_pct": 81.4,
+          "evento": null,
+          "mw_equiv": 13.9,
+          "cambio_relevante": true
+        },
+        {
+          "central": "INDEPENDENCIA",
+          "region": "NOA",
+          "tecnologia": "Térmica",
+          "mwh_actual": 750.0,
+          "mwh_anterior": 3047.0,
+          "variacion_pct": -75.4,
+          "evento": null,
+          "mw_equiv": 4.5,
+          "cambio_relevante": true
+        },
+        {
+          "central": "CAÃ‘A DE GOMEZ SECCO",
+          "region": "LIT",
+          "tecnologia": "Térmica",
+          "mwh_actual": 1118.0,
+          "mwh_anterior": 4290.0,
+          "variacion_pct": -73.9,
+          "evento": null,
+          "mw_equiv": 6.7,
+          "cambio_relevante": true
+        },
+        {
+          "central": "GUILLERMO BROWN",
+          "region": "ESE",
+          "tecnologia": "Térmica",
+          "mwh_actual": 9240.0,
+          "mwh_anterior": 32485.0,
+          "variacion_pct": -71.6,
+          "evento": null,
+          "mw_equiv": 55.0,
+          "cambio_relevante": true
+        },
+        {
+          "central": "CT TUCUMAN",
+          "region": "NOA",
+          "tecnologia": "Térmica",
+          "mwh_actual": 46455.0,
+          "mwh_anterior": 27195.0,
+          "variacion_pct": 70.8,
+          "evento": null,
+          "mw_equiv": 276.5,
+          "cambio_relevante": true
+        },
+        {
+          "central": "SAN PEDRO SPI",
+          "region": "LIT",
+          "tecnologia": "Térmica",
+          "mwh_actual": 22086.0,
+          "mwh_anterior": 13974.0,
+          "variacion_pct": 58.1,
+          "evento": null,
+          "mw_equiv": 131.5,
+          "cambio_relevante": true
+        },
+        {
+          "central": "EZEIZA",
+          "region": "EZE",
+          "tecnologia": "Térmica",
+          "mwh_actual": 11268.0,
+          "mwh_anterior": 25781.0,
+          "variacion_pct": -56.3,
+          "evento": null,
+          "mw_equiv": 67.1,
+          "cambio_relevante": true
+        },
+        {
+          "central": "AES CARACOLES",
+          "region": "CUY",
+          "tecnologia": "Hidráulica",
+          "mwh_actual": 2052.0,
+          "mwh_anterior": 4270.0,
+          "variacion_pct": -51.9,
+          "evento": null,
+          "mw_equiv": 12.2,
+          "cambio_relevante": true
+        },
+        {
+          "central": "DIADEMA",
+          "region": "S33",
+          "tecnologia": "Renovable",
+          "mwh_actual": 228.0,
+          "mwh_anterior": 468.0,
+          "variacion_pct": -51.3,
+          "evento": null,
+          "mw_equiv": 1.4,
+          "cambio_relevante": true
+        },
+        {
+          "central": "CHOCON",
+          "region": "CHO",
+          "tecnologia": "Hidráulica",
+          "mwh_actual": 31617.0,
+          "mwh_anterior": 21707.0,
+          "variacion_pct": 45.7,
+          "evento": null,
+          "mw_equiv": 188.2,
+          "cambio_relevante": true
+        },
+        {
+          "central": "DIADEMA 2",
+          "region": "S33",
+          "tecnologia": "Renovable",
+          "mwh_actual": 1035.0,
+          "mwh_anterior": 1830.0,
+          "variacion_pct": -43.4,
+          "evento": null,
+          "mw_equiv": 6.2,
+          "cambio_relevante": true
+        },
+        {
+          "central": "COSTANERA",
+          "region": "ABA",
+          "tecnologia": "Térmica",
+          "mwh_actual": 19032.0,
+          "mwh_anterior": 33410.0,
+          "variacion_pct": -43.0,
+          "evento": null,
+          "mw_equiv": 113.3,
+          "cambio_relevante": true
+        },
+        {
+          "central": "LOS DIAGUITAS",
+          "region": "CUY",
+          "tecnologia": "Renovable",
+          "mwh_actual": 60.0,
+          "mwh_anterior": 105.0,
+          "variacion_pct": -42.9,
+          "evento": null,
+          "mw_equiv": 0.4,
+          "cambio_relevante": true
+        },
+        {
+          "central": "KOSTEN",
+          "region": "SUR",
+          "tecnologia": "Renovable",
+          "mwh_actual": 1200.0,
+          "mwh_anterior": 2037.0,
+          "variacion_pct": -41.1,
+          "evento": null,
+          "mw_equiv": 7.1,
+          "cambio_relevante": true
+        },
+        {
+          "central": "MANTIALES",
+          "region": "SUR",
+          "tecnologia": "Renovable",
+          "mwh_actual": 5397.0,
+          "mwh_anterior": 8895.0,
+          "variacion_pct": -39.3,
+          "evento": null,
+          "mw_equiv": 32.1,
+          "cambio_relevante": true
+        },
+        {
+          "central": "LOS HERCULES",
+          "region": "SUR",
+          "tecnologia": "Renovable",
+          "mwh_actual": 4413.0,
+          "mwh_anterior": 7224.0,
+          "variacion_pct": -38.9,
+          "evento": null,
+          "mw_equiv": 26.3,
+          "cambio_relevante": true
+        },
+        {
+          "central": "G BELGRANO",
+          "region": "LIT",
+          "tecnologia": "Térmica",
+          "mwh_actual": 53187.0,
+          "mwh_anterior": 83853.0,
+          "variacion_pct": -36.6,
+          "evento": null,
+          "mw_equiv": 316.6,
+          "cambio_relevante": true
+        },
+        {
+          "central": "MALASPINA",
+          "region": "SUR",
+          "tecnologia": "Renovable",
+          "mwh_actual": 2565.0,
+          "mwh_anterior": 3993.0,
+          "variacion_pct": -35.8,
+          "evento": null,
+          "mw_equiv": 15.3,
+          "cambio_relevante": true
+        },
+        {
+          "central": "CT BARRAGAN",
+          "region": "ABA",
+          "tecnologia": "Térmica",
+          "mwh_actual": 44100.0,
+          "mwh_anterior": 67993.0,
+          "variacion_pct": -35.1,
+          "evento": null,
+          "mw_equiv": 262.5,
+          "cambio_relevante": true
+        },
+        {
+          "central": "EL MARCADO",
+          "region": "CUY",
+          "tecnologia": "Renovable",
+          "mwh_actual": 120.0,
+          "mwh_anterior": 180.0,
+          "variacion_pct": -33.3,
+          "evento": null,
+          "mw_equiv": 0.7,
+          "cambio_relevante": true
+        },
+        {
+          "central": "BICENTENARIO",
+          "region": "SUR",
+          "tecnologia": "Renovable",
+          "mwh_actual": 5796.0,
+          "mwh_anterior": 8412.0,
+          "variacion_pct": -31.1,
+          "evento": null,
+          "mw_equiv": 34.5,
+          "cambio_relevante": true
+        },
+        {
+          "central": "BICENTENARIO 2",
+          "region": "SUR",
+          "tecnologia": "Renovable",
+          "mwh_actual": 1461.0,
+          "mwh_anterior": 2055.0,
+          "variacion_pct": -28.9,
+          "evento": null,
+          "mw_equiv": 8.7,
+          "cambio_relevante": true
+        },
+        {
+          "central": "BARKER UGEN",
+          "region": "ESE",
+          "tecnologia": "Térmica",
+          "mwh_actual": 552.0,
+          "mwh_anterior": 757.0,
+          "variacion_pct": -27.1,
+          "evento": null,
+          "mw_equiv": 3.3,
+          "cambio_relevante": true
+        },
+        {
+          "central": "ARAUCO 2 E3Y4",
+          "region": "NOA",
+          "tecnologia": "Renovable",
+          "mwh_actual": 6972.0,
+          "mwh_anterior": 5511.0,
+          "variacion_pct": 26.5,
+          "evento": null,
+          "mw_equiv": 41.5,
+          "cambio_relevante": true
+        },
+        {
+          "central": "RAWSON",
+          "region": "S33",
+          "tecnologia": "Renovable",
+          "mwh_actual": 5748.0,
+          "mwh_anterior": 7635.0,
+          "variacion_pct": -24.7,
+          "evento": null,
+          "mw_equiv": 34.2,
+          "cambio_relevante": true
+        },
+        {
+          "central": "ARAUCO 1 SAPEM",
+          "region": "NOA",
+          "tecnologia": "Renovable",
+          "mwh_actual": 1710.0,
+          "mwh_anterior": 1374.0,
+          "variacion_pct": 24.5,
+          "evento": null,
+          "mw_equiv": 10.2,
+          "cambio_relevante": true
+        },
+        {
+          "central": "GARAYALDE",
+          "region": "NOR",
+          "tecnologia": "Renovable",
+          "mwh_actual": 1695.0,
+          "mwh_anterior": 2235.0,
+          "variacion_pct": -24.2,
+          "evento": null,
+          "mw_equiv": 10.1,
+          "cambio_relevante": true
+        },
+        {
+          "central": "ARAUCO 2 SAPEM",
+          "region": "NOA",
+          "tecnologia": "Renovable",
+          "mwh_actual": 1404.0,
+          "mwh_anterior": 1134.0,
+          "variacion_pct": 23.8,
+          "evento": null,
+          "mw_equiv": 8.4,
+          "cambio_relevante": true
+        },
+        {
+          "central": "ARAUCO 2 E1Y2",
+          "region": "NOA",
+          "tecnologia": "Renovable",
+          "mwh_actual": 6894.0,
+          "mwh_anterior": 5571.0,
+          "variacion_pct": 23.7,
+          "evento": null,
+          "mw_equiv": 41.0,
+          "cambio_relevante": true
+        },
+        {
+          "central": "LA RIOJA 3",
+          "region": "NOA",
+          "tecnologia": "Renovable",
+          "mwh_actual": 750.0,
+          "mwh_anterior": 975.0,
+          "variacion_pct": -23.1,
+          "evento": null,
+          "mw_equiv": 4.5,
+          "cambio_relevante": true
+        },
+        {
+          "central": "ING. JUAREZ",
+          "region": "NEA",
+          "tecnologia": "Renovable",
+          "mwh_actual": 315.0,
+          "mwh_anterior": 405.0,
+          "variacion_pct": -22.2,
+          "evento": null,
+          "mw_equiv": 1.9,
+          "cambio_relevante": true
+        },
+        {
+          "central": "TABACAL",
+          "region": "NON",
+          "tecnologia": "Térmica",
+          "mwh_actual": 4200.0,
+          "mwh_anterior": 5376.0,
+          "variacion_pct": -21.9,
+          "evento": null,
+          "mw_equiv": 25.0,
+          "cambio_relevante": true
+        },
+        {
+          "central": "PICHI PICUN LEUFU",
+          "region": "CHO",
+          "tecnologia": "Hidráulica",
+          "mwh_actual": 18301.0,
+          "mwh_anterior": 23367.0,
+          "variacion_pct": -21.7,
+          "evento": null,
+          "mw_equiv": 108.9,
+          "cambio_relevante": true
+        },
+        {
+          "central": "CAÃ‘ADON LEON",
+          "region": "SUR",
+          "tecnologia": "Renovable",
+          "mwh_actual": 8235.0,
+          "mwh_anterior": 10416.0,
+          "variacion_pct": -20.9,
+          "evento": null,
+          "mw_equiv": 49.0,
+          "cambio_relevante": true
+        },
+        {
+          "central": "LOMA BLANCA IV",
+          "region": "S33",
+          "tecnologia": "Renovable",
+          "mwh_actual": 3303.0,
+          "mwh_anterior": 4140.0,
+          "variacion_pct": -20.2,
+          "evento": null,
+          "mw_equiv": 19.7,
+          "cambio_relevante": true
+        },
+        {
+          "central": "ALGARROBO",
+          "region": "CUY",
+          "tecnologia": "Renovable",
+          "mwh_actual": 120.0,
+          "mwh_anterior": 150.0,
+          "variacion_pct": -20.0,
+          "evento": null,
+          "mw_equiv": 0.7,
+          "cambio_relevante": true
+        },
+        {
+          "central": "ULLUM 4",
+          "region": "CUY",
+          "tecnologia": "Renovable",
+          "mwh_actual": 300.0,
+          "mwh_anterior": 375.0,
+          "variacion_pct": -20.0,
+          "evento": null,
+          "mw_equiv": 1.8,
+          "cambio_relevante": true
+        },
+        {
+          "central": "ENARSA",
+          "region": "LIT",
+          "tecnologia": "Térmica",
+          "mwh_actual": 228.0,
+          "mwh_anterior": 285.0,
+          "variacion_pct": -20.0,
+          "evento": null,
+          "mw_equiv": 1.4,
+          "cambio_relevante": true
+        },
+        {
+          "central": "ENARSA",
+          "region": "NON",
+          "tecnologia": "Térmica",
+          "mwh_actual": 185.0,
+          "mwh_anterior": 230.0,
+          "variacion_pct": -19.6,
+          "evento": null,
+          "mw_equiv": 1.1,
+          "cambio_relevante": true
+        },
+        {
+          "central": "PIEDRA DEL AGUILA",
+          "region": "CHO",
+          "tecnologia": "Hidráulica",
+          "mwh_actual": 94459.0,
+          "mwh_anterior": 116178.0,
+          "variacion_pct": -18.7,
+          "evento": null,
+          "mw_equiv": 562.3,
+          "cambio_relevante": true
+        },
+        {
+          "central": "LOMA BLACA VI",
+          "region": "S33",
+          "tecnologia": "Renovable",
+          "mwh_actual": 8436.0,
+          "mwh_anterior": 10359.0,
+          "variacion_pct": -18.6,
+          "evento": null,
+          "mw_equiv": 50.2,
+          "cambio_relevante": true
+        },
+        {
+          "central": "ZARATE",
+          "region": "LIT",
+          "tecnologia": "Térmica",
+          "mwh_actual": 2432.0,
+          "mwh_anterior": 2968.0,
+          "variacion_pct": -18.1,
+          "evento": null,
+          "mw_equiv": 14.5,
+          "cambio_relevante": true
+        },
+        {
+          "central": "VILLALONGA 2",
+          "region": "BBL",
+          "tecnologia": "Renovable",
+          "mwh_actual": 276.0,
+          "mwh_anterior": 336.0,
+          "variacion_pct": -17.9,
+          "evento": null,
+          "mw_equiv": 1.6,
+          "cambio_relevante": true
+        },
+        {
+          "central": "CAIMANCITO",
+          "region": "NON",
+          "tecnologia": "Térmica",
+          "mwh_actual": 1529.0,
+          "mwh_anterior": 1854.0,
+          "variacion_pct": -17.5,
+          "evento": null,
+          "mw_equiv": 9.1,
+          "cambio_relevante": true
+        },
+        {
+          "central": "Pampa EnergÃ­a 3",
+          "region": "BBL",
+          "tecnologia": "Renovable",
+          "mwh_actual": 4395.0,
+          "mwh_anterior": 3744.0,
+          "variacion_pct": 17.4,
+          "evento": null,
+          "mw_equiv": 26.2,
+          "cambio_relevante": true
+        },
+        {
+          "central": "ALUA 1",
+          "region": "S33",
+          "tecnologia": "Renovable",
+          "mwh_actual": 5109.0,
+          "mwh_anterior": 6174.0,
+          "variacion_pct": -17.2,
+          "evento": null,
+          "mw_equiv": 30.4,
+          "cambio_relevante": true
+        },
+        {
+          "central": "LOMA BLANCA III",
+          "region": "S33",
+          "tecnologia": "Renovable",
+          "mwh_actual": 4635.0,
+          "mwh_anterior": 5577.0,
+          "variacion_pct": -16.9,
+          "evento": null,
+          "mw_equiv": 27.6,
+          "cambio_relevante": true
+        },
+        {
+          "central": "P. MADRYN II",
+          "region": "S33",
+          "tecnologia": "Renovable",
+          "mwh_actual": 11622.0,
+          "mwh_anterior": 13983.0,
+          "variacion_pct": -16.9,
+          "evento": null,
+          "mw_equiv": 69.2,
+          "cambio_relevante": true
+        },
+        {
+          "central": "ALUA auto gen",
+          "region": "S33",
+          "tecnologia": "Renovable",
+          "mwh_actual": 13980.0,
+          "mwh_anterior": 16782.0,
+          "variacion_pct": -16.7,
+          "evento": null,
+          "mw_equiv": 83.2,
+          "cambio_relevante": true
+        },
+        {
+          "central": "GENNEIA",
+          "region": "ESE",
+          "tecnologia": "Térmica",
+          "mwh_actual": 874.0,
+          "mwh_anterior": 1048.0,
+          "variacion_pct": -16.6,
+          "evento": null,
+          "mw_equiv": 5.2,
+          "cambio_relevante": true
+        },
+        {
+          "central": "P. MADRYN I",
+          "region": "S33",
+          "tecnologia": "Renovable",
+          "mwh_actual": 5412.0,
+          "mwh_anterior": 6465.0,
+          "variacion_pct": -16.3,
+          "evento": null,
+          "mw_equiv": 32.2,
+          "cambio_relevante": true
+        },
+        {
+          "central": "PILAR BS AS",
+          "region": "ROD",
+          "tecnologia": "Térmica",
+          "mwh_actual": 12461.0,
+          "mwh_anterior": 10724.0,
+          "variacion_pct": 16.2,
+          "evento": null,
+          "mw_equiv": 74.2,
+          "cambio_relevante": true
+        },
+        {
+          "central": "FUTALEUFU",
+          "region": "FUT",
+          "tecnologia": "Hidráulica",
+          "mwh_actual": 36170.0,
+          "mwh_anterior": 43112.0,
+          "variacion_pct": -16.1,
+          "evento": null,
+          "mw_equiv": 215.3,
+          "cambio_relevante": true
+        },
+        {
+          "central": "CHUBUT NORTE",
+          "region": "S33",
+          "tecnologia": "Renovable",
+          "mwh_actual": 15594.0,
+          "mwh_anterior": 18576.0,
+          "variacion_pct": -16.1,
+          "evento": null,
+          "mw_equiv": 92.8,
+          "cambio_relevante": true
+        },
+        {
+          "central": "CA_HONDA",
+          "region": "CUY",
+          "tecnologia": "Renovable",
+          "mwh_actual": 330.0,
+          "mwh_anterior": 390.0,
+          "variacion_pct": -15.4,
+          "evento": null,
+          "mw_equiv": 2.0,
+          "cambio_relevante": true
+        },
+        {
+          "central": "SAN LUIS N",
+          "region": "EPE",
+          "tecnologia": "Renovable",
+          "mwh_actual": 7212.0,
+          "mwh_anterior": 8517.0,
+          "variacion_pct": -15.3,
+          "evento": null,
+          "mw_equiv": 42.9,
+          "cambio_relevante": true
+        },
+        {
+          "central": "PIQUIRENDA",
+          "region": "NON",
+          "tecnologia": "Térmica",
+          "mwh_actual": 525.0,
+          "mwh_anterior": 615.0,
+          "variacion_pct": -14.6,
+          "evento": null,
+          "mw_equiv": 3.1,
+          "cambio_relevante": true
+        },
+        {
+          "central": "ENERGIA DEL SUR",
+          "region": "SUR",
+          "tecnologia": "Térmica",
+          "mwh_actual": 8971.0,
+          "mwh_anterior": 7829.0,
+          "variacion_pct": 14.6,
+          "evento": null,
+          "mw_equiv": 53.4,
+          "cambio_relevante": true
+        },
+        {
+          "central": "LOMA BLANCA II",
+          "region": "S33",
+          "tecnologia": "Renovable",
+          "mwh_actual": 4524.0,
+          "mwh_anterior": 5292.0,
+          "variacion_pct": -14.5,
+          "evento": null,
+          "mw_equiv": 26.9,
+          "cambio_relevante": true
+        },
+        {
+          "central": "LOMA BLANCA",
+          "region": "S33",
+          "tecnologia": "Renovable",
+          "mwh_actual": 4779.0,
+          "mwh_anterior": 5574.0,
+          "variacion_pct": -14.3,
+          "evento": null,
+          "mw_equiv": 28.4,
+          "cambio_relevante": true
+        },
+        {
+          "central": "PIEDRA BUENA",
+          "region": "BBL",
+          "tecnologia": "Térmica",
+          "mwh_actual": 1746.0,
+          "mwh_anterior": 2037.0,
+          "variacion_pct": -14.3,
+          "evento": null,
+          "mw_equiv": 10.4,
+          "cambio_relevante": true
+        },
+        {
+          "central": "LA RINCONADA",
+          "region": "ESE",
+          "tecnologia": "Renovable",
+          "mwh_actual": 6879.0,
+          "mwh_anterior": 8022.0,
+          "variacion_pct": -14.2,
+          "evento": null,
+          "mw_equiv": 40.9,
+          "cambio_relevante": true
+        },
+        {
+          "central": "VILLA OCAMPO SECCO",
+          "region": "LIT",
+          "tecnologia": "Térmica",
+          "mwh_actual": 873.0,
+          "mwh_anterior": 1018.0,
+          "variacion_pct": -14.2,
+          "evento": null,
+          "mw_equiv": 5.2,
+          "cambio_relevante": true
+        },
+        {
+          "central": "CH EMSE",
+          "region": "CUY",
+          "tecnologia": "Hidráulica",
+          "mwh_actual": 4930.0,
+          "mwh_anterior": 5740.0,
+          "variacion_pct": -14.1,
+          "evento": null,
+          "mw_equiv": 29.3,
+          "cambio_relevante": true
+        },
+        {
+          "central": "LA SALVAC. AMP 1",
+          "region": "EPN",
+          "tecnologia": "Renovable",
+          "mwh_actual": 285.0,
+          "mwh_anterior": 330.0,
+          "variacion_pct": -13.6,
+          "evento": null,
+          "mw_equiv": 1.7,
+          "cambio_relevante": true
+        },
+        {
+          "central": "CASA",
+          "region": "ESE",
+          "tecnologia": "Renovable",
+          "mwh_actual": 2634.0,
+          "mwh_anterior": 3042.0,
+          "variacion_pct": -13.4,
+          "evento": null,
+          "mw_equiv": 15.7,
+          "cambio_relevante": true
+        },
+        {
+          "central": "PLANICIE BANDERITA",
+          "region": "CHO",
+          "tecnologia": "Hidráulica",
+          "mwh_actual": 3546.0,
+          "mwh_anterior": 3139.0,
+          "variacion_pct": 13.0,
+          "evento": null,
+          "mw_equiv": 21.1,
+          "cambio_relevante": true
+        },
+        {
+          "central": "V. M. R. SECO",
+          "region": "EPN",
+          "tecnologia": "Renovable",
+          "mwh_actual": 210.0,
+          "mwh_anterior": 240.0,
+          "variacion_pct": -12.5,
+          "evento": null,
+          "mw_equiv": 1.2,
+          "cambio_relevante": true
+        },
+        {
+          "central": "SAN CARLOS",
+          "region": "NOA",
+          "tecnologia": "Renovable",
+          "mwh_actual": 525.0,
+          "mwh_anterior": 600.0,
+          "variacion_pct": -12.5,
+          "evento": null,
+          "mw_equiv": 3.1,
+          "cambio_relevante": true
+        },
+        {
+          "central": "ENARSA",
+          "region": "EPE",
+          "tecnologia": "Térmica",
+          "mwh_actual": 213.0,
+          "mwh_anterior": 243.0,
+          "variacion_pct": -12.3,
+          "evento": null,
+          "mw_equiv": 1.3,
+          "cambio_relevante": true
+        },
+        {
+          "central": "ULLUM 1",
+          "region": "CUY",
+          "tecnologia": "Renovable",
+          "mwh_actual": 690.0,
+          "mwh_anterior": 780.0,
+          "variacion_pct": -11.5,
+          "evento": null,
+          "mw_equiv": 4.1,
+          "cambio_relevante": true
+        },
+        {
+          "central": "LEVALLE II",
+          "region": "EPE",
+          "tecnologia": "Renovable",
+          "mwh_actual": 6261.0,
+          "mwh_anterior": 7062.0,
+          "variacion_pct": -11.3,
+          "evento": null,
+          "mw_equiv": 37.3,
+          "cambio_relevante": true
+        },
+        {
+          "central": "S DEL ULLUM",
+          "region": "CUY",
+          "tecnologia": "Renovable",
+          "mwh_actual": 2055.0,
+          "mwh_anterior": 2310.0,
+          "variacion_pct": -11.0,
+          "evento": null,
+          "mw_equiv": 12.2,
+          "cambio_relevante": true
+        },
+        {
+          "central": "PUERTO",
+          "region": "ROD",
+          "tecnologia": "Térmica",
+          "mwh_actual": 91069.0,
+          "mwh_anterior": 102226.0,
+          "variacion_pct": -10.9,
+          "evento": null,
+          "mw_equiv": 542.1,
+          "cambio_relevante": true
+        },
+        {
+          "central": "ACHIRAS",
+          "region": "EPE",
+          "tecnologia": "Renovable",
+          "mwh_actual": 3516.0,
+          "mwh_anterior": 3942.0,
+          "variacion_pct": -10.8,
+          "evento": null,
+          "mw_equiv": 20.9,
+          "cambio_relevante": true
+        },
+        {
+          "central": "V. ANGELA",
+          "region": "NEA",
+          "tecnologia": "Renovable",
+          "mwh_actual": 990.0,
+          "mwh_anterior": 1110.0,
+          "variacion_pct": -10.8,
+          "evento": null,
+          "mw_equiv": 5.9,
+          "cambio_relevante": true
+        },
+        {
+          "central": "LOS TEROS",
+          "region": "ESE",
+          "tecnologia": "Renovable",
+          "mwh_actual": 13191.0,
+          "mwh_anterior": 14769.0,
+          "variacion_pct": -10.7,
+          "evento": null,
+          "mw_equiv": 78.5,
+          "cambio_relevante": true
+        },
+        {
+          "central": "V. DE OLAVAR",
+          "region": "ESE",
+          "tecnologia": "Renovable",
+          "mwh_actual": 7077.0,
+          "mwh_anterior": 7926.0,
+          "variacion_pct": -10.7,
+          "evento": null,
+          "mw_equiv": 42.1,
+          "cambio_relevante": true
+        },
+        {
+          "central": "ECOENERGIA",
+          "region": "BBL",
+          "tecnologia": "Térmica",
+          "mwh_actual": 1462.0,
+          "mwh_anterior": 1630.0,
+          "variacion_pct": -10.3,
+          "evento": null,
+          "mw_equiv": 8.7,
+          "cambio_relevante": true
+        },
+        {
+          "central": "ENERGETICA",
+          "region": "BBL",
+          "tecnologia": "Renovable",
+          "mwh_actual": 5403.0,
+          "mwh_anterior": 6015.0,
+          "variacion_pct": -10.2,
+          "evento": null,
+          "mw_equiv": 32.2,
+          "cambio_relevante": true
+        },
+        {
+          "central": "HELIOS S. ROSA",
+          "region": "CUY",
+          "tecnologia": "Renovable",
+          "mwh_actual": 270.0,
+          "mwh_anterior": 300.0,
+          "variacion_pct": -10.0,
+          "evento": null,
+          "mw_equiv": 1.6,
+          "cambio_relevante": true
+        },
+        {
+          "central": "CHARATA 1",
+          "region": "NEA",
+          "tecnologia": "Renovable",
+          "mwh_actual": 405.0,
+          "mwh_anterior": 450.0,
+          "variacion_pct": -10.0,
+          "evento": null,
+          "mw_equiv": 2.4,
+          "cambio_relevante": true
+        },
+        {
+          "central": "CASA DE PIEDRA",
+          "region": "COM",
+          "tecnologia": "Hidráulica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "CH COMAHUE",
+          "region": "COM",
+          "tecnologia": "Hidráulica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "AES QULLUM",
+          "region": "CUY",
+          "tecnologia": "Hidráulica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "VALLE GRANDE",
+          "region": "CUY",
+          "tecnologia": "Hidráulica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "F AMEGHINO",
+          "region": "NOR",
+          "tecnologia": "Hidráulica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "GARIM",
+          "region": "GAR",
+          "tecnologia": "Importación",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "GUAIM",
+          "region": "NEA",
+          "tecnologia": "Importación",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "PLIIM",
+          "region": "NEA",
+          "tecnologia": "Importación",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "CHILE",
+          "region": "NON",
+          "tecnologia": "Importación",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "BATL",
+          "region": "URU",
+          "tecnologia": "Importación",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "CBMOT",
+          "region": "URU",
+          "tecnologia": "Importación",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "MALD",
+          "region": "URU",
+          "tecnologia": "Importación",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "PTIG",
+          "region": "URU",
+          "tecnologia": "Importación",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "TABL",
+          "region": "URU",
+          "tecnologia": "Importación",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "UTEIM",
+          "region": "UTE",
+          "tecnologia": "Importación",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "UTERN",
+          "region": "UTE",
+          "tecnologia": "Importación",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "LA BANDERITA 2",
+          "region": "CHO",
+          "tecnologia": "Renovable",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "COPEROTE 1",
+          "region": "CUY",
+          "tecnologia": "Renovable",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "P.S. PASIP",
+          "region": "CUY",
+          "tecnologia": "Renovable",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "V. M. R. SECO MATER",
+          "region": "EPN",
+          "tecnologia": "Renovable",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "JUME",
+          "region": "NOA",
+          "tecnologia": "Renovable",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "CAFAYATE",
+          "region": "NON",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "BUENOS AIRES",
+          "region": "ABA",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "DIQUE",
+          "region": "ABA",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "SHELL",
+          "region": "ABA",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "SOLALVAN",
+          "region": "BBL",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "AG. LOMITAS",
+          "region": "COM",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "ENARSA",
+          "region": "COM",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "ENTRE LOMAS",
+          "region": "COM",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "RINCON SAUCES",
+          "region": "COM",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "TERMOROCA",
+          "region": "COM",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "YPF P HERNANDEZ",
+          "region": "COM",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "AES SARC",
+          "region": "CUY",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "C DE PIEDRA",
+          "region": "CUY",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "GENERADORA CORDOBA",
+          "region": "EPE",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "BARKER L N",
+          "region": "ESE",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "OLAVARRIA L N",
+          "region": "ESE",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "S BAYAS L N",
+          "region": "ESE",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "BUENOS AIRES",
+          "region": "EZE",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "CHOCON",
+          "region": "EZE",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "COSTANERA",
+          "region": "EZE",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "ENARSA",
+          "region": "EZE",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "ZAPALORTO APR",
+          "region": "EZE",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "CO ARGENER",
+          "region": "LIT",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "GENNEIA",
+          "region": "LIT",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "MOLINOS",
+          "region": "LIT",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "SIDERAR",
+          "region": "LIT",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "SORRENTO",
+          "region": "LIT",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "V TUERTO",
+          "region": "LIT",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "VUELTA DE OBLIGADO",
+          "region": "LIT",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "EMSA",
+          "region": "MIS",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "AP PTO PIRAY",
+          "region": "NEA",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "BIOMASA SANTA ROSA",
+          "region": "NEA",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "GARRUCHOS",
+          "region": "NEA",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "CACHI",
+          "region": "NOA",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "CHILECITO",
+          "region": "NOA",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "PLUSPETROL",
+          "region": "NOA",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "S MIGUEL",
+          "region": "NOA",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "GUEMES",
+          "region": "NON",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "ORAN",
+          "region": "NON",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "CT PATAGONICAS",
+          "region": "NOR",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "GENNEIA",
+          "region": "ROD",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "MATHEU 3",
+          "region": "ROD",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "MATHEU APR",
+          "region": "ROD",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "ALUAR",
+          "region": "S33",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "CT PATAGONICAS",
+          "region": "SUR",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "E DEL SUR",
+          "region": "SUR",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "ELECTROPATAGONIA",
+          "region": "SUR",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "ENARSA",
+          "region": "SUR",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "SPSE",
+          "region": "SUR",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "YPF LOS PERALES",
+          "region": "SUR",
+          "tecnologia": "Térmica",
+          "mwh_actual": 0,
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "LA CASTELLANA",
+          "region": "BBL",
+          "tecnologia": "Renovable",
+          "mwh_actual": 8328.0,
+          "mwh_anterior": 9240.0,
+          "variacion_pct": -9.9,
+          "evento": null,
+          "mw_equiv": 49.6,
+          "cambio_relevante": false
+        },
+        {
+          "central": "AESP PARANA",
+          "region": "LIT",
+          "tecnologia": "Térmica",
+          "mwh_actual": 85717.0,
+          "mwh_anterior": 95047.0,
+          "variacion_pct": -9.8,
+          "evento": null,
+          "mw_equiv": 510.2,
+          "cambio_relevante": false
+        },
+        {
+          "central": "ULLUM 2",
+          "region": "CUY",
+          "tecnologia": "Renovable",
+          "mwh_actual": 705.0,
+          "mwh_anterior": 780.0,
+          "variacion_pct": -9.6,
+          "evento": null,
+          "mw_equiv": 4.2,
+          "cambio_relevante": false
+        },
+        {
+          "central": "C. AVELLANEDA",
+          "region": "ESE",
+          "tecnologia": "Renovable",
+          "mwh_actual": 1713.0,
+          "mwh_anterior": 1893.0,
+          "variacion_pct": -9.5,
+          "evento": null,
+          "mw_equiv": 10.2,
+          "cambio_relevante": false
+        },
+        {
+          "central": "LA RIOJA",
+          "region": "NOA",
+          "tecnologia": "Renovable",
+          "mwh_actual": 2010.0,
+          "mwh_anterior": 2220.0,
+          "variacion_pct": -9.5,
+          "evento": null,
+          "mw_equiv": 12.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "MIRAMAR",
+          "region": "ESE",
+          "tecnologia": "Renovable",
+          "mwh_actual": 6969.0,
+          "mwh_anterior": 7692.0,
+          "variacion_pct": -9.4,
+          "evento": null,
+          "mw_equiv": 41.5,
+          "cambio_relevante": false
+        },
+        {
+          "central": "VILLALONGA",
+          "region": "BBL",
+          "tecnologia": "Renovable",
+          "mwh_actual": 4182.0,
+          "mwh_anterior": 4611.0,
+          "variacion_pct": -9.3,
+          "evento": null,
+          "mw_equiv": 24.9,
+          "cambio_relevante": false
+        },
+        {
+          "central": "GARCIA DEL RIO",
+          "region": "BBL",
+          "tecnologia": "Renovable",
+          "mwh_actual": 741.0,
+          "mwh_anterior": 816.0,
+          "variacion_pct": -9.2,
+          "evento": null,
+          "mw_equiv": 4.4,
+          "cambio_relevante": false
+        },
+        {
+          "central": "VIENTOS DEL SECANO",
+          "region": "BBL",
+          "tecnologia": "Renovable",
+          "mwh_actual": 3603.0,
+          "mwh_anterior": 3966.0,
+          "variacion_pct": -9.2,
+          "evento": null,
+          "mw_equiv": 21.4,
+          "cambio_relevante": false
+        },
+        {
+          "central": "RENOVA",
+          "region": "LIT",
+          "tecnologia": "Térmica",
+          "mwh_actual": 29655.0,
+          "mwh_anterior": 27268.0,
+          "variacion_pct": 8.8,
+          "evento": null,
+          "mw_equiv": 176.5,
+          "cambio_relevante": false
+        },
+        {
+          "central": "ENERGETICA M",
+          "region": "BBL",
+          "tecnologia": "Renovable",
+          "mwh_actual": 1332.0,
+          "mwh_anterior": 1458.0,
+          "variacion_pct": -8.6,
+          "evento": null,
+          "mw_equiv": 7.9,
+          "cambio_relevante": false
+        },
+        {
+          "central": "CAUCHARI II",
+          "region": "NON",
+          "tecnologia": "Renovable",
+          "mwh_actual": 4935.0,
+          "mwh_anterior": 4545.0,
+          "variacion_pct": 8.6,
+          "evento": null,
+          "mw_equiv": 29.4,
+          "cambio_relevante": false
+        },
+        {
+          "central": "ANCHORIS",
+          "region": "CUY",
+          "tecnologia": "Renovable",
+          "mwh_actual": 4830.0,
+          "mwh_anterior": 5280.0,
+          "variacion_pct": -8.5,
+          "evento": null,
+          "mw_equiv": 28.8,
+          "cambio_relevante": false
+        },
+        {
+          "central": "DOCK SUD",
+          "region": "ABA",
+          "tecnologia": "Térmica",
+          "mwh_actual": 93843.0,
+          "mwh_anterior": 102392.0,
+          "variacion_pct": -8.3,
+          "evento": null,
+          "mw_equiv": 558.6,
+          "cambio_relevante": false
+        },
+        {
+          "central": "ENARSA",
+          "region": "NOA",
+          "tecnologia": "Térmica",
+          "mwh_actual": 594.0,
+          "mwh_anterior": 648.0,
+          "variacion_pct": -8.3,
+          "evento": null,
+          "mw_equiv": 3.5,
+          "cambio_relevante": false
+        },
+        {
+          "central": "CAUCHARI I",
+          "region": "NON",
+          "tecnologia": "Renovable",
+          "mwh_actual": 4950.0,
+          "mwh_anterior": 4575.0,
+          "variacion_pct": 8.2,
+          "evento": null,
+          "mw_equiv": 29.5,
+          "cambio_relevante": false
+        },
+        {
+          "central": "ULLUM 3",
+          "region": "CUY",
+          "tecnologia": "Renovable",
+          "mwh_actual": 855.0,
+          "mwh_anterior": 930.0,
+          "variacion_pct": -8.1,
+          "evento": null,
+          "mw_equiv": 5.1,
+          "cambio_relevante": false
+        },
+        {
+          "central": "POMONA",
+          "region": "CHO",
+          "tecnologia": "Renovable",
+          "mwh_actual": 7188.0,
+          "mwh_anterior": 7806.0,
+          "variacion_pct": -7.9,
+          "evento": null,
+          "mw_equiv": 42.8,
+          "cambio_relevante": false
+        },
+        {
+          "central": "SANJ Y MATACO",
+          "region": "BBL",
+          "tecnologia": "Renovable",
+          "mwh_actual": 16092.0,
+          "mwh_anterior": 17439.0,
+          "variacion_pct": -7.7,
+          "evento": null,
+          "mw_equiv": 95.8,
+          "cambio_relevante": false
+        },
+        {
+          "central": "V. ANGELA 5",
+          "region": "NEA",
+          "tecnologia": "Renovable",
+          "mwh_actual": 720.0,
+          "mwh_anterior": 780.0,
+          "variacion_pct": -7.7,
+          "evento": null,
+          "mw_equiv": 4.3,
+          "cambio_relevante": false
+        },
+        {
+          "central": "ALTIPLANO",
+          "region": "NON",
+          "tecnologia": "Renovable",
+          "mwh_actual": 5025.0,
+          "mwh_anterior": 4665.0,
+          "variacion_pct": 7.7,
+          "evento": null,
+          "mw_equiv": 29.9,
+          "cambio_relevante": false
+        },
+        {
+          "central": "TERMINAL 6 COG",
+          "region": "LIT",
+          "tecnologia": "Térmica",
+          "mwh_actual": 56352.0,
+          "mwh_anterior": 61085.0,
+          "variacion_pct": -7.7,
+          "evento": null,
+          "mw_equiv": 335.4,
+          "cambio_relevante": false
+        },
+        {
+          "central": "POMONA 2",
+          "region": "CHO",
+          "tecnologia": "Renovable",
+          "mwh_actual": 879.0,
+          "mwh_anterior": 951.0,
+          "variacion_pct": -7.6,
+          "evento": null,
+          "mw_equiv": 5.2,
+          "cambio_relevante": false
+        },
+        {
+          "central": "B. VENTURA",
+          "region": "ESE",
+          "tecnologia": "Renovable",
+          "mwh_actual": 8682.0,
+          "mwh_anterior": 9375.0,
+          "variacion_pct": -7.4,
+          "evento": null,
+          "mw_equiv": 51.7,
+          "cambio_relevante": false
+        },
+        {
+          "central": "LA ELBITA",
+          "region": "ESE",
+          "tecnologia": "Renovable",
+          "mwh_actual": 12513.0,
+          "mwh_anterior": 13518.0,
+          "variacion_pct": -7.4,
+          "evento": null,
+          "mw_equiv": 74.5,
+          "cambio_relevante": false
+        },
+        {
+          "central": "LA PUNA",
+          "region": "NON",
+          "tecnologia": "Renovable",
+          "mwh_actual": 5100.0,
+          "mwh_anterior": 4755.0,
+          "variacion_pct": 7.3,
+          "evento": null,
+          "mw_equiv": 30.4,
+          "cambio_relevante": false
+        },
+        {
+          "central": "CAUCHARI III",
+          "region": "NON",
+          "tecnologia": "Renovable",
+          "mwh_actual": 4965.0,
+          "mwh_anterior": 4635.0,
+          "variacion_pct": 7.1,
+          "evento": null,
+          "mw_equiv": 29.6,
+          "cambio_relevante": false
+        },
+        {
+          "central": "NECOCHEA",
+          "region": "ESE",
+          "tecnologia": "Renovable",
+          "mwh_actual": 2697.0,
+          "mwh_anterior": 2901.0,
+          "variacion_pct": -7.0,
+          "evento": null,
+          "mw_equiv": 16.1,
+          "cambio_relevante": false
+        },
+        {
+          "central": "P. D INFIERNO",
+          "region": "NEA",
+          "tecnologia": "Renovable",
+          "mwh_actual": 3165.0,
+          "mwh_anterior": 3405.0,
+          "variacion_pct": -7.0,
+          "evento": null,
+          "mw_equiv": 18.8,
+          "cambio_relevante": false
+        },
+        {
+          "central": "BROCHERO MATER",
+          "region": "EPE",
+          "tecnologia": "Renovable",
+          "mwh_actual": 465.0,
+          "mwh_anterior": 435.0,
+          "variacion_pct": 6.9,
+          "evento": null,
+          "mw_equiv": 2.8,
+          "cambio_relevante": false
+        },
+        {
+          "central": "EL QUEMADO",
+          "region": "CUY",
+          "tecnologia": "Renovable",
+          "mwh_actual": 6180.0,
+          "mwh_anterior": 5790.0,
+          "variacion_pct": 6.7,
+          "evento": null,
+          "mw_equiv": 36.8,
+          "cambio_relevante": false
+        },
+        {
+          "central": "VIVORATA",
+          "region": "ESE",
+          "tecnologia": "Renovable",
+          "mwh_actual": 3741.0,
+          "mwh_anterior": 4005.0,
+          "variacion_pct": -6.6,
+          "evento": null,
+          "mw_equiv": 22.3,
+          "cambio_relevante": false
+        },
+        {
+          "central": "V. ANGELA 3",
+          "region": "NEA",
+          "tecnologia": "Renovable",
+          "mwh_actual": 255.0,
+          "mwh_anterior": 240.0,
+          "variacion_pct": 6.2,
+          "evento": null,
+          "mw_equiv": 1.5,
+          "cambio_relevante": false
+        },
+        {
+          "central": "CHARATA 3",
+          "region": "NEA",
+          "tecnologia": "Renovable",
+          "mwh_actual": 270.0,
+          "mwh_anterior": 255.0,
+          "variacion_pct": 5.9,
+          "evento": null,
+          "mw_equiv": 1.6,
+          "cambio_relevante": false
+        },
+        {
+          "central": "DE LOS LLANOS",
+          "region": "NOA",
+          "tecnologia": "Renovable",
+          "mwh_actual": 495.0,
+          "mwh_anterior": 525.0,
+          "variacion_pct": -5.7,
+          "evento": null,
+          "mw_equiv": 2.9,
+          "cambio_relevante": false
+        },
+        {
+          "central": "LEVALLE",
+          "region": "EPE",
+          "tecnologia": "Renovable",
+          "mwh_actual": 4419.0,
+          "mwh_anterior": 4680.0,
+          "variacion_pct": -5.6,
+          "evento": null,
+          "mw_equiv": 26.3,
+          "cambio_relevante": false
+        },
+        {
+          "central": "MANQUE",
+          "region": "EPE",
+          "tecnologia": "Renovable",
+          "mwh_actual": 4320.0,
+          "mwh_anterior": 4563.0,
+          "variacion_pct": -5.3,
+          "evento": null,
+          "mw_equiv": 25.7,
+          "cambio_relevante": false
+        },
+        {
+          "central": "V. ANGELA 4",
+          "region": "NEA",
+          "tecnologia": "Renovable",
+          "mwh_actual": 270.0,
+          "mwh_anterior": 285.0,
+          "variacion_pct": -5.3,
+          "evento": null,
+          "mw_equiv": 1.6,
+          "cambio_relevante": false
+        },
+        {
+          "central": "GUAÃ‘IZUIL",
+          "region": "CUY",
+          "tecnologia": "Renovable",
+          "mwh_actual": 2715.0,
+          "mwh_anterior": 2865.0,
+          "variacion_pct": -5.2,
+          "evento": null,
+          "mw_equiv": 16.2,
+          "cambio_relevante": false
+        },
+        {
+          "central": "ENARSA",
+          "region": "NEA",
+          "tecnologia": "Térmica",
+          "mwh_actual": 1310.0,
+          "mwh_anterior": 1378.0,
+          "variacion_pct": -4.9,
+          "evento": null,
+          "mw_equiv": 7.8,
+          "cambio_relevante": false
+        },
+        {
+          "central": "ZONDA I",
+          "region": "CUY",
+          "tecnologia": "Renovable",
+          "mwh_actual": 3600.0,
+          "mwh_anterior": 3780.0,
+          "variacion_pct": -4.8,
+          "evento": null,
+          "mw_equiv": 21.4,
+          "cambio_relevante": false
+        },
+        {
+          "central": "LA CUMBRE III",
+          "region": "EPE",
+          "tecnologia": "Renovable",
+          "mwh_actual": 300.0,
+          "mwh_anterior": 315.0,
+          "variacion_pct": -4.8,
+          "evento": null,
+          "mw_equiv": 1.8,
+          "cambio_relevante": false
+        },
+        {
+          "central": "LA SALVACIÃ“N",
+          "region": "EPN",
+          "tecnologia": "Renovable",
+          "mwh_actual": 300.0,
+          "mwh_anterior": 315.0,
+          "variacion_pct": -4.8,
+          "evento": null,
+          "mw_equiv": 1.8,
+          "cambio_relevante": false
+        },
+        {
+          "central": "P. ENERGÃA 3.2",
+          "region": "BBL",
+          "tecnologia": "Renovable",
+          "mwh_actual": 2367.0,
+          "mwh_anterior": 2484.0,
+          "variacion_pct": -4.7,
+          "evento": null,
+          "mw_equiv": 14.1,
+          "cambio_relevante": false
+        },
+        {
+          "central": "LA BANDERITA",
+          "region": "CHO",
+          "tecnologia": "Renovable",
+          "mwh_actual": 3372.0,
+          "mwh_anterior": 3540.0,
+          "variacion_pct": -4.7,
+          "evento": null,
+          "mw_equiv": 20.1,
+          "cambio_relevante": false
+        },
+        {
+          "central": "ARROYITO",
+          "region": "COM",
+          "tecnologia": "Hidráulica",
+          "mwh_actual": 5499.0,
+          "mwh_anterior": 5762.0,
+          "variacion_pct": -4.6,
+          "evento": null,
+          "mw_equiv": 32.7,
+          "cambio_relevante": false
+        },
+        {
+          "central": "DE LA BAHIA",
+          "region": "BBL",
+          "tecnologia": "Renovable",
+          "mwh_actual": 4479.0,
+          "mwh_anterior": 4695.0,
+          "variacion_pct": -4.6,
+          "evento": null,
+          "mw_equiv": 26.7,
+          "cambio_relevante": false
+        },
+        {
+          "central": "P ENERGIA 6",
+          "region": "BBL",
+          "tecnologia": "Renovable",
+          "mwh_actual": 9978.0,
+          "mwh_anterior": 9549.0,
+          "variacion_pct": 4.5,
+          "evento": null,
+          "mw_equiv": 59.4,
+          "cambio_relevante": false
+        },
+        {
+          "central": "LOS REYUNOS",
+          "region": "CUY",
+          "tecnologia": "Hidráulica",
+          "mwh_actual": 1387.0,
+          "mwh_anterior": 1445.0,
+          "variacion_pct": -4.0,
+          "evento": null,
+          "mw_equiv": 8.3,
+          "cambio_relevante": false
+        },
+        {
+          "central": "CHARATA 2",
+          "region": "NEA",
+          "tecnologia": "Renovable",
+          "mwh_actual": 375.0,
+          "mwh_anterior": 390.0,
+          "variacion_pct": -3.8,
+          "evento": null,
+          "mw_equiv": 2.2,
+          "cambio_relevante": false
+        },
+        {
+          "central": "GUAÃ‘IZUIL II A",
+          "region": "CUY",
+          "tecnologia": "Renovable",
+          "mwh_actual": 3495.0,
+          "mwh_anterior": 3630.0,
+          "variacion_pct": -3.7,
+          "evento": null,
+          "mw_equiv": 20.8,
+          "cambio_relevante": false
+        },
+        {
+          "central": "TINOGASTA TOZZI",
+          "region": "NON",
+          "tecnologia": "Renovable",
+          "mwh_actual": 420.0,
+          "mwh_anterior": 405.0,
+          "variacion_pct": 3.7,
+          "evento": null,
+          "mw_equiv": 2.5,
+          "cambio_relevante": false
+        },
+        {
+          "central": "FIAMBALA",
+          "region": "NOA",
+          "tecnologia": "Renovable",
+          "mwh_actual": 420.0,
+          "mwh_anterior": 435.0,
+          "variacion_pct": -3.4,
+          "evento": null,
+          "mw_equiv": 2.5,
+          "cambio_relevante": false
+        },
+        {
+          "central": "YPF PLAZA HUINCUL",
+          "region": "COM",
+          "tecnologia": "Térmica",
+          "mwh_actual": 5040.0,
+          "mwh_anterior": 4872.0,
+          "variacion_pct": 3.4,
+          "evento": null,
+          "mw_equiv": 30.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "SAUJIL",
+          "region": "NOA",
+          "tecnologia": "Renovable",
+          "mwh_actual": 930.0,
+          "mwh_anterior": 900.0,
+          "variacion_pct": 3.3,
+          "evento": null,
+          "mw_equiv": 5.5,
+          "cambio_relevante": false
+        },
+        {
+          "central": "A CAJON",
+          "region": "CHO",
+          "tecnologia": "Térmica",
+          "mwh_actual": 63386.0,
+          "mwh_anterior": 65503.0,
+          "variacion_pct": -3.2,
+          "evento": null,
+          "mw_equiv": 377.3,
+          "cambio_relevante": false
+        },
+        {
+          "central": "GA2IM",
+          "region": "GAR",
+          "tecnologia": "Importación",
+          "mwh_actual": 184800.0,
+          "mwh_anterior": 179664.0,
+          "variacion_pct": 2.9,
+          "evento": null,
+          "mw_equiv": 1100.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "ENARSA",
+          "region": "ESE",
+          "tecnologia": "Térmica",
+          "mwh_actual": 1355.0,
+          "mwh_anterior": 1393.0,
+          "variacion_pct": -2.7,
+          "evento": null,
+          "mw_equiv": 8.1,
+          "cambio_relevante": false
+        },
+        {
+          "central": "P. DEL CHACO",
+          "region": "NEA",
+          "tecnologia": "Renovable",
+          "mwh_actual": 555.0,
+          "mwh_anterior": 570.0,
+          "variacion_pct": -2.6,
+          "evento": null,
+          "mw_equiv": 3.3,
+          "cambio_relevante": false
+        },
+        {
+          "central": "SAN RAFAEL",
+          "region": "CUY",
+          "tecnologia": "Renovable",
+          "mwh_actual": 3675.0,
+          "mwh_anterior": 3585.0,
+          "variacion_pct": 2.5,
+          "evento": null,
+          "mw_equiv": 21.9,
+          "cambio_relevante": false
+        },
+        {
+          "central": "LA CALERA",
+          "region": "EPE",
+          "tecnologia": "Renovable",
+          "mwh_actual": 585.0,
+          "mwh_anterior": 600.0,
+          "variacion_pct": -2.5,
+          "evento": null,
+          "mw_equiv": 3.5,
+          "cambio_relevante": false
+        },
+        {
+          "central": "C. DEL OESTE",
+          "region": "EPE",
+          "tecnologia": "Renovable",
+          "mwh_actual": 645.0,
+          "mwh_anterior": 660.0,
+          "variacion_pct": -2.3,
+          "evento": null,
+          "mw_equiv": 3.8,
+          "cambio_relevante": false
+        },
+        {
+          "central": "AMANECER 4",
+          "region": "NOA",
+          "tecnologia": "Renovable",
+          "mwh_actual": 630.0,
+          "mwh_anterior": 645.0,
+          "variacion_pct": -2.3,
+          "evento": null,
+          "mw_equiv": 3.8,
+          "cambio_relevante": false
+        },
+        {
+          "central": "TOCOTA 3",
+          "region": "CUY",
+          "tecnologia": "Renovable",
+          "mwh_actual": 1995.0,
+          "mwh_anterior": 2040.0,
+          "variacion_pct": -2.2,
+          "evento": null,
+          "mw_equiv": 11.9,
+          "cambio_relevante": false
+        },
+        {
+          "central": "OLIVOS",
+          "region": "EPE",
+          "tecnologia": "Renovable",
+          "mwh_actual": 1899.0,
+          "mwh_anterior": 1941.0,
+          "variacion_pct": -2.2,
+          "evento": null,
+          "mw_equiv": 11.3,
+          "cambio_relevante": false
+        },
+        {
+          "central": "AES S NICOLAS",
+          "region": "LIT",
+          "tecnologia": "Térmica",
+          "mwh_actual": 50406.0,
+          "mwh_anterior": 49434.0,
+          "variacion_pct": 2.0,
+          "evento": null,
+          "mw_equiv": 300.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "ENSENADA",
+          "region": "ABA",
+          "tecnologia": "Térmica",
+          "mwh_actual": 6771.0,
+          "mwh_anterior": 6898.0,
+          "variacion_pct": -1.8,
+          "evento": null,
+          "mw_equiv": 40.3,
+          "cambio_relevante": false
+        },
+        {
+          "central": "GENELBA",
+          "region": "EZE",
+          "tecnologia": "Térmica",
+          "mwh_actual": 137124.0,
+          "mwh_anterior": 139632.0,
+          "variacion_pct": -1.8,
+          "evento": null,
+          "mw_equiv": 816.2,
+          "cambio_relevante": false
+        },
+        {
+          "central": "LA CUMBRE 2",
+          "region": "EPE",
+          "tecnologia": "Renovable",
+          "mwh_actual": 885.0,
+          "mwh_anterior": 900.0,
+          "variacion_pct": -1.7,
+          "evento": null,
+          "mw_equiv": 5.3,
+          "cambio_relevante": false
+        },
+        {
+          "central": "A CAJON",
+          "region": "COM",
+          "tecnologia": "Térmica",
+          "mwh_actual": 39615.0,
+          "mwh_anterior": 40253.0,
+          "variacion_pct": -1.6,
+          "evento": null,
+          "mw_equiv": 235.8,
+          "cambio_relevante": false
+        },
+        {
+          "central": "NONOGASTA",
+          "region": "NOA",
+          "tecnologia": "Renovable",
+          "mwh_actual": 1140.0,
+          "mwh_anterior": 1155.0,
+          "variacion_pct": -1.3,
+          "evento": null,
+          "mw_equiv": 6.8,
+          "cambio_relevante": false
+        },
+        {
+          "central": "LOS MOLLES",
+          "region": "CUY",
+          "tecnologia": "Renovable",
+          "mwh_actual": 2490.0,
+          "mwh_anterior": 2460.0,
+          "variacion_pct": 1.2,
+          "evento": null,
+          "mw_equiv": 14.8,
+          "cambio_relevante": false
+        },
+        {
+          "central": "LAS LOMAS",
+          "region": "NOA",
+          "tecnologia": "Renovable",
+          "mwh_actual": 1200.0,
+          "mwh_anterior": 1215.0,
+          "variacion_pct": -1.2,
+          "evento": null,
+          "mw_equiv": 7.1,
+          "cambio_relevante": false
+        },
+        {
+          "central": "EPEC",
+          "region": "EPE",
+          "tecnologia": "Térmica",
+          "mwh_actual": 26820.0,
+          "mwh_anterior": 27090.0,
+          "variacion_pct": -1.0,
+          "evento": null,
+          "mw_equiv": 159.6,
+          "cambio_relevante": false
+        },
+        {
+          "central": "LA GENOVEVA 1",
+          "region": "BBL",
+          "tecnologia": "Renovable",
+          "mwh_actual": 6693.0,
+          "mwh_anterior": 6627.0,
+          "variacion_pct": 1.0,
+          "evento": null,
+          "mw_equiv": 39.8,
+          "cambio_relevante": false
+        },
+        {
+          "central": "YACYRETA",
+          "region": "NEA",
+          "tecnologia": "Hidráulica",
+          "mwh_actual": 343000.0,
+          "mwh_anterior": 340000.0,
+          "variacion_pct": 0.9,
+          "evento": null,
+          "mw_equiv": 2041.7,
+          "cambio_relevante": false
+        },
+        {
+          "central": "MATACO 3",
+          "region": "BBL",
+          "tecnologia": "Renovable",
+          "mwh_actual": 2973.0,
+          "mwh_anterior": 3000.0,
+          "variacion_pct": -0.9,
+          "evento": null,
+          "mw_equiv": 17.7,
+          "cambio_relevante": false
+        },
+        {
+          "central": "VIENTOS NEUQUINOS",
+          "region": "CHO",
+          "tecnologia": "Renovable",
+          "mwh_actual": 5580.0,
+          "mwh_anterior": 5631.0,
+          "variacion_pct": -0.9,
+          "evento": null,
+          "mw_equiv": 33.2,
+          "cambio_relevante": false
+        },
+        {
+          "central": "CT MENDOZA",
+          "region": "CUY",
+          "tecnologia": "Térmica",
+          "mwh_actual": 67384.0,
+          "mwh_anterior": 66801.0,
+          "variacion_pct": 0.9,
+          "evento": null,
+          "mw_equiv": 401.1,
+          "cambio_relevante": false
+        },
+        {
+          "central": "EPEC",
+          "region": "EPN",
+          "tecnologia": "Térmica",
+          "mwh_actual": 26839.0,
+          "mwh_anterior": 27090.0,
+          "variacion_pct": -0.9,
+          "evento": null,
+          "mw_equiv": 159.8,
+          "cambio_relevante": false
+        },
+        {
+          "central": "TERMOROCA",
+          "region": "CHO",
+          "tecnologia": "Térmica",
+          "mwh_actual": 30307.0,
+          "mwh_anterior": 30475.0,
+          "variacion_pct": -0.6,
+          "evento": null,
+          "mw_equiv": 180.4,
+          "cambio_relevante": false
+        },
+        {
+          "central": "LOMA CAMPANA",
+          "region": "COM",
+          "tecnologia": "Térmica",
+          "mwh_actual": 31114.0,
+          "mwh_anterior": 30946.0,
+          "variacion_pct": 0.5,
+          "evento": null,
+          "mw_equiv": 185.2,
+          "cambio_relevante": false
+        },
+        {
+          "central": "COSTANERA",
+          "region": "ROD",
+          "tecnologia": "Térmica",
+          "mwh_actual": 40716.0,
+          "mwh_anterior": 40916.0,
+          "variacion_pct": -0.5,
+          "evento": null,
+          "mw_equiv": 242.4,
+          "cambio_relevante": false
+        },
+        {
+          "central": "CN ATUCHA",
+          "region": "ROD",
+          "tecnologia": "Nuclear",
+          "mwh_actual": 125832.0,
+          "mwh_anterior": 125496.0,
+          "variacion_pct": 0.3,
+          "evento": null,
+          "mw_equiv": 749.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "LA GENOVEVA 2",
+          "region": "BBL",
+          "tecnologia": "Renovable",
+          "mwh_actual": 3159.0,
+          "mwh_anterior": 3168.0,
+          "variacion_pct": -0.3,
+          "evento": null,
+          "mw_equiv": 18.8,
+          "cambio_relevante": false
+        },
+        {
+          "central": "LUJAN ARAUCARIA",
+          "region": "ROD",
+          "tecnologia": "Térmica",
+          "mwh_actual": 1800.0,
+          "mwh_anterior": 1805.0,
+          "variacion_pct": -0.3,
+          "evento": null,
+          "mw_equiv": 10.7,
+          "cambio_relevante": false
+        },
+        {
+          "central": "PAMPA ENERGIA",
+          "region": "BBL",
+          "tecnologia": "Renovable",
+          "mwh_actual": 3855.0,
+          "mwh_anterior": 3846.0,
+          "variacion_pct": 0.2,
+          "evento": null,
+          "mw_equiv": 22.9,
+          "cambio_relevante": false
+        },
+        {
+          "central": "TERMOANDES",
+          "region": "NON",
+          "tecnologia": "Térmica",
+          "mwh_actual": 76692.0,
+          "mwh_anterior": 76860.0,
+          "variacion_pct": -0.2,
+          "evento": null,
+          "mw_equiv": 456.5,
+          "cambio_relevante": false
+        },
+        {
+          "central": "RIO ESCONDIDO",
+          "region": "COM",
+          "tecnologia": "Hidráulica",
+          "mwh_actual": 1008.0,
+          "mwh_anterior": 1008.0,
+          "variacion_pct": 0.0,
+          "evento": null,
+          "mw_equiv": 6.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "AGUA DEL TORO",
+          "region": "CUY",
+          "tecnologia": "Hidráulica",
+          "mwh_actual": 3135.0,
+          "mwh_anterior": 3135.0,
+          "variacion_pct": 0.0,
+          "evento": null,
+          "mw_equiv": 18.7,
+          "cambio_relevante": false
+        },
+        {
+          "central": "EL TIGRE",
+          "region": "CUY",
+          "tecnologia": "Hidráulica",
+          "mwh_actual": 218.0,
+          "mwh_anterior": 218.0,
+          "variacion_pct": 0.0,
+          "evento": null,
+          "mw_equiv": 1.3,
+          "cambio_relevante": false
+        },
+        {
+          "central": "NIHUILES",
+          "region": "CUY",
+          "tecnologia": "Hidráulica",
+          "mwh_actual": 4725.0,
+          "mwh_anterior": 4725.0,
+          "variacion_pct": 0.0,
+          "evento": null,
+          "mw_equiv": 28.1,
+          "cambio_relevante": false
+        },
+        {
+          "central": "RIO GRANDE EPEC",
+          "region": "EPE",
+          "tecnologia": "Hidráulica",
+          "mwh_actual": 4536.0,
+          "mwh_anterior": 4536.0,
+          "variacion_pct": 0.0,
+          "evento": null,
+          "mw_equiv": 27.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "SALTO GRANDE",
+          "region": "LIT",
+          "tecnologia": "Hidráulica",
+          "mwh_actual": 134400.0,
+          "mwh_anterior": 134400.0,
+          "variacion_pct": 0.0,
+          "evento": null,
+          "mw_equiv": 800.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "CH TUCUMAN",
+          "region": "NOA",
+          "tecnologia": "Hidráulica",
+          "mwh_actual": 1490.0,
+          "mwh_anterior": 1490.0,
+          "variacion_pct": 0.0,
+          "evento": null,
+          "mw_equiv": 8.9,
+          "cambio_relevante": false
+        },
+        {
+          "central": "RIO HONDO",
+          "region": "NOA",
+          "tecnologia": "Hidráulica",
+          "mwh_actual": 2856.0,
+          "mwh_anterior": 2856.0,
+          "variacion_pct": 0.0,
+          "evento": null,
+          "mw_equiv": 17.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "CABRA CORRAL",
+          "region": "NON",
+          "tecnologia": "Hidráulica",
+          "mwh_actual": 5940.0,
+          "mwh_anterior": 5940.0,
+          "variacion_pct": 0.0,
+          "evento": null,
+          "mw_equiv": 35.4,
+          "cambio_relevante": false
+        },
+        {
+          "central": "LAS MADERAS",
+          "region": "NON",
+          "tecnologia": "Hidráulica",
+          "mwh_actual": 1176.0,
+          "mwh_anterior": 1176.0,
+          "variacion_pct": 0.0,
+          "evento": null,
+          "mw_equiv": 7.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "TUNAL",
+          "region": "NON",
+          "tecnologia": "Hidráulica",
+          "mwh_actual": 1176.0,
+          "mwh_anterior": 1176.0,
+          "variacion_pct": 0.0,
+          "evento": null,
+          "mw_equiv": 7.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "BOLIT",
+          "region": "NON",
+          "tecnologia": "Importación",
+          "mwh_actual": 18480.0,
+          "mwh_anterior": 18480.0,
+          "variacion_pct": 0.0,
+          "evento": null,
+          "mw_equiv": 110.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "CN EMBALSE",
+          "region": "BOM",
+          "tecnologia": "Nuclear",
+          "mwh_actual": 110880.0,
+          "mwh_anterior": 110880.0,
+          "variacion_pct": 0.0,
+          "evento": null,
+          "mw_equiv": 660.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "CORTI",
+          "region": "BBL",
+          "tecnologia": "Renovable",
+          "mwh_actual": 6390.0,
+          "mwh_anterior": 6387.0,
+          "variacion_pct": 0.0,
+          "evento": null,
+          "mw_equiv": 38.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "CUTRAL CO",
+          "region": "CHO",
+          "tecnologia": "Renovable",
+          "mwh_actual": 90.0,
+          "mwh_anterior": 90.0,
+          "variacion_pct": 0.0,
+          "evento": null,
+          "mw_equiv": 0.5,
+          "cambio_relevante": false
+        },
+        {
+          "central": "ANCHIPURAC",
+          "region": "CUY",
+          "tecnologia": "Renovable",
+          "mwh_actual": 105.0,
+          "mwh_anterior": 105.0,
+          "variacion_pct": 0.0,
+          "evento": null,
+          "mw_equiv": 0.6,
+          "cambio_relevante": false
+        },
+        {
+          "central": "CERROS DEL SOL",
+          "region": "CUY",
+          "tecnologia": "Renovable",
+          "mwh_actual": 105.0,
+          "mwh_anterior": 105.0,
+          "variacion_pct": 0.0,
+          "evento": null,
+          "mw_equiv": 0.6,
+          "cambio_relevante": false
+        },
+        {
+          "central": "CHIMBERAS",
+          "region": "CUY",
+          "tecnologia": "Renovable",
+          "mwh_actual": 105.0,
+          "mwh_anterior": 105.0,
+          "variacion_pct": 0.0,
+          "evento": null,
+          "mw_equiv": 0.6,
+          "cambio_relevante": false
+        },
+        {
+          "central": "CHIMBERAS 1",
+          "region": "CUY",
+          "tecnologia": "Renovable",
+          "mwh_actual": 105.0,
+          "mwh_anterior": 105.0,
+          "variacion_pct": 0.0,
+          "evento": null,
+          "mw_equiv": 0.6,
+          "cambio_relevante": false
+        },
+        {
+          "central": "COPEROTE",
+          "region": "CUY",
+          "tecnologia": "Renovable",
+          "mwh_actual": 105.0,
+          "mwh_anterior": 105.0,
+          "variacion_pct": 0.0,
+          "evento": null,
+          "mw_equiv": 0.6,
+          "cambio_relevante": false
+        },
+        {
+          "central": "DE LOS ANDES",
+          "region": "CUY",
+          "tecnologia": "Renovable",
+          "mwh_actual": 105.0,
+          "mwh_anterior": 105.0,
+          "variacion_pct": 0.0,
+          "evento": null,
+          "mw_equiv": 0.6,
+          "cambio_relevante": false
+        },
+        {
+          "central": "PS LAS LOMITAS",
+          "region": "CUY",
+          "tecnologia": "Renovable",
+          "mwh_actual": 90.0,
+          "mwh_anterior": 90.0,
+          "variacion_pct": 0.0,
+          "evento": null,
+          "mw_equiv": 0.5,
+          "cambio_relevante": false
+        },
+        {
+          "central": "ULLUM 4 SOLARGEN",
+          "region": "CUY",
+          "tecnologia": "Renovable",
+          "mwh_actual": 210.0,
+          "mwh_anterior": 210.0,
+          "variacion_pct": 0.0,
+          "evento": null,
+          "mw_equiv": 1.2,
+          "cambio_relevante": false
+        },
+        {
+          "central": "VICTORICA",
+          "region": "CUY",
+          "tecnologia": "Renovable",
+          "mwh_actual": 105.0,
+          "mwh_anterior": 105.0,
+          "variacion_pct": 0.0,
+          "evento": null,
+          "mw_equiv": 0.6,
+          "cambio_relevante": false
+        },
+        {
+          "central": "BROCHERO",
+          "region": "EPE",
+          "tecnologia": "Renovable",
+          "mwh_actual": 225.0,
+          "mwh_anterior": 225.0,
+          "variacion_pct": 0.0,
+          "evento": null,
+          "mw_equiv": 1.3,
+          "cambio_relevante": false
+        },
+        {
+          "central": "LA CUMBRE",
+          "region": "EPE",
+          "tecnologia": "Renovable",
+          "mwh_actual": 660.0,
+          "mwh_anterior": 660.0,
+          "variacion_pct": 0.0,
+          "evento": null,
+          "mw_equiv": 3.9,
+          "cambio_relevante": false
+        },
+        {
+          "central": "S. de la Punta",
+          "region": "EPE",
+          "tecnologia": "Renovable",
+          "mwh_actual": 105.0,
+          "mwh_anterior": 105.0,
+          "variacion_pct": 0.0,
+          "evento": null,
+          "mw_equiv": 0.6,
+          "cambio_relevante": false
+        },
+        {
+          "central": "V. ANGELA 2",
+          "region": "NEA",
+          "tecnologia": "Renovable",
+          "mwh_actual": 240.0,
+          "mwh_anterior": 240.0,
+          "variacion_pct": 0.0,
+          "evento": null,
+          "mw_equiv": 1.4,
+          "cambio_relevante": false
+        },
+        {
+          "central": "LA RIOJA 2",
+          "region": "NOA",
+          "tecnologia": "Renovable",
+          "mwh_actual": 750.0,
+          "mwh_anterior": 750.0,
+          "variacion_pct": 0.0,
+          "evento": null,
+          "mw_equiv": 4.5,
+          "cambio_relevante": false
+        },
+        {
+          "central": "TINOGASTA",
+          "region": "NON",
+          "tecnologia": "Renovable",
+          "mwh_actual": 840.0,
+          "mwh_anterior": 840.0,
+          "variacion_pct": 0.0,
+          "evento": null,
+          "mw_equiv": 5.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "ENARSA",
+          "region": "ABA",
+          "tecnologia": "Térmica",
+          "mwh_actual": 120.0,
+          "mwh_anterior": 120.0,
+          "variacion_pct": 0.0,
+          "evento": null,
+          "mw_equiv": 0.7,
+          "cambio_relevante": false
+        },
+        {
+          "central": "LOMA DE LA LATA",
+          "region": "CHO",
+          "tecnologia": "Térmica",
+          "mwh_actual": 127125.0,
+          "mwh_anterior": 127125.0,
+          "variacion_pct": 0.0,
+          "evento": null,
+          "mw_equiv": 756.7,
+          "cambio_relevante": false
+        },
+        {
+          "central": "ALTO VALLE",
+          "region": "COM",
+          "tecnologia": "Térmica",
+          "mwh_actual": 5880.0,
+          "mwh_anterior": 5880.0,
+          "variacion_pct": 0.0,
+          "evento": null,
+          "mw_equiv": 35.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "ANCHORIS METH",
+          "region": "CUY",
+          "tecnologia": "Térmica",
+          "mwh_actual": 6518.0,
+          "mwh_anterior": 6518.0,
+          "variacion_pct": 0.0,
+          "evento": null,
+          "mw_equiv": 38.8,
+          "cambio_relevante": false
+        },
+        {
+          "central": "RIO TERCERO ENERGY",
+          "region": "EPE",
+          "tecnologia": "Térmica",
+          "mwh_actual": 873.0,
+          "mwh_anterior": 873.0,
+          "variacion_pct": 0.0,
+          "evento": null,
+          "mw_equiv": 5.2,
+          "cambio_relevante": false
+        },
+        {
+          "central": "ARCOR SAIC",
+          "region": "EPN",
+          "tecnologia": "Térmica",
+          "mwh_actual": 2184.0,
+          "mwh_anterior": 2185.0,
+          "variacion_pct": -0.0,
+          "evento": null,
+          "mw_equiv": 13.0,
+          "cambio_relevante": false
+        },
+        {
+          "central": "SALTO SO ENERGY",
+          "region": "ESE",
+          "tecnologia": "Térmica",
+          "mwh_actual": 873.0,
+          "mwh_anterior": 873.0,
+          "variacion_pct": 0.0,
+          "evento": null,
+          "mw_equiv": 5.2,
+          "cambio_relevante": false
+        },
+        {
+          "central": "CT B.LOPEZ",
+          "region": "LIT",
+          "tecnologia": "Térmica",
+          "mwh_actual": 66227.0,
+          "mwh_anterior": 66227.0,
+          "variacion_pct": 0.0,
+          "evento": null,
+          "mw_equiv": 394.2,
+          "cambio_relevante": false
+        },
+        {
+          "central": "PEREZ SECCO",
+          "region": "LIT",
+          "tecnologia": "Térmica",
+          "mwh_actual": 1630.0,
+          "mwh_anterior": 1630.0,
+          "variacion_pct": 0.0,
+          "evento": null,
+          "mw_equiv": 9.7,
+          "cambio_relevante": false
+        }
+      ],
+      "resumen_centrales": {
+        "con_cambio": {
+          "cantidad": 93,
+          "mwh_total": 800898.0,
+          "mw_equiv_total": 4767.2
+        },
+        "sin_cambio": {
+          "cantidad": 198,
+          "mwh_total": 2248447.0,
+          "mw_equiv_total": 13383.6
+        }
+      },
+      "combustibles": [
+        {
+          "combustible": "GasAcue",
+          "actual": 112000.0,
+          "anterior": 105000.0,
+          "variacion_pct": 6.7,
+          "unidad": "Dam³",
+          "relevante": false
+        },
+        {
+          "combustible": "GasProp",
+          "actual": 160026.0,
+          "anterior": 162810.0,
+          "variacion_pct": -1.7,
+          "unidad": "Dam³",
+          "relevante": false
+        },
+        {
+          "combustible": "Fuel_Oil",
+          "actual": 4818.0,
+          "anterior": 5984.0,
+          "variacion_pct": -19.5,
+          "unidad": "Ton",
+          "relevante": true
+        },
+        {
+          "combustible": "Dies_Oil",
+          "actual": 6205.0,
+          "anterior": 41153.0,
+          "variacion_pct": -84.9,
+          "unidad": "m³",
+          "relevante": true
+        },
+        {
+          "combustible": "Carbon",
+          "actual": 24699.0,
+          "anterior": 24223.0,
+          "variacion_pct": 2.0,
+          "unidad": "Ton",
+          "relevante": false
+        }
+      ],
+      "cambios_combustibles": [
+        {
+          "combustible": "Fuel_Oil",
+          "actual": 4818.0,
+          "anterior": 5984.0,
+          "variacion_pct": -19.5,
+          "unidad": "Ton",
+          "relevante": true
+        },
+        {
+          "combustible": "Dies_Oil",
+          "actual": 6205.0,
+          "anterior": 41153.0,
+          "variacion_pct": -84.9,
+          "unidad": "m³",
+          "relevante": true
+        }
+      ],
+      "costo_marginal": [
+        {
+          "bloque": "PICO",
+          "actual": 374251.57,
+          "anterior": 378059.87,
+          "variacion_pct": -1.0,
+          "relevante": false
+        },
+        {
+          "bloque": "RESTO",
+          "actual": 257506.91,
+          "anterior": 265832.85,
+          "variacion_pct": -3.1,
+          "relevante": false
+        },
+        {
+          "bloque": "VALLE",
+          "actual": 229719.23,
+          "anterior": 245364.91,
+          "variacion_pct": -6.4,
+          "relevante": false
+        }
+      ],
+      "cambios_costo_marginal": [],
+      "unidades_fuera_de_servicio": [
+        {
+          "unidad": "BSASTG01",
+          "region": "ABA",
+          "empresa": "BUENOS AIRES",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "COSTTV06",
+          "region": "ABA",
+          "empresa": "COSTANERA",
+          "tipo_maq": "TV"
+        },
+        {
+          "unidad": "COSTTV07",
+          "region": "ABA",
+          "empresa": "COSTANERA",
+          "tipo_maq": "TV"
+        },
+        {
+          "unidad": "EBARCC01",
+          "region": "ABA",
+          "empresa": "CT BARRAGAN",
+          "tipo_maq": "CC"
+        },
+        {
+          "unidad": "EBARTG01",
+          "region": "ABA",
+          "empresa": "CT BARRAGAN",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "EBARTG02",
+          "region": "ABA",
+          "empresa": "CT BARRAGAN",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "DIQUTG01",
+          "region": "ABA",
+          "empresa": "DIQUE",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "DIQUTG02",
+          "region": "ABA",
+          "empresa": "DIQUE",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "DIQUTG03",
+          "region": "ABA",
+          "empresa": "DIQUE",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "DIQUTG04",
+          "region": "ABA",
+          "empresa": "DIQUE",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "DSUDTG07",
+          "region": "ABA",
+          "empresa": "DOCK SUD",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "DSUDTG08",
+          "region": "ABA",
+          "empresa": "DOCK SUD",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "DSUDTG09",
+          "region": "ABA",
+          "empresa": "DOCK SUD",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "DSUDTG10",
+          "region": "ABA",
+          "empresa": "DOCK SUD",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "LPLADI01",
+          "region": "ABA",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "LPLCTG01",
+          "region": "ABA",
+          "empresa": "LA PLATA COG",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "SHELTG01",
+          "region": "ABA",
+          "empresa": "SHELL",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "BBLATV29",
+          "region": "BBL",
+          "empresa": "PIEDRA BUENA",
+          "tipo_maq": "TV"
+        },
+        {
+          "unidad": "BBLATV30",
+          "region": "BBL",
+          "empresa": "PIEDRA BUENA",
+          "tipo_maq": "TV"
+        },
+        {
+          "unidad": "SOLATG01",
+          "region": "BBL",
+          "empresa": "SOLALVAN",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "ACAJTG01",
+          "region": "CHO",
+          "empresa": "A CAJON",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "ACAJTG02",
+          "region": "CHO",
+          "empresa": "A CAJON",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "ACAJTG03",
+          "region": "CHO",
+          "empresa": "A CAJON",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "ACAJTG04",
+          "region": "CHO",
+          "empresa": "A CAJON",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "ACAJTG05",
+          "region": "CHO",
+          "empresa": "A CAJON",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "ACAJTG06",
+          "region": "CHO",
+          "empresa": "A CAJON",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "BAN2EO",
+          "region": "CHO",
+          "empresa": "LA BANDERITA 2",
+          "tipo_maq": "EO"
+        },
+        {
+          "unidad": "LDLATG01",
+          "region": "CHO",
+          "empresa": "LOMA DE LA LATA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "LDLATG02",
+          "region": "CHO",
+          "empresa": "LOMA DE LA LATA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "LDLATG03",
+          "region": "CHO",
+          "empresa": "LOMA DE LA LATA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "ALOMDI01",
+          "region": "COM",
+          "empresa": "AG. LOMITAS",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "AVALCC22",
+          "region": "COM",
+          "empresa": "ALTO VALLE",
+          "tipo_maq": "CC"
+        },
+        {
+          "unidad": "AVALTG21",
+          "region": "COM",
+          "empresa": "ALTO VALLE",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "AVALTG22",
+          "region": "COM",
+          "empresa": "ALTO VALLE",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "AVALTG23",
+          "region": "COM",
+          "empresa": "ALTO VALLE",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "CPIEHI",
+          "region": "COM",
+          "empresa": "CASA DE PIEDRA",
+          "tipo_maq": "HI"
+        },
+        {
+          "unidad": "COMAHI",
+          "region": "COM",
+          "empresa": "CH COMAHUE",
+          "tipo_maq": "HI"
+        },
+        {
+          "unidad": "ALUMDI01",
+          "region": "COM",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "BARIDI01",
+          "region": "COM",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "CAVIDI01",
+          "region": "COM",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "CIPODI01",
+          "region": "COM",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "ELOMDI01",
+          "region": "COM",
+          "empresa": "ENTRE LOMAS",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "RSAUDI01",
+          "region": "COM",
+          "empresa": "RINCON SAUCES",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "ROCATG01",
+          "region": "COM",
+          "empresa": "TERMOROCA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "PHDZTG01",
+          "region": "COM",
+          "empresa": "YPF P HERNANDEZ",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "QULLHI",
+          "region": "CUY",
+          "empresa": "AES QULLUM",
+          "tipo_maq": "HI"
+        },
+        {
+          "unidad": "SARCTG21",
+          "region": "CUY",
+          "empresa": "AES SARC",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "SARCTG22",
+          "region": "CUY",
+          "empresa": "AES SARC",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "SARCTG23",
+          "region": "CUY",
+          "empresa": "AES SARC",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "ULLUHI",
+          "region": "CUY",
+          "empresa": "AES ULLUM",
+          "tipo_maq": "HI"
+        },
+        {
+          "unidad": "CDPITG21",
+          "region": "CUY",
+          "empresa": "C DE PIEDRA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "COP1TV",
+          "region": "CUY",
+          "empresa": "COPEROTE 1",
+          "tipo_maq": "FV"
+        },
+        {
+          "unidad": "LDCUCC21",
+          "region": "CUY",
+          "empresa": "CT MENDOZA",
+          "tipo_maq": "CC"
+        },
+        {
+          "unidad": "LDCUCC22",
+          "region": "CUY",
+          "empresa": "CT MENDOZA",
+          "tipo_maq": "CC"
+        },
+        {
+          "unidad": "LDCUCC26",
+          "region": "CUY",
+          "empresa": "CT MENDOZA",
+          "tipo_maq": "CC"
+        },
+        {
+          "unidad": "LDCUTG21",
+          "region": "CUY",
+          "empresa": "CT MENDOZA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "LDCUTG25",
+          "region": "CUY",
+          "empresa": "CT MENDOZA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "LDCUTG26",
+          "region": "CUY",
+          "empresa": "CT MENDOZA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "LDCUTG27",
+          "region": "CUY",
+          "empresa": "CT MENDOZA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "LDCUTV11",
+          "region": "CUY",
+          "empresa": "CT MENDOZA",
+          "tipo_maq": "TV"
+        },
+        {
+          "unidad": "LDCUTV12",
+          "region": "CUY",
+          "empresa": "CT MENDOZA",
+          "tipo_maq": "TV"
+        },
+        {
+          "unidad": "PASIFV",
+          "region": "CUY",
+          "empresa": "P.S. PASIP",
+          "tipo_maq": "FV"
+        },
+        {
+          "unidad": "PNEGHI",
+          "region": "CUY",
+          "empresa": "PUNTA NEGRA",
+          "tipo_maq": "HI"
+        },
+        {
+          "unidad": "TAMBFV",
+          "region": "CUY",
+          "empresa": "TamberÃ­as",
+          "tipo_maq": "FV"
+        },
+        {
+          "unidad": "VGDEHI",
+          "region": "CUY",
+          "empresa": "VALLE GRANDE",
+          "tipo_maq": "HI"
+        },
+        {
+          "unidad": "ISVEDI01",
+          "region": "EPE",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "LEVATG01",
+          "region": "EPE",
+          "empresa": "EPEC",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "LEVATG02",
+          "region": "EPE",
+          "empresa": "EPEC",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "LEVATG03",
+          "region": "EPE",
+          "empresa": "EPEC",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "LEVATG04",
+          "region": "EPE",
+          "empresa": "EPEC",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "PILATG11",
+          "region": "EPE",
+          "empresa": "EPEC",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "PILATV01",
+          "region": "EPE",
+          "empresa": "EPEC",
+          "tipo_maq": "TV"
+        },
+        {
+          "unidad": "PILATV02",
+          "region": "EPE",
+          "empresa": "EPEC",
+          "tipo_maq": "TV"
+        },
+        {
+          "unidad": "PILATV03",
+          "region": "EPE",
+          "empresa": "EPEC",
+          "tipo_maq": "TV"
+        },
+        {
+          "unidad": "PILATV04",
+          "region": "EPE",
+          "empresa": "EPEC",
+          "tipo_maq": "TV"
+        },
+        {
+          "unidad": "RCUATG01",
+          "region": "EPE",
+          "empresa": "EPEC",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "RCUATG02",
+          "region": "EPE",
+          "empresa": "EPEC",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "SOESTG01",
+          "region": "EPE",
+          "empresa": "EPEC",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "SOESTG02",
+          "region": "EPE",
+          "empresa": "EPEC",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "SOESTG03",
+          "region": "EPE",
+          "empresa": "EPEC",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "SOESTG04",
+          "region": "EPE",
+          "empresa": "EPEC",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "VMARTG01",
+          "region": "EPE",
+          "empresa": "EPEC",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "VMARTG02",
+          "region": "EPE",
+          "empresa": "EPEC",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "VMARTG03",
+          "region": "EPE",
+          "empresa": "EPEC",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "RTERTG01",
+          "region": "EPE",
+          "empresa": "GENERADORA CORDOBA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "RTERTG02",
+          "region": "EPE",
+          "empresa": "GENERADORA CORDOBA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "MMARCC06",
+          "region": "EPE",
+          "empresa": "MEDITERRANEA",
+          "tipo_maq": "CC"
+        },
+        {
+          "unidad": "MMARCC07",
+          "region": "EPE",
+          "empresa": "MEDITERRANEA",
+          "tipo_maq": "CC"
+        },
+        {
+          "unidad": "MMARCC08",
+          "region": "EPE",
+          "empresa": "MEDITERRANEA",
+          "tipo_maq": "CC"
+        },
+        {
+          "unidad": "MMARTG01",
+          "region": "EPE",
+          "empresa": "MEDITERRANEA",
+          "tipo_maq": "CC"
+        },
+        {
+          "unidad": "MMARTG02",
+          "region": "EPE",
+          "empresa": "MEDITERRANEA",
+          "tipo_maq": "CC"
+        },
+        {
+          "unidad": "MMARTG03",
+          "region": "EPE",
+          "empresa": "MEDITERRANEA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "MMARTG04",
+          "region": "EPE",
+          "empresa": "MEDITERRANEA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "MMARTG05",
+          "region": "EPE",
+          "empresa": "MEDITERRANEA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "MMARTG07",
+          "region": "EPE",
+          "empresa": "MEDITERRANEA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "MMARTG08",
+          "region": "EPE",
+          "empresa": "MEDITERRANEA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "RGEBHI",
+          "region": "EPE",
+          "empresa": "RIO GRANDE EPEC",
+          "tipo_maq": "HI"
+        },
+        {
+          "unidad": "VMA2CC01",
+          "region": "EPE",
+          "empresa": "VILLA MARIA UENSA",
+          "tipo_maq": "CC"
+        },
+        {
+          "unidad": "VMA2CC02",
+          "region": "EPE",
+          "empresa": "VILLA MARIA UENSA",
+          "tipo_maq": "CC"
+        },
+        {
+          "unidad": "VMA2CC03",
+          "region": "EPE",
+          "empresa": "VILLA MARIA UENSA",
+          "tipo_maq": "CC"
+        },
+        {
+          "unidad": "VMA2CC04",
+          "region": "EPE",
+          "empresa": "VILLA MARIA UENSA",
+          "tipo_maq": "CC"
+        },
+        {
+          "unidad": "DFUNDI01",
+          "region": "EPN",
+          "empresa": "EPEC",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "DFUNTG01",
+          "region": "EPN",
+          "empresa": "EPEC",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "DFUNTG02",
+          "region": "EPN",
+          "empresa": "EPEC",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "PILATG12",
+          "region": "EPN",
+          "empresa": "EPEC",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "SFR2DI01",
+          "region": "EPN",
+          "empresa": "EPEC",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "SFRATG01",
+          "region": "EPN",
+          "empresa": "EPEC",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "SFRATG02",
+          "region": "EPN",
+          "empresa": "EPEC",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "VMR2FV",
+          "region": "EPN",
+          "empresa": "V. M. R. SECO MATER",
+          "tipo_maq": "FV"
+        },
+        {
+          "unidad": "BARKTG01",
+          "region": "ESE",
+          "empresa": "BARKER L N",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "BRKECC01",
+          "region": "ESE",
+          "empresa": "BARKER UGEN",
+          "tipo_maq": "CC"
+        },
+        {
+          "unidad": "BRKECC02",
+          "region": "ESE",
+          "empresa": "BARKER UGEN",
+          "tipo_maq": "CC"
+        },
+        {
+          "unidad": "BRKECC03",
+          "region": "ESE",
+          "empresa": "BARKER UGEN",
+          "tipo_maq": "CC"
+        },
+        {
+          "unidad": "BRKECC04",
+          "region": "ESE",
+          "empresa": "BARKER UGEN",
+          "tipo_maq": "CC"
+        },
+        {
+          "unidad": "BRKETG01",
+          "region": "ESE",
+          "empresa": "BARKER UGEN",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "BRKETG02",
+          "region": "ESE",
+          "empresa": "BARKER UGEN",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "BRKETG03",
+          "region": "ESE",
+          "empresa": "BARKER UGEN",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "MDAJTG15",
+          "region": "ESE",
+          "empresa": "C DE LA COSTA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "MDAJTG17",
+          "region": "ESE",
+          "empresa": "C DE LA COSTA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "MDPATG12",
+          "region": "ESE",
+          "empresa": "C DE LA COSTA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "MDPATG13",
+          "region": "ESE",
+          "empresa": "C DE LA COSTA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "MDPATG19",
+          "region": "ESE",
+          "empresa": "C DE LA COSTA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "MDPATG20",
+          "region": "ESE",
+          "empresa": "C DE LA COSTA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "MDPATG21",
+          "region": "ESE",
+          "empresa": "C DE LA COSTA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "MDPATG22",
+          "region": "ESE",
+          "empresa": "C DE LA COSTA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "MDPATV07",
+          "region": "ESE",
+          "empresa": "C DE LA COSTA",
+          "tipo_maq": "TV"
+        },
+        {
+          "unidad": "MDPATV08",
+          "region": "ESE",
+          "empresa": "C DE LA COSTA",
+          "tipo_maq": "TV"
+        },
+        {
+          "unidad": "NECOTV01",
+          "region": "ESE",
+          "empresa": "C DE LA COSTA",
+          "tipo_maq": "TV"
+        },
+        {
+          "unidad": "NECOTV02",
+          "region": "ESE",
+          "empresa": "C DE LA COSTA",
+          "tipo_maq": "TV"
+        },
+        {
+          "unidad": "NECOTV03",
+          "region": "ESE",
+          "empresa": "C DE LA COSTA",
+          "tipo_maq": "TV"
+        },
+        {
+          "unidad": "SCTPDI01",
+          "region": "ESE",
+          "empresa": "C DE LA COSTA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "VGESTG11",
+          "region": "ESE",
+          "empresa": "C DE LA COSTA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "VGESTG14",
+          "region": "ESE",
+          "empresa": "C DE LA COSTA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "VGESTG16",
+          "region": "ESE",
+          "empresa": "C DE LA COSTA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "VGESTG18",
+          "region": "ESE",
+          "empresa": "C DE LA COSTA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "ARMATG03",
+          "region": "ESE",
+          "empresa": "ENARSA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "ARREDI01",
+          "region": "ESE",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "BAMODI01",
+          "region": "ESE",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "GBMODI01",
+          "region": "ESE",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "LOBODI01",
+          "region": "ESE",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "REALDI01",
+          "region": "ESE",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "VGADDI01",
+          "region": "ESE",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "VGASDI01",
+          "region": "ESE",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "ARMATG01",
+          "region": "ESE",
+          "empresa": "GENNEIA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "ARMATG02",
+          "region": "ESE",
+          "empresa": "GENNEIA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "BRAGTG01",
+          "region": "ESE",
+          "empresa": "GENNEIA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "BRAGTG02",
+          "region": "ESE",
+          "empresa": "GENNEIA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "OLADTG01",
+          "region": "ESE",
+          "empresa": "GENNEIA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "OLADTG02",
+          "region": "ESE",
+          "empresa": "GENNEIA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "PINATG07",
+          "region": "ESE",
+          "empresa": "GENNEIA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "PINATG08",
+          "region": "ESE",
+          "empresa": "GENNEIA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "PINATG09",
+          "region": "ESE",
+          "empresa": "GENNEIA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "PINATG10",
+          "region": "ESE",
+          "empresa": "GENNEIA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "BROWCC01",
+          "region": "ESE",
+          "empresa": "GUILLERMO BROWN",
+          "tipo_maq": "CC"
+        },
+        {
+          "unidad": "BROWCC02",
+          "region": "ESE",
+          "empresa": "GUILLERMO BROWN",
+          "tipo_maq": "CC"
+        },
+        {
+          "unidad": "OLAVDI01",
+          "region": "ESE",
+          "empresa": "OLAVARRIA L N",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "SBAYDI01",
+          "region": "ESE",
+          "empresa": "S BAYAS L N",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "BSASCC01",
+          "region": "EZE",
+          "empresa": "BUENOS AIRES",
+          "tipo_maq": "CC"
+        },
+        {
+          "unidad": "COSMDI11",
+          "region": "EZE",
+          "empresa": "CHOCON",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "COSTTG08",
+          "region": "EZE",
+          "empresa": "COSTANERA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "COSTTG09",
+          "region": "EZE",
+          "empresa": "COSTANERA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "COSTTV01",
+          "region": "EZE",
+          "empresa": "COSTANERA",
+          "tipo_maq": "TV"
+        },
+        {
+          "unidad": "COSTTV02",
+          "region": "EZE",
+          "empresa": "COSTANERA",
+          "tipo_maq": "TV"
+        },
+        {
+          "unidad": "COSTTV03",
+          "region": "EZE",
+          "empresa": "COSTANERA",
+          "tipo_maq": "TV"
+        },
+        {
+          "unidad": "COSTTV04",
+          "region": "EZE",
+          "empresa": "COSTANERA",
+          "tipo_maq": "TV"
+        },
+        {
+          "unidad": "ABRODI01",
+          "region": "EZE",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "RESCDI01",
+          "region": "EZE",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "EZEICC02",
+          "region": "EZE",
+          "empresa": "EZEIZA",
+          "tipo_maq": "CC"
+        },
+        {
+          "unidad": "EZEICC03",
+          "region": "EZE",
+          "empresa": "EZEIZA",
+          "tipo_maq": "CC"
+        },
+        {
+          "unidad": "EZEITG01",
+          "region": "EZE",
+          "empresa": "EZEIZA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "EZEITG02",
+          "region": "EZE",
+          "empresa": "EZEIZA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "EZEITG03",
+          "region": "EZE",
+          "empresa": "EZEIZA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "EZEITG04",
+          "region": "EZE",
+          "empresa": "EZEIZA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "GEBACC01",
+          "region": "EZE",
+          "empresa": "GENELBA",
+          "tipo_maq": "CC"
+        },
+        {
+          "unidad": "GEBATG01",
+          "region": "EZE",
+          "empresa": "GENELBA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "GEBATG02",
+          "region": "EZE",
+          "empresa": "GENELBA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "GEBATG03",
+          "region": "EZE",
+          "empresa": "GENELBA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "GEBATG04",
+          "region": "EZE",
+          "empresa": "GENELBA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "ZAPATG01",
+          "region": "EZE",
+          "empresa": "ZAPALORTO APR",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "GARIM",
+          "region": "GAR",
+          "empresa": "GARIM",
+          "tipo_maq": "IM"
+        },
+        {
+          "unidad": "SNICTG01",
+          "region": "LIT",
+          "empresa": "AES S NICOLAS",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "SNICTV11",
+          "region": "LIT",
+          "empresa": "AES S NICOLAS",
+          "tipo_maq": "TV"
+        },
+        {
+          "unidad": "SNICTV12",
+          "region": "LIT",
+          "empresa": "AES S NICOLAS",
+          "tipo_maq": "TV"
+        },
+        {
+          "unidad": "SNICTV13",
+          "region": "LIT",
+          "empresa": "AES S NICOLAS",
+          "tipo_maq": "TV"
+        },
+        {
+          "unidad": "SNICTV14",
+          "region": "LIT",
+          "empresa": "AES S NICOLAS",
+          "tipo_maq": "TV"
+        },
+        {
+          "unidad": "AESPTG01",
+          "region": "LIT",
+          "empresa": "AESP PARANA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "AESPTG02",
+          "region": "LIT",
+          "empresa": "AESP PARANA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "ARGETG01",
+          "region": "LIT",
+          "empresa": "CO ARGENER",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "ASECTG01",
+          "region": "LIT",
+          "empresa": "COG A SECO",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "ASECTG02",
+          "region": "LIT",
+          "empresa": "COG A SECO",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "BLOPTG01",
+          "region": "LIT",
+          "empresa": "CT B.LOPEZ",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "CEREDI01",
+          "region": "LIT",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "CLERDI01",
+          "region": "LIT",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "VIALDI01",
+          "region": "LIT",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "VTUDDI01",
+          "region": "LIT",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "GBELCC01",
+          "region": "LIT",
+          "empresa": "G BELGRANO",
+          "tipo_maq": "CC"
+        },
+        {
+          "unidad": "GBELTG02",
+          "region": "LIT",
+          "empresa": "G BELGRANO",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "TIMBCC01",
+          "region": "LIT",
+          "empresa": "G SAN MARTIN",
+          "tipo_maq": "CC"
+        },
+        {
+          "unidad": "TIMBCC02",
+          "region": "LIT",
+          "empresa": "G SAN MARTIN",
+          "tipo_maq": "CC"
+        },
+        {
+          "unidad": "CURUTG01",
+          "region": "LIT",
+          "empresa": "GENNEIA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "CURUTG02",
+          "region": "LIT",
+          "empresa": "GENNEIA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "PARATG01",
+          "region": "LIT",
+          "empresa": "GENNEIA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "PARATG02",
+          "region": "LIT",
+          "empresa": "GENNEIA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "MOLITV01",
+          "region": "LIT",
+          "empresa": "MOLINOS",
+          "tipo_maq": "TV"
+        },
+        {
+          "unidad": "RENOTG01",
+          "region": "LIT",
+          "empresa": "RENOVA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "ROJOCC01",
+          "region": "LIT",
+          "empresa": "ROJO RIO ENERGY",
+          "tipo_maq": "CC"
+        },
+        {
+          "unidad": "ROJOCC02",
+          "region": "LIT",
+          "empresa": "ROJO RIO ENERGY",
+          "tipo_maq": "CC"
+        },
+        {
+          "unidad": "ROJOCC03",
+          "region": "LIT",
+          "empresa": "ROJO RIO ENERGY",
+          "tipo_maq": "CC"
+        },
+        {
+          "unidad": "ROJOCC04",
+          "region": "LIT",
+          "empresa": "ROJO RIO ENERGY",
+          "tipo_maq": "CC"
+        },
+        {
+          "unidad": "ROJOTG02",
+          "region": "LIT",
+          "empresa": "ROJO RIO ENERGY",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "PEDRCC03",
+          "region": "LIT",
+          "empresa": "SAN PEDRO SPI",
+          "tipo_maq": "CC"
+        },
+        {
+          "unidad": "PEDRTG01",
+          "region": "LIT",
+          "empresa": "SAN PEDRO SPI",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "PEDRTG02",
+          "region": "LIT",
+          "empresa": "SAN PEDRO SPI",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "APARTV01",
+          "region": "LIT",
+          "empresa": "SIDERAR",
+          "tipo_maq": "TV"
+        },
+        {
+          "unidad": "SORRTV11",
+          "region": "LIT",
+          "empresa": "SORRENTO",
+          "tipo_maq": "TV"
+        },
+        {
+          "unidad": "SORRTV12",
+          "region": "LIT",
+          "empresa": "SORRENTO",
+          "tipo_maq": "TV"
+        },
+        {
+          "unidad": "SORRTV13",
+          "region": "LIT",
+          "empresa": "SORRENTO",
+          "tipo_maq": "TV"
+        },
+        {
+          "unidad": "TER6TG11",
+          "region": "LIT",
+          "empresa": "TERMINAL 6 COG",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "VTUEDI01",
+          "region": "LIT",
+          "empresa": "V TUERTO",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "VOBLCC01",
+          "region": "LIT",
+          "empresa": "VUELTA DE OBLIGADO",
+          "tipo_maq": "CC"
+        },
+        {
+          "unidad": "VOBLCC02",
+          "region": "LIT",
+          "empresa": "VUELTA DE OBLIGADO",
+          "tipo_maq": "CC"
+        },
+        {
+          "unidad": "VOBLTG01",
+          "region": "LIT",
+          "empresa": "VUELTA DE OBLIGADO",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "VOBLTG02",
+          "region": "LIT",
+          "empresa": "VUELTA DE OBLIGADO",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "OBERTG01",
+          "region": "MIS",
+          "empresa": "EMSA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "POSATG02",
+          "region": "MIS",
+          "empresa": "EMSA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "PUPITV01",
+          "region": "NEA",
+          "empresa": "AP PTO PIRAY",
+          "tipo_maq": "TV"
+        },
+        {
+          "unidad": "BSROTV01",
+          "region": "NEA",
+          "empresa": "BIOMASA SANTA ROSA",
+          "tipo_maq": "TV"
+        },
+        {
+          "unidad": "ALEMDI01",
+          "region": "NEA",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "BARDDI01",
+          "region": "NEA",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "CASTDI01",
+          "region": "NEA",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "CORRDI01",
+          "region": "NEA",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "FORDDI01",
+          "region": "NEA",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "FORDDI02",
+          "region": "NEA",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "JUARDI01",
+          "region": "NEA",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "LBLADI01",
+          "region": "NEA",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "LLOMDI01",
+          "region": "NEA",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "NEMODI01",
+          "region": "NEA",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "PALMDI01",
+          "region": "NEA",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "PIRADI01",
+          "region": "NEA",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "SCHADI01",
+          "region": "NEA",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "SPENDI01",
+          "region": "NEA",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "VANGDI01",
+          "region": "NEA",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "GARRTV01",
+          "region": "NEA",
+          "empresa": "GARRUCHOS",
+          "tipo_maq": "TV"
+        },
+        {
+          "unidad": "GUAIM",
+          "region": "NEA",
+          "empresa": "GUAIM",
+          "tipo_maq": "IM"
+        },
+        {
+          "unidad": "PLIIM",
+          "region": "NEA",
+          "empresa": "PLIIM",
+          "tipo_maq": "IM"
+        },
+        {
+          "unidad": "CACHDI01",
+          "region": "NOA",
+          "empresa": "CACHI",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "CHILDI01",
+          "region": "NOA",
+          "empresa": "CHILECITO",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "LBANTG21",
+          "region": "NOA",
+          "empresa": "CT NOA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "LBANTG22",
+          "region": "NOA",
+          "empresa": "CT NOA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "LRIOTG21",
+          "region": "NOA",
+          "empresa": "CT NOA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "LRIOTG22",
+          "region": "NOA",
+          "empresa": "CT NOA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "LRIOTG23",
+          "region": "NOA",
+          "empresa": "CT NOA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "LRIOTG24",
+          "region": "NOA",
+          "empresa": "CT NOA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "BRCHCC01",
+          "region": "NOA",
+          "empresa": "CT TUCUMAN",
+          "tipo_maq": "CC"
+        },
+        {
+          "unidad": "BRCHTG01",
+          "region": "NOA",
+          "empresa": "CT TUCUMAN",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "TUCUTG01",
+          "region": "NOA",
+          "empresa": "CT TUCUMAN",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "TUCUTG02",
+          "region": "NOA",
+          "empresa": "CT TUCUMAN",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "ANATDI01",
+          "region": "NOA",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "CATDDI01",
+          "region": "NOA",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "INTADI01",
+          "region": "NOA",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "LRIDDI01",
+          "region": "NOA",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "LRISDI01",
+          "region": "NOA",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "NOMODI01",
+          "region": "NOA",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "TERVDI01",
+          "region": "NOA",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "TINODI01",
+          "region": "NOA",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "INDETG01",
+          "region": "NOA",
+          "empresa": "INDEPENDENCIA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "INDETG03",
+          "region": "NOA",
+          "empresa": "INDEPENDENCIA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "INDETG04",
+          "region": "NOA",
+          "empresa": "INDEPENDENCIA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "JUMEEO",
+          "region": "NOA",
+          "empresa": "JUME",
+          "tipo_maq": "EO"
+        },
+        {
+          "unidad": "PPNOTG01",
+          "region": "NOA",
+          "empresa": "PLUSPETROL",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "PPNOTG02",
+          "region": "NOA",
+          "empresa": "PLUSPETROL",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "SMTUCC01",
+          "region": "NOA",
+          "empresa": "S MIGUEL",
+          "tipo_maq": "CC"
+        },
+        {
+          "unidad": "SMTUCC02",
+          "region": "NOA",
+          "empresa": "S MIGUEL",
+          "tipo_maq": "CC"
+        },
+        {
+          "unidad": "SMTUTG01",
+          "region": "NOA",
+          "empresa": "S MIGUEL",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "SMTUTG02",
+          "region": "NOA",
+          "empresa": "S MIGUEL",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "CAFADI01",
+          "region": "NON",
+          "empresa": "CAFAYATE",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "CHILE",
+          "region": "NON",
+          "empresa": "CHILE",
+          "tipo_maq": "IM"
+        },
+        {
+          "unidad": "LIBEDI01",
+          "region": "NON",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "SLTADI01",
+          "region": "NON",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "GUEMTG01",
+          "region": "NON",
+          "empresa": "GUEMES",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "GUEMTV11",
+          "region": "NON",
+          "empresa": "GUEMES",
+          "tipo_maq": "TV"
+        },
+        {
+          "unidad": "GUEMTV12",
+          "region": "NON",
+          "empresa": "GUEMES",
+          "tipo_maq": "TV"
+        },
+        {
+          "unidad": "GUEMTV13",
+          "region": "NON",
+          "empresa": "GUEMES",
+          "tipo_maq": "TV"
+        },
+        {
+          "unidad": "ORANDI03",
+          "region": "NON",
+          "empresa": "ORAN",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "TANDTG01",
+          "region": "NON",
+          "empresa": "TERMOANDES",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "TANDTG02",
+          "region": "NON",
+          "empresa": "TERMOANDES",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "PMADTG21",
+          "region": "NOR",
+          "empresa": "CT PATAGONICAS",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "PMADTG22",
+          "region": "NOR",
+          "empresa": "CT PATAGONICAS",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "AMEGHI",
+          "region": "NOR",
+          "empresa": "F AMEGHINO",
+          "tipo_maq": "HI"
+        },
+        {
+          "unidad": "ATUCNUCL",
+          "region": "ROD",
+          "empresa": "CN ATUCHA",
+          "tipo_maq": "NU"
+        },
+        {
+          "unidad": "MATHTG01",
+          "region": "ROD",
+          "empresa": "GENNEIA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "MATHTG02",
+          "region": "ROD",
+          "empresa": "GENNEIA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "MAT3TG01",
+          "region": "ROD",
+          "empresa": "MATHEU 3",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "MAT3TG02",
+          "region": "ROD",
+          "empresa": "MATHEU 3",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "MAT3TG03",
+          "region": "ROD",
+          "empresa": "MATHEU 3",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "MAT3TG04",
+          "region": "ROD",
+          "empresa": "MATHEU 3",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "MAT3TG05",
+          "region": "ROD",
+          "empresa": "MATHEU 3",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "MATETG01",
+          "region": "ROD",
+          "empresa": "MATHEU APR",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "CEPUTG11",
+          "region": "ROD",
+          "empresa": "PUERTO",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "CEPUTG12",
+          "region": "ROD",
+          "empresa": "PUERTO",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "NPUETV04",
+          "region": "ROD",
+          "empresa": "PUERTO",
+          "tipo_maq": "TV"
+        },
+        {
+          "unidad": "NPUETV05",
+          "region": "ROD",
+          "empresa": "PUERTO",
+          "tipo_maq": "TV"
+        },
+        {
+          "unidad": "NPUETV06",
+          "region": "ROD",
+          "empresa": "PUERTO",
+          "tipo_maq": "TV"
+        },
+        {
+          "unidad": "PNUETV07",
+          "region": "ROD",
+          "empresa": "PUERTO",
+          "tipo_maq": "TV"
+        },
+        {
+          "unidad": "PNUETV08",
+          "region": "ROD",
+          "empresa": "PUERTO",
+          "tipo_maq": "TV"
+        },
+        {
+          "unidad": "PNUETV09",
+          "region": "ROD",
+          "empresa": "PUERTO",
+          "tipo_maq": "TV"
+        },
+        {
+          "unidad": "ALUACC07",
+          "region": "S33",
+          "empresa": "ALUAR",
+          "tipo_maq": "CC"
+        },
+        {
+          "unidad": "ALUACC08",
+          "region": "S33",
+          "empresa": "ALUAR",
+          "tipo_maq": "CC"
+        },
+        {
+          "unidad": "ALUATG01",
+          "region": "S33",
+          "empresa": "ALUAR",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "ALUATG02",
+          "region": "S33",
+          "empresa": "ALUAR",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "ALUATG03",
+          "region": "S33",
+          "empresa": "ALUAR",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "ALUATG04",
+          "region": "S33",
+          "empresa": "ALUAR",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "ALUATG05",
+          "region": "S33",
+          "empresa": "ALUAR",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "ALUATG06",
+          "region": "S33",
+          "empresa": "ALUAR",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "ALUATG07",
+          "region": "S33",
+          "empresa": "ALUAR",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "ALUATG08",
+          "region": "S33",
+          "empresa": "ALUAR",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "CRIVTG21",
+          "region": "SUR",
+          "empresa": "CT PATAGONICAS",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "CRIVTG22",
+          "region": "SUR",
+          "empresa": "CT PATAGONICAS",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "CRIVTG23",
+          "region": "SUR",
+          "empresa": "CT PATAGONICAS",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "CRIVTG26",
+          "region": "SUR",
+          "empresa": "CT PATAGONICAS",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "PTR1TG23",
+          "region": "SUR",
+          "empresa": "CT PATAGONICAS",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "PTR1TG24",
+          "region": "SUR",
+          "empresa": "CT PATAGONICAS",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "PTR1TG25",
+          "region": "SUR",
+          "empresa": "CT PATAGONICAS",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "PATATG01",
+          "region": "SUR",
+          "empresa": "E DEL SUR",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "PATATG02",
+          "region": "SUR",
+          "empresa": "E DEL SUR",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "CRIVCC27",
+          "region": "SUR",
+          "empresa": "ELECTROPATAGONIA",
+          "tipo_maq": "CC"
+        },
+        {
+          "unidad": "CRIVCC28",
+          "region": "SUR",
+          "empresa": "ELECTROPATAGONIA",
+          "tipo_maq": "CC"
+        },
+        {
+          "unidad": "CRIVTG27",
+          "region": "SUR",
+          "empresa": "ELECTROPATAGONIA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "CRIVTG28",
+          "region": "SUR",
+          "empresa": "ELECTROPATAGONIA",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "PAMODI01",
+          "region": "SUR",
+          "empresa": "ENARSA",
+          "tipo_maq": "DI"
+        },
+        {
+          "unidad": "PATACC01",
+          "region": "SUR",
+          "empresa": "ENERGIA DEL SUR",
+          "tipo_maq": "CC"
+        },
+        {
+          "unidad": "RCHITG01",
+          "region": "SUR",
+          "empresa": "SPSE",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "RCHITG02",
+          "region": "SUR",
+          "empresa": "SPSE",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "RCHITG03",
+          "region": "SUR",
+          "empresa": "SPSE",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "RCHITG04",
+          "region": "SUR",
+          "empresa": "SPSE",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "RCHITG05",
+          "region": "SUR",
+          "empresa": "SPSE",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "YPFATG01",
+          "region": "SUR",
+          "empresa": "YPF LOS PERALES",
+          "tipo_maq": "TG"
+        },
+        {
+          "unidad": "BATL",
+          "region": "URU",
+          "empresa": "BATL",
+          "tipo_maq": "IM"
+        },
+        {
+          "unidad": "CBMOT",
+          "region": "URU",
+          "empresa": "CBMOT",
+          "tipo_maq": "IM"
+        },
+        {
+          "unidad": "MALD",
+          "region": "URU",
+          "empresa": "MALD",
+          "tipo_maq": "IM"
+        },
+        {
+          "unidad": "PTIG",
+          "region": "URU",
+          "empresa": "PTIG",
+          "tipo_maq": "IM"
+        },
+        {
+          "unidad": "TABL",
+          "region": "URU",
+          "empresa": "TABL",
+          "tipo_maq": "IM"
+        },
+        {
+          "unidad": "UTEIM",
+          "region": "UTE",
+          "empresa": "UTEIM",
+          "tipo_maq": "IM"
+        },
+        {
+          "unidad": "UTERN",
+          "region": "UTE",
+          "empresa": "UTERN",
+          "tipo_maq": "IM"
+        }
+      ],
+      "cotas_nuevas": [],
+      "valores_agua": [
+        {
+          "region": "CHO",
+          "cent_hidr": "ALICHI",
+          "valor": 0.0,
+          "comentario": "RESTRINGIDO OPERACIÓN MEDIANO PLAZO"
+        },
+        {
+          "region": "CHO",
+          "cent_hidr": "CHOCHI",
+          "valor": 60.0,
+          "comentario": "CONDICIONADO OPERACIÓN MEDIANO PLAZO"
+        },
+        {
+          "region": "CHO",
+          "cent_hidr": "PDAGHI",
+          "valor": 60.0,
+          "comentario": "CONDICIONADO OPERACIÓN MEDIANO PLAZO"
+        },
+        {
+          "region": "CHO",
+          "cent_hidr": "PBANHI",
+          "valor": 60.0,
+          "comentario": "CONDICIONADO OPERACIÓN MEDIANO PLAZO"
+        },
+        {
+          "region": "CUY",
+          "cent_hidr": "NIHTHI",
+          "valor": 55.7,
+          "comentario": "RESTRINGIDO OPERACIÓN MEDIANO PLAZO"
+        },
+        {
+          "region": "CUY",
+          "cent_hidr": "ADTOHI",
+          "valor": 55.0,
+          "comentario": "RESTRINGIDO OPERACIÓN MEDIANO PLAZO"
+        },
+        {
+          "region": "EPE",
+          "cent_hidr": "RGESHI",
+          "valor": 60.0,
+          "comentario": "RESTRINGIDO OPERACIÓN MEDIANO PLAZO"
+        },
+        {
+          "region": "NON",
+          "cent_hidr": "CCORHI",
+          "valor": 60.0,
+          "comentario": "RESTRINGIDO OPERACIÓN MEDIANO PLAZO"
+        }
+      ],
+      "alto_valle": [
+        {
+          "unidad": "AVALCC22",
+          "tipo_maq": "CC",
+          "var": "GEN_TER",
+          "empresa": "ALTO VALLE",
+          "region": "COM",
+          "total": 0,
+          "dias": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "sin_datos": false
+        },
+        {
+          "unidad": "AVALCC23",
+          "tipo_maq": "CC",
+          "var": "GEN_TER",
+          "empresa": "ALTO VALLE",
+          "region": "COM",
+          "total": 5880.0,
+          "dias": [
+            840.0,
+            840.0,
+            840.0,
+            840.0,
+            840.0,
+            840.0,
+            840.0
+          ],
+          "mwh_anterior": 5880.0,
+          "variacion_pct": 0.0,
+          "evento": null,
+          "mw_equiv": 35.0,
+          "sin_datos": false
+        },
+        {
+          "unidad": "AVALTG21",
+          "tipo_maq": "TG",
+          "var": "GEN_TER",
+          "empresa": "ALTO VALLE",
+          "region": "COM",
+          "total": 0,
+          "dias": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "sin_datos": false
+        },
+        {
+          "unidad": "AVALTG22",
+          "tipo_maq": "TG",
+          "var": "GEN_TER",
+          "empresa": "ALTO VALLE",
+          "region": "COM",
+          "total": 0,
+          "dias": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "sin_datos": false
+        },
+        {
+          "unidad": "AVALTG23",
+          "tipo_maq": "TG",
+          "var": "GEN_TER",
+          "empresa": "ALTO VALLE",
+          "region": "COM",
+          "total": 0,
+          "dias": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "mwh_anterior": 0,
+          "variacion_pct": null,
+          "evento": null,
+          "mw_equiv": 0.0,
+          "sin_datos": false
+        }
+      ]
     }
   },
   "series": {
@@ -62468,6 +68056,19 @@
         "Nuclear_pct": 7.2,
         "Renovable_pct": 14.0,
         "Térmica_pct": 49.7
+      },
+      "30": {
+        "Hidráulica": 746008.0,
+        "Importación": 203280.0,
+        "Nuclear": 236712.0,
+        "Renovable": 414060.0,
+        "Térmica": 1460990.0,
+        "__total__": 3061050.0,
+        "Hidráulica_pct": 24.4,
+        "Importación_pct": 6.6,
+        "Nuclear_pct": 7.7,
+        "Renovable_pct": 13.5,
+        "Térmica_pct": 47.7
       }
     },
     "demanda": {
@@ -62535,6 +68136,12 @@
         "demanda_neta": 3223074.0,
         "demanda_bruta": 3268495.0,
         "importacion": 198144.0,
+        "exportacion": 0.0
+      },
+      "30": {
+        "demanda_neta": 3007066.0,
+        "demanda_bruta": 3049994.0,
+        "importacion": 203280.0,
         "exportacion": 0.0
       }
     },
@@ -62615,6 +68222,13 @@
         "Fuel_Oil": 5984.0,
         "GasAcue": 105000.0,
         "GasProp": 162810.0
+      },
+      "30": {
+        "Carbon": 24699.0,
+        "Dies_Oil": 6205.0,
+        "Fuel_Oil": 4818.0,
+        "GasAcue": 112000.0,
+        "GasProp": 160026.0
       }
     },
     "costo_marginal": {
@@ -62672,6 +68286,11 @@
         "PICO": 378059.87,
         "RESTO": 265832.85,
         "VALLE": 245364.91
+      },
+      "30": {
+        "PICO": 374251.57,
+        "RESTO": 257506.91,
+        "VALLE": 229719.23
       }
     },
     "alto_valle": {
@@ -62746,6 +68365,13 @@
         "AVALTG23": 0
       },
       "29": {
+        "AVALCC22": 0,
+        "AVALCC23": 5880.0,
+        "AVALTG21": 0,
+        "AVALTG22": 0,
+        "AVALTG23": 0
+      },
+      "30": {
         "AVALCC22": 0,
         "AVALCC23": 5880.0,
         "AVALTG21": 0,
