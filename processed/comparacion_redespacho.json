@@ -2148,5 +2148,276 @@
       "2026-07-18",
       "2026-07-19"
     ]
+  },
+  "30": {
+    "num_semana": 30,
+    "fecha_emision": "2026-07-20T19:53:10",
+    "motivos": [
+      "MAYOR DEMANDA",
+      "MAYOR DISPONIBILIDAD DE GAS PARA USINAS POR PARTE DE LOS GENERADORES DE GESTIÓN PROPIA",
+      "INDISPONIBILIDAD DE CF GARABÍ DE 1 A 7HS POR ENSAYOS DE DISPONIBILIDAD DE GARABÍ 2 QUE INDISPONE GARABÍ 1",
+      "CEPU TG11 RETRASA DISPONIBILIDAD AL 21/7"
+    ],
+    "balance": {
+      "termico": {
+        "programado_gwh": 1460.99,
+        "redespachado_gwh": 1487.61875,
+        "delta_gwh": 26.63,
+        "delta_pct": 1.8
+      },
+      "hidraulico": {
+        "programado_gwh": 746.01,
+        "redespachado_gwh": 803.95239,
+        "delta_gwh": 57.94,
+        "delta_pct": 7.8
+      },
+      "nuclear": {
+        "programado_gwh": 236.71,
+        "redespachado_gwh": 236.208,
+        "delta_gwh": -0.5,
+        "delta_pct": -0.2
+      },
+      "renovable": {
+        "programado_gwh": 414.06,
+        "redespachado_gwh": 368.763,
+        "delta_gwh": -45.3,
+        "delta_pct": -10.9
+      },
+      "importacion": {
+        "programado_gwh": 203.28,
+        "redespachado_gwh": 231.58299,
+        "delta_gwh": 28.3,
+        "delta_pct": 13.9
+      }
+    },
+    "combustibles": {
+      "Gas (Dam3)": {
+        "programado": 272026.0,
+        "redespachado": 283177.2,
+        "delta": 11151.19,
+        "delta_pct": 4.1,
+        "unidad": "Dam³"
+      },
+      "GO": {
+        "programado": 6205.0,
+        "redespachado": 1633.9,
+        "delta": -4571.14,
+        "delta_pct": -73.7,
+        "unidad": "m³"
+      },
+      "FO": {
+        "programado": 4818.0,
+        "redespachado": 4735.6,
+        "delta": -82.42,
+        "delta_pct": -1.7,
+        "unidad": "Ton"
+      },
+      "CM": {
+        "programado": 24699.0,
+        "redespachado": 23667.0,
+        "delta": -1032.0,
+        "delta_pct": -4.2,
+        "unidad": "Ton"
+      }
+    },
+    "costo_marginal": {
+      "VALLE": {
+        "programado": 229719.23,
+        "redespachado": 235065.93,
+        "delta": 5347.0,
+        "delta_pct": 2.3
+      },
+      "RESTO": {
+        "programado": 257506.91,
+        "redespachado": 285112.39,
+        "delta": 27605.0,
+        "delta_pct": 10.7
+      },
+      "PICO": {
+        "programado": 374251.57,
+        "redespachado": 281364.95,
+        "delta": -92887.0,
+        "delta_pct": -24.8
+      }
+    },
+    "hidro_centrales_mwh": {
+      "ALICURÁ": [
+        8715.1,
+        11600.0,
+        20349.1,
+        9499.5,
+        2092.5,
+        2092.5,
+        238.23
+      ],
+      "PIEDRA": [
+        17921.46,
+        22320.0,
+        22320.0,
+        17880.0,
+        10343.2,
+        6780.0,
+        6780.0
+      ],
+      "PICHI LEUFU": [
+        3601.47,
+        4328.19,
+        5176.93,
+        3026.5,
+        1593.3,
+        1552.22,
+        1069.0
+      ],
+      "CHOCÓN": [
+        5000.0,
+        8000.0,
+        12000.0,
+        2343.6,
+        2325.33,
+        1626.43,
+        432.0
+      ],
+      "P.BAND.": [
+        448.42,
+        796.9,
+        448.42,
+        448.42,
+        448.42,
+        448.42,
+        448.42
+      ],
+      "NIHUILES": [
+        675.0,
+        675.0,
+        675.0,
+        675.0,
+        675.0,
+        675.0,
+        675.0
+      ],
+      "AGUA DE TORO": [
+        200.0,
+        200.0,
+        200.0,
+        200.0,
+        200.0,
+        0.0,
+        0.0
+      ],
+      "REYUNOS": [
+        340.0,
+        340.0,
+        340.0,
+        340.0,
+        340.0,
+        340.0,
+        340.0
+      ],
+      "CABRA CORRAL": [
+        900.0,
+        900.0,
+        900.0,
+        900.0,
+        900.0,
+        720.0,
+        720.0
+      ],
+      "RIO GRANDE": [
+        648.0,
+        678.55,
+        909.05,
+        648.0,
+        648.0,
+        502.2,
+        502.2
+      ],
+      "SALTO GRANDE": [
+        19200.0,
+        19200.0,
+        19200.0,
+        19200.0,
+        19200.0,
+        19200.0,
+        19200.0
+      ],
+      "YACYRETÁ": [
+        52000.0,
+        48000.0,
+        48000.0,
+        48000.0,
+        48000.0,
+        49000.0,
+        49000.0
+      ],
+      "FUTALEUFÚ": [
+        5610.0,
+        5610.0,
+        4801.04,
+        4562.18,
+        4562.18,
+        4562.18,
+        4562.18
+      ],
+      "AMEGHINO": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "cotas_previstas": {
+      "ALICURÁ": {
+        "cota": 697.3332660989788,
+        "comentario": "0.00 RESTRINGIDO POR OPERACIÓN DE MEDIANO PLAZO."
+      },
+      "PIEDRA": {
+        "cota": 575.4016893545572,
+        "comentario": "60.00 CONDICIONADO  POR OPERACIÓN DE MEDIANO PLAZO."
+      },
+      "CHOCÓN": {
+        "cota": 374.2321118459643,
+        "comentario": "60.00 CONDICIONADO POR OPERACIÓN DE MEDIANO PLAZO."
+      },
+      "P.BAND.": {
+        "cota": 412.3014258740631,
+        "comentario": "60.00 CONDICIONADO POR OPERACIÓN DE MEDIANO PLAZO."
+      },
+      "NIHUIL (Hm3)": {
+        "cota": 1251.4283655172414,
+        "comentario": "60.00 RESTRINGIDO POR OPERACIÓN DE MEDIANO PLAZO."
+      },
+      "TORO (Hm3)": {
+        "cota": 1339.0063777777773,
+        "comentario": "60.00 RESTRINGIDO POR OPERACIÓN DE MEDIANO PLAZO."
+      },
+      "R.GRANDE": {
+        "cota": 874.3750234521576,
+        "comentario": "60.00 RESTRINGIDO POR OPERACIÓN DE MEDIANO PLAZO."
+      },
+      "C.CORRAL": {
+        "cota": null,
+        "comentario": null
+      },
+      "FUTALEUFÚ": {
+        "cota": 473.48026933603796,
+        "comentario": "60.00 CONDICIONADO POR OPERACIÓN DE MEDIANO PLAZO."
+      },
+      "AMEGUINO": {
+        "cota": 132.1435369770032,
+        "comentario": "0.00 RESTRINGIDO, PRÓXIMO VALOR SUP A UNIDADES CON COMB LÍQ DESPACHADAS."
+      }
+    },
+    "fechas_dias": [
+      "2026-07-20",
+      "2026-07-21",
+      "2026-07-22",
+      "2026-07-23",
+      "2026-07-24",
+      "2026-07-25",
+      "2026-07-26"
+    ]
   }
 }
