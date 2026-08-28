@@ -1,14 +1,5 @@
 [
   {
-    "timestamp": "2026-07-28T07:39:22.871427-03:00",
-    "docs_totales": 16,
-    "progs_encontradas": 6,
-    "redesps_encontrados": 10,
-    "descargados": [
-      "redespacho_20260727.xls"
-    ]
-  },
-  {
     "timestamp": "2026-07-29T07:42:52.711445-03:00",
     "docs_totales": 13,
     "progs_encontradas": 5,
@@ -230,6 +221,13 @@
   },
   {
     "timestamp": "2026-08-27T15:58:27.343552-03:00",
+    "docs_totales": 14,
+    "progs_encontradas": 5,
+    "redesps_encontrados": 9,
+    "descargados": []
+  },
+  {
+    "timestamp": "2026-08-28T17:05:31.750968-03:00",
     "docs_totales": 14,
     "progs_encontradas": 5,
     "redesps_encontrados": 9,
