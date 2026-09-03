@@ -1,14 +1,5 @@
 [
   {
-    "timestamp": "2026-08-03T08:30:04.267152-03:00",
-    "docs_totales": 15,
-    "progs_encontradas": 6,
-    "redesps_encontrados": 9,
-    "descargados": [
-      "psem3226.MDB"
-    ]
-  },
-  {
     "timestamp": "2026-08-04T07:43:34.595072-03:00",
     "docs_totales": 16,
     "progs_encontradas": 6,
@@ -230,6 +221,13 @@
   },
   {
     "timestamp": "2026-09-02T09:39:34.244222-03:00",
+    "docs_totales": 13,
+    "progs_encontradas": 5,
+    "redesps_encontrados": 8,
+    "descargados": []
+  },
+  {
+    "timestamp": "2026-09-03T09:42:28.633004-03:00",
     "docs_totales": 13,
     "progs_encontradas": 5,
     "redesps_encontrados": 8,
