@@ -1,12 +1,5 @@
 [
   {
-    "timestamp": "2026-08-18T05:41:10.963871-03:00",
-    "docs_totales": 15,
-    "progs_encontradas": 6,
-    "redesps_encontrados": 9,
-    "descargados": []
-  },
-  {
     "timestamp": "2026-08-20T05:43:34.743796-03:00",
     "docs_totales": 13,
     "progs_encontradas": 5,
@@ -224,6 +217,13 @@
   },
   {
     "timestamp": "2026-09-17T10:13:17.674116-03:00",
+    "docs_totales": 11,
+    "progs_encontradas": 5,
+    "redesps_encontrados": 6,
+    "descargados": []
+  },
+  {
+    "timestamp": "2026-09-18T09:49:02.168221-03:00",
     "docs_totales": 11,
     "progs_encontradas": 5,
     "redesps_encontrados": 6,
