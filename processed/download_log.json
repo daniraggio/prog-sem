@@ -1,14 +1,5 @@
 [
   {
-    "timestamp": "2026-08-24T05:53:11.929383-03:00",
-    "docs_totales": 15,
-    "progs_encontradas": 6,
-    "redesps_encontrados": 9,
-    "descargados": [
-      "psem3526.MDB"
-    ]
-  },
-  {
     "timestamp": "2026-08-25T05:48:13.702655-03:00",
     "docs_totales": 16,
     "progs_encontradas": 6,
@@ -228,5 +219,14 @@
     "progs_encontradas": 6,
     "redesps_encontrados": 7,
     "descargados": []
+  },
+  {
+    "timestamp": "2026-09-22T10:13:59.629128-03:00",
+    "docs_totales": 14,
+    "progs_encontradas": 6,
+    "redesps_encontrados": 8,
+    "descargados": [
+      "redespacho_20260921.xls"
+    ]
   }
 ]
