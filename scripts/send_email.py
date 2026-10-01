@@ -29,7 +29,7 @@ ROOT     = Path(__file__).resolve().parent.parent
 TZ_ARG   = timezone(timedelta(hours=-3))
 
 EMAIL_FROM    = os.environ.get("EMAIL_FROM", "jarvis.aconcagua@gmail.com")
-EMAIL_TO_RAW  = os.environ.get("EMAIL_TO", "draggio@aconcaguaenergia.com,jspinoso@aconcaguaenergia.com")
+EMAIL_TO_RAW  = os.environ.get("EMAIL_TO", "draggio@aconcaguaenergia.com,evidal@aconcaguaenergia.com")
 EMAIL_TO_LIST = [e.strip() for e in EMAIL_TO_RAW.split(",") if e.strip()]
 EMAIL_TO      = ", ".join(EMAIL_TO_LIST)   # para el header To:
 APP_PASS      = os.environ.get("GMAIL_APP_PASSWORD", "")
