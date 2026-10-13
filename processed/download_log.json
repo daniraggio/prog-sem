@@ -1,12 +1,5 @@
 [
   {
-    "timestamp": "2026-09-15T10:18:58.667023-03:00",
-    "docs_totales": 14,
-    "progs_encontradas": 6,
-    "redesps_encontrados": 8,
-    "descargados": []
-  },
-  {
     "timestamp": "2026-09-16T10:16:32.405780-03:00",
     "docs_totales": 11,
     "progs_encontradas": 5,
@@ -226,5 +219,12 @@
     "descargados": [
       "psem4226.MDB"
     ]
+  },
+  {
+    "timestamp": "2026-10-13T12:44:09.513318-03:00",
+    "docs_totales": 12,
+    "progs_encontradas": 6,
+    "redesps_encontrados": 6,
+    "descargados": []
   }
 ]
