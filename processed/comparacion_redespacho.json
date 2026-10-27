@@ -5915,5 +5915,274 @@
       "2026-10-24",
       "2026-10-25"
     ]
+  },
+  "44": {
+    "num_semana": 44,
+    "fecha_emision": "2026-10-26T18:32:43",
+    "motivos": [
+      "MENOR DEMANDA",
+      "EL CHAÑAR BAJANDO A 420 POR MENORES APORTES"
+    ],
+    "balance": {
+      "termico": {
+        "programado_gwh": 837.9,
+        "redespachado_gwh": 864.2563700000001,
+        "delta_gwh": 26.36,
+        "delta_pct": 3.1
+      },
+      "hidraulico": {
+        "programado_gwh": 1004.23,
+        "redespachado_gwh": 1052.7513600000002,
+        "delta_gwh": 48.52,
+        "delta_pct": 4.8
+      },
+      "nuclear": {
+        "programado_gwh": 124.66,
+        "redespachado_gwh": 124.656,
+        "delta_gwh": 0.0,
+        "delta_pct": null
+      },
+      "renovable": {
+        "programado_gwh": 557.99,
+        "redespachado_gwh": 505.857,
+        "delta_gwh": -52.14,
+        "delta_pct": -9.3
+      },
+      "importacion": {
+        "programado_gwh": 98.1,
+        "redespachado_gwh": 17.836470000000002,
+        "delta_gwh": -80.26,
+        "delta_pct": -81.8
+      }
+    },
+    "combustibles": {
+      "Gas (Dam3)": {
+        "programado": 167025.0,
+        "redespachado": 169533.9,
+        "delta": 2508.91,
+        "delta_pct": 1.5,
+        "unidad": "Dam³"
+      },
+      "GO": {
+        "programado": 606.0,
+        "redespachado": 606.2,
+        "delta": 0.22,
+        "delta_pct": 0.0,
+        "unidad": "m³"
+      },
+      "FO": {
+        "programado": null,
+        "redespachado": 0.0,
+        "delta": null,
+        "delta_pct": null,
+        "unidad": "Ton"
+      },
+      "CM": {
+        "programado": null,
+        "redespachado": 0.0,
+        "delta": null,
+        "delta_pct": null,
+        "unidad": "Ton"
+      }
+    },
+    "costo_marginal": {
+      "VALLE": {
+        "programado": 41579.71,
+        "redespachado": 23017.1,
+        "delta": -18563.0,
+        "delta_pct": -44.6
+      },
+      "RESTO": {
+        "programado": 51545.31,
+        "redespachado": 69390.7,
+        "delta": 17845.0,
+        "delta_pct": 34.6
+      },
+      "PICO": {
+        "programado": 83861.17,
+        "redespachado": 100158.34,
+        "delta": 16297.0,
+        "delta_pct": 19.4
+      }
+    },
+    "hidro_centrales_mwh": {
+      "ALICURÁ": [
+        10000.0,
+        9000.0,
+        16042.5,
+        12087.0,
+        9751.72,
+        10059.0,
+        1316.0
+      ],
+      "PIEDRA": [
+        31000.0,
+        29000.0,
+        31248.0,
+        31248.0,
+        31248.0,
+        31248.0,
+        31248.0
+      ],
+      "PICHI LEUFU": [
+        6078.43137254902,
+        5686.274509803922,
+        6249.6,
+        6166.0,
+        5836.59,
+        6184.78,
+        5318.0
+      ],
+      "CHOCÓN": [
+        6000.0,
+        3000.0,
+        5979.81,
+        3619.21,
+        4046.0,
+        2989.22,
+        42.88
+      ],
+      "P.BAND.": [
+        7200.0,
+        6400.0,
+        6000.0,
+        6000.0,
+        6000.0,
+        6000.0,
+        6000.0
+      ],
+      "NIHUILES": [
+        1320.0,
+        1320.0,
+        1320.0,
+        1320.0,
+        1320.0,
+        1320.0,
+        1320.0
+      ],
+      "AGUA DE TORO": [
+        76.57,
+        225.0,
+        675.0,
+        511.17,
+        225.0,
+        225.0,
+        675.0
+      ],
+      "REYUNOS": [
+        450.0,
+        450.0,
+        450.0,
+        450.0,
+        450.0,
+        450.0,
+        450.0
+      ],
+      "CABRA CORRAL": [
+        700.0,
+        700.0,
+        700.0,
+        700.0,
+        700.0,
+        550.0,
+        550.0
+      ],
+      "RIO GRANDE": [
+        648.0,
+        749.3,
+        802.38,
+        1032.3,
+        648.0,
+        300.86,
+        355.17
+      ],
+      "SALTO GRANDE": [
+        18000.0,
+        18000.0,
+        18000.0,
+        18000.0,
+        18000.0,
+        18000.0,
+        18000.0
+      ],
+      "YACYRETÁ": [
+        56800.0,
+        57000.0,
+        57000.0,
+        56000.0,
+        56000.0,
+        58300.0,
+        58500.0
+      ],
+      "FUTALEUFÚ": [
+        4562.18,
+        4562.18,
+        4562.18,
+        4562.18,
+        4562.18,
+        4562.18,
+        4562.18
+      ],
+      "AMEGHINO": [
+        168.0,
+        168.0,
+        168.0,
+        168.0,
+        168.0,
+        168.0,
+        168.0
+      ]
+    },
+    "cotas_previstas": {
+      "ALICURÁ": {
+        "cota": 702.3107718984737,
+        "comentario": null
+      },
+      "PIEDRA": {
+        "cota": 589.901586039943,
+        "comentario": null
+      },
+      "CHOCÓN": {
+        "cota": 379.1477603343761,
+        "comentario": null
+      },
+      "P.BAND.": {
+        "cota": 418.76653192495104,
+        "comentario": null
+      },
+      "NIHUIL (Hm3)": {
+        "cota": 1259.2881103448276,
+        "comentario": null
+      },
+      "TORO (Hm3)": {
+        "cota": 1334.3975861111112,
+        "comentario": null
+      },
+      "R.GRANDE": {
+        "cota": 871.5072529999999,
+        "comentario": null
+      },
+      "C.CORRAL": {
+        "cota": null,
+        "comentario": null
+      },
+      "FUTALEUFÚ": {
+        "cota": 481.918829051375,
+        "comentario": null
+      },
+      "AMEGUINO": {
+        "cota": 142.24362582977253,
+        "comentario": null
+      }
+    },
+    "fechas_dias": [
+      "2026-10-26",
+      "2026-10-27",
+      "2026-10-28",
+      "2026-10-29",
+      "2026-10-30",
+      "2026-10-31",
+      "2026-11-01"
+    ]
   }
 }
