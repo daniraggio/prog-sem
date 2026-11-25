@@ -6988,5 +6988,278 @@
       "2026-11-21",
       "2026-11-22"
     ]
+  },
+  "48": {
+    "num_semana": 48,
+    "fecha_emision": "2026-11-24T16:42:40",
+    "motivos": [
+      "MAYOR DEMANDA",
+      "MENOR ENERGIA YACYRETA POR MAYOR TOMA DE PARAGUAY",
+      "CN EMBALSE RETRASA E/S AL 25/11",
+      "G. BELGRANO TG02 INDISPONIBLE POR VIBRACIONES",
+      "TRANSMISIÓN COMAHUE - GBA LIBERADO DESDE EL JUEVES POR FINALIZACIÓN DE PERÍODO DE PRUEBA DE LOS",
+      "CAPACITORES SERIE DE ET OLAVARRÍA"
+    ],
+    "balance": {
+      "termico": {
+        "programado_gwh": 873.34,
+        "redespachado_gwh": 1200.4963476368382,
+        "delta_gwh": 327.16,
+        "delta_pct": 37.5
+      },
+      "hidraulico": {
+        "programado_gwh": 915.14,
+        "redespachado_gwh": 787.7594528253555,
+        "delta_gwh": -127.38,
+        "delta_pct": -13.9
+      },
+      "nuclear": {
+        "programado_gwh": 164.18,
+        "redespachado_gwh": 190.10423135375976,
+        "delta_gwh": 25.92,
+        "delta_pct": 15.8
+      },
+      "renovable": {
+        "programado_gwh": 665.65,
+        "redespachado_gwh": 668.2350401633264,
+        "delta_gwh": 2.58,
+        "delta_pct": 0.4
+      },
+      "importacion": {
+        "programado_gwh": 21.3,
+        "redespachado_gwh": 19.84027294454165,
+        "delta_gwh": -1.46,
+        "delta_pct": -6.9
+      }
+    },
+    "combustibles": {
+      "Gas (Dam3)": {
+        "programado": 172774.0,
+        "redespachado": 209733.5,
+        "delta": 36959.51,
+        "delta_pct": 21.4,
+        "unidad": "Dam³"
+      },
+      "GO": {
+        "programado": 606.0,
+        "redespachado": 499.2,
+        "delta": -106.78,
+        "delta_pct": -17.6,
+        "unidad": "m³"
+      },
+      "FO": {
+        "programado": null,
+        "redespachado": 0.0,
+        "delta": null,
+        "delta_pct": null,
+        "unidad": "Ton"
+      },
+      "CM": {
+        "programado": null,
+        "redespachado": 0.0,
+        "delta": null,
+        "delta_pct": null,
+        "unidad": "Ton"
+      }
+    },
+    "costo_marginal": {
+      "VALLE": {
+        "programado": 50651.9,
+        "redespachado": null,
+        "delta": null,
+        "delta_pct": null
+      },
+      "RESTO": {
+        "programado": 49657.01,
+        "redespachado": null,
+        "delta": null,
+        "delta_pct": null
+      },
+      "PICO": {
+        "programado": 81288.9,
+        "redespachado": null,
+        "delta": null,
+        "delta_pct": null
+      }
+    },
+    "hidro_centrales_mwh": {
+      "ALICURÁ": [
+        null,
+        6500.0,
+        4000.0,
+        1953.0,
+        12415.5,
+        12415.5,
+        3154.16
+      ],
+      "PIEDRA": [
+        null,
+        15000.0,
+        16000.0,
+        6261.37,
+        18241.16,
+        9309.99,
+        6269.03
+      ],
+      "PICHI LEUFU": [
+        null,
+        2941.1764705882356,
+        3137.2549019607845,
+        1179.0,
+        3537.01,
+        2242.52,
+        1621.2
+      ],
+      "CHOCÓN": [
+        null,
+        7000.0,
+        5000.0,
+        14601.96,
+        2343.6,
+        2343.6,
+        2343.6
+      ],
+      "P.BAND.": [
+        null,
+        5082.05,
+        5100.0,
+        5100.0,
+        5100.0,
+        5100.0,
+        5100.0
+      ],
+      "NIHUILES": [
+        null,
+        1296.0,
+        1296.0,
+        1296.0,
+        1132.1,
+        1296.0,
+        1296.0
+      ],
+      "AGUA DE TORO": [
+        null,
+        2206.38,
+        1989.73,
+        450.0,
+        450.0,
+        1298.88,
+        2488.32
+      ],
+      "REYUNOS": [
+        null,
+        1280.0,
+        1040.0,
+        1040.0,
+        1040.0,
+        1040.0,
+        1040.0
+      ],
+      "CABRA CORRAL": [
+        null,
+        600.0,
+        600.0,
+        600.0,
+        600.0,
+        500.0,
+        500.0
+      ],
+      "RIO GRANDE": [
+        null,
+        648.0,
+        648.0,
+        648.0,
+        820.8,
+        0.0,
+        0.0
+      ],
+      "SALTO GRANDE": [
+        null,
+        17280.0,
+        17280.0,
+        17280.0,
+        17280.0,
+        17280.0,
+        17280.0
+      ],
+      "YACYRETÁ": [
+        null,
+        41700.0,
+        41700.0,
+        42900.0,
+        37200.0,
+        37200.0,
+        37200.0
+      ],
+      "FUTALEUFÚ": [
+        null,
+        4562.18,
+        4562.18,
+        4562.18,
+        4562.18,
+        4562.18,
+        4562.18
+      ],
+      "AMEGHINO": [
+        null,
+        216.0,
+        216.0,
+        216.0,
+        216.0,
+        216.0,
+        216.0
+      ]
+    },
+    "cotas_previstas": {
+      "ALICURÁ": {
+        "cota": 701.912334954964,
+        "comentario": null
+      },
+      "PIEDRA": {
+        "cota": 591.2521131896245,
+        "comentario": null
+      },
+      "CHOCÓN": {
+        "cota": 380.20989844368626,
+        "comentario": null
+      },
+      "P.BAND.": {
+        "cota": 420.28579310089583,
+        "comentario": null
+      },
+      "NIHUIL (Hm3)": {
+        "cota": 1262.4773908046013,
+        "comentario": null
+      },
+      "TORO (Hm3)": {
+        "cota": 1317.0418013888896,
+        "comentario": null
+      },
+      "R.GRANDE": {
+        "cota": 872.7642471118069,
+        "comentario": null
+      },
+      "C.CORRAL": {
+        "cota": null,
+        "comentario": null
+      },
+      "FUTALEUFÚ": {
+        "cota": 484.4106149200314,
+        "comentario": null
+      },
+      "AMEGUINO": {
+        "cota": 146.4202176020365,
+        "comentario": null
+      }
+    },
+    "fechas_dias": [
+      "2026-11-23",
+      "2026-11-24",
+      "2026-11-25",
+      "2026-11-26",
+      "2026-11-27",
+      "2026-11-28",
+      "2026-11-29"
+    ]
   }
 }
