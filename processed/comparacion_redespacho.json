@@ -6991,60 +6991,55 @@
   },
   "48": {
     "num_semana": 48,
-    "fecha_emision": "2026-11-24T16:42:40",
+    "fecha_emision": "2026-11-27T20:22:18",
     "motivos": [
-      "MAYOR DEMANDA",
-      "MENOR ENERGIA YACYRETA POR MAYOR TOMA DE PARAGUAY",
-      "CN EMBALSE RETRASA E/S AL 25/11",
-      "G. BELGRANO TG02 INDISPONIBLE POR VIBRACIONES",
-      "TRANSMISIÓN COMAHUE - GBA LIBERADO DESDE EL JUEVES POR FINALIZACIÓN DE PERÍODO DE PRUEBA DE LOS",
-      "CAPACITORES SERIE DE ET OLAVARRÍA"
+      "MAYOR DEMANDA"
     ],
     "balance": {
       "termico": {
         "programado_gwh": 873.34,
-        "redespachado_gwh": 1200.4963476368382,
-        "delta_gwh": 327.16,
-        "delta_pct": 37.5
+        "redespachado_gwh": 1216.537169082101,
+        "delta_gwh": 343.2,
+        "delta_pct": 39.3
       },
       "hidraulico": {
         "programado_gwh": 915.14,
-        "redespachado_gwh": 787.7594528253555,
-        "delta_gwh": -127.38,
-        "delta_pct": -13.9
+        "redespachado_gwh": 829.0181701001453,
+        "delta_gwh": -86.12,
+        "delta_pct": -9.4
       },
       "nuclear": {
         "programado_gwh": 164.18,
-        "redespachado_gwh": 190.10423135375976,
-        "delta_gwh": 25.92,
-        "delta_pct": 15.8
+        "redespachado_gwh": 175.00178194516897,
+        "delta_gwh": 10.82,
+        "delta_pct": 6.6
       },
       "renovable": {
         "programado_gwh": 665.65,
-        "redespachado_gwh": 668.2350401633264,
-        "delta_gwh": 2.58,
-        "delta_pct": 0.4
+        "redespachado_gwh": 656.2164533520862,
+        "delta_gwh": -9.44,
+        "delta_pct": -1.4
       },
       "importacion": {
         "programado_gwh": 21.3,
-        "redespachado_gwh": 19.84027294454165,
-        "delta_gwh": -1.46,
-        "delta_pct": -6.9
+        "redespachado_gwh": 15.238670039473101,
+        "delta_gwh": -6.06,
+        "delta_pct": -28.5
       }
     },
     "combustibles": {
       "Gas (Dam3)": {
         "programado": 172774.0,
-        "redespachado": 209733.5,
-        "delta": 36959.51,
-        "delta_pct": 21.4,
+        "redespachado": 111000.0,
+        "delta": -61774.0,
+        "delta_pct": -35.8,
         "unidad": "Dam³"
       },
       "GO": {
         "programado": 606.0,
-        "redespachado": 499.2,
-        "delta": -106.78,
-        "delta_pct": -17.6,
+        "redespachado": 183.2,
+        "delta": -422.8,
+        "delta_pct": -69.8,
         "unidad": "m³"
       },
       "FO": {
@@ -7085,158 +7080,158 @@
     "hidro_centrales_mwh": {
       "ALICURÁ": [
         null,
-        6500.0,
-        4000.0,
-        1953.0,
-        12415.5,
-        12415.5,
-        3154.16
+        null,
+        null,
+        null,
+        9000.0,
+        10000.0,
+        4152.0
       ],
       "PIEDRA": [
         null,
-        15000.0,
-        16000.0,
-        6261.37,
-        18241.16,
-        9309.99,
-        6269.03
+        null,
+        null,
+        null,
+        13000.0,
+        11000.0,
+        8726.97
       ],
       "PICHI LEUFU": [
         null,
-        2941.1764705882356,
-        3137.2549019607845,
-        1179.0,
-        3537.01,
-        2242.52,
-        1621.2
+        null,
+        null,
+        null,
+        2549.0196078431372,
+        2156.8627450980393,
+        1314.0
       ],
       "CHOCÓN": [
         null,
-        7000.0,
-        5000.0,
-        14601.96,
-        2343.6,
-        2343.6,
-        2343.6
+        null,
+        null,
+        null,
+        8000.0,
+        6000.0,
+        2388.0
       ],
       "P.BAND.": [
         null,
-        5082.05,
-        5100.0,
-        5100.0,
-        5100.0,
-        5100.0,
-        5100.0
+        null,
+        null,
+        null,
+        6000.0,
+        6500.0,
+        6158.0
       ],
       "NIHUILES": [
         null,
-        1296.0,
-        1296.0,
-        1296.0,
-        1132.1,
-        1296.0,
-        1296.0
+        null,
+        null,
+        null,
+        1250.0,
+        1250.0,
+        1250.0
       ],
       "AGUA DE TORO": [
         null,
-        2206.38,
-        1989.73,
-        450.0,
-        450.0,
-        1298.88,
-        2488.32
+        null,
+        null,
+        null,
+        1289.4,
+        2052.57,
+        714.0
       ],
       "REYUNOS": [
         null,
-        1280.0,
-        1040.0,
-        1040.0,
-        1040.0,
+        null,
+        null,
+        null,
+        1310.0,
         1040.0,
         1040.0
       ],
       "CABRA CORRAL": [
         null,
-        600.0,
-        600.0,
-        600.0,
+        null,
+        null,
+        null,
         600.0,
         500.0,
         500.0
       ],
       "RIO GRANDE": [
         null,
+        null,
+        null,
+        null,
         648.0,
-        648.0,
-        648.0,
-        820.8,
         0.0,
         0.0
       ],
       "SALTO GRANDE": [
         null,
-        17280.0,
-        17280.0,
-        17280.0,
+        null,
+        null,
+        null,
         17280.0,
         17280.0,
         17280.0
       ],
       "YACYRETÁ": [
         null,
-        41700.0,
-        41700.0,
-        42900.0,
-        37200.0,
-        37200.0,
-        37200.0
+        null,
+        null,
+        null,
+        40200.0,
+        41000.0,
+        41000.0
       ],
       "FUTALEUFÚ": [
         null,
-        4562.18,
-        4562.18,
-        4562.18,
+        null,
+        null,
+        null,
         4562.18,
         4562.18,
         4562.18
       ],
       "AMEGHINO": [
         null,
-        216.0,
-        216.0,
-        216.0,
-        216.0,
-        216.0,
-        216.0
+        null,
+        null,
+        null,
+        240.0,
+        240.0,
+        240.0
       ]
     },
     "cotas_previstas": {
       "ALICURÁ": {
-        "cota": 701.912334954964,
+        "cota": 702.551890031974,
         "comentario": null
       },
       "PIEDRA": {
-        "cota": 591.2521131896245,
+        "cota": 590.9621323351577,
         "comentario": null
       },
       "CHOCÓN": {
-        "cota": 380.20989844368626,
+        "cota": 380.1872558385022,
         "comentario": null
       },
       "P.BAND.": {
-        "cota": 420.28579310089583,
+        "cota": 419.94881783838815,
         "comentario": null
       },
       "NIHUIL (Hm3)": {
-        "cota": 1262.4773908046013,
+        "cota": 1256.620333333337,
         "comentario": null
       },
       "TORO (Hm3)": {
-        "cota": 1317.0418013888896,
+        "cota": 1322.5916152777788,
         "comentario": null
       },
       "R.GRANDE": {
-        "cota": 872.7642471118069,
+        "cota": 872.5929684746421,
         "comentario": null
       },
       "C.CORRAL": {
@@ -7244,11 +7239,11 @@
         "comentario": null
       },
       "FUTALEUFÚ": {
-        "cota": 484.4106149200314,
+        "cota": 484.28268259044495,
         "comentario": null
       },
       "AMEGUINO": {
-        "cota": 146.4202176020365,
+        "cota": 146.1922427952691,
         "comentario": null
       }
     },
